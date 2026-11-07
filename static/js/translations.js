@@ -339,7 +339,9 @@ const TRANSLATIONS = {
     ph_notes: "Ex: Voo, quantidade de bagagens, itinerário corporativo...",
     modal_security_notice: "Atendimento 100% confidencial com resposta em até 15 minutos.",
     modal_submit_cta: "Receber Cotação no WhatsApp",
-    fleet_click_to_quote: "Clique para Cotar"
+    fleet_click_to_quote: "Clique para Cotar",
+    quote_back_fleet: "Voltar para a Frota",
+    quote_page_title_prefix: "Cotação Executiva"
   },
 
   en: {
@@ -677,7 +679,9 @@ const TRANSLATIONS = {
     ph_notes: "E.g., Flight number, baggage count, corporate itinerary...",
     modal_security_notice: "100% confidential assistance with response within 15 minutes.",
     modal_submit_cta: "Get Quote via WhatsApp",
-    fleet_click_to_quote: "Click to Request Quote"
+    fleet_click_to_quote: "Click to Request Quote",
+    quote_back_fleet: "Back to Fleet",
+    quote_page_title_prefix: "Executive Quote"
   },
 
   es: {
@@ -846,6 +850,8 @@ const TRANSLATIONS = {
     modal_security_notice: "Atención 100% confidencial con respuesta en menos de 15 minutos.",
     modal_submit_cta: "Recibir Cotización por WhatsApp",
     fleet_click_to_quote: "Clic para Cotizar",
+    quote_back_fleet: "Volver a la Flota",
+    quote_page_title_prefix: "Cotización Ejecutiva",
     float_wa_bubble: "¡Contáctenos ahora!",
     clients_strip: "PRINCIPALES CLIENTES ATENDIDOS",
     trip_one_way: "Sólo Ida",

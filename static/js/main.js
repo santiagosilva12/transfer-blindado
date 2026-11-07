@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroQuickForm();
   initPreselectionFromUrl();
   initCategoryFleetModals();
+  initQuotationPage();
 });
 
 /**
@@ -440,5 +441,138 @@ function initCategoryFleetModals() {
     });
   });
 }
+
+/**
+ * 7. Tela Dedicada de Cotação de Frota (/cotacao)
+ */
+function initQuotationPage() {
+  const quotePage = document.querySelector(".drvn-quote-page-section");
+  if (!quotePage) return;
+
+  function switchQuotationCategory(catSlug, modelToSelect) {
+    // 1. Atualizar botões de seleção de categoria
+    document.querySelectorAll(".drvn-quote-cat-btn").forEach((btn) => {
+      const isTarget = btn.getAttribute("data-cat-slug") === catSlug;
+      btn.classList.toggle("active", isTarget);
+
+      if (isTarget) {
+        const name = btn.getAttribute("data-cat-name");
+        const sub = btn.getAttribute("data-cat-sub");
+        const titleEl = document.getElementById("currentCatTitle");
+        const subEl = document.getElementById("currentCatSubtitle");
+        if (titleEl && name) titleEl.textContent = name;
+        if (subEl && sub) subEl.textContent = sub;
+      }
+    });
+
+    // 2. Alternar exibição dos painéis de formulário
+    document.querySelectorAll(".drvn-category-form-panel").forEach((panel) => {
+      const isMatch = panel.getAttribute("data-category") === catSlug;
+      panel.classList.toggle("d-none", !isMatch);
+    });
+
+    // 3. Pré-selecionar modelo específico se informado
+    if (modelToSelect) {
+      const radio = document.querySelector(`input[name="page_model_${catSlug}"][data-model-id="${modelToSelect}"]`);
+      if (radio) {
+        radio.checked = true;
+      }
+    }
+  }
+
+  // Ler parâmetros da URL (?categoria=...&modelo=...)
+  const urlParams = new URLSearchParams(window.location.search);
+  const catParam = (urlParams.get("categoria") || "sedan").toLowerCase();
+  const modelParam = urlParams.get("modelo") || "";
+
+  if (catParam) {
+    switchQuotationCategory(catParam, modelParam);
+  }
+
+  // Cliques nos botões de alternância de categoria
+  document.querySelectorAll(".drvn-quote-cat-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const slug = btn.getAttribute("data-cat-slug");
+      switchQuotationCategory(slug);
+
+      // Atualizar URL sem recarregar a página
+      const newUrl = new URL(window.location);
+      newUrl.searchParams.set("categoria", slug);
+      newUrl.searchParams.delete("modelo");
+      window.history.replaceState({}, "", newUrl);
+    });
+  });
+
+  // Envio dos formulários da tela de cotação para o WhatsApp
+  document.querySelectorAll(".fleet-page-quotation-form").forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const catSlug = form.getAttribute("data-category") || "";
+      const catTitleEl = document.getElementById("currentCatTitle");
+      const catNome = catTitleEl ? catTitleEl.textContent.trim() : catSlug.toUpperCase();
+
+      const selectedModelInput = form.querySelector(`input[name="page_model_${catSlug}"]:checked`);
+      const modeloEscolhido = selectedModelInput ? selectedModelInput.value : "Padrão da Categoria";
+
+      const selectedTripInput = form.querySelector(`input[name="page_trip_${catSlug}"]:checked`);
+      const tipoTrajeto = selectedTripInput ? selectedTripInput.value : "Só Ida";
+
+      const nome = form.querySelector('input[name="page_nome"]')?.value.trim() || "";
+      const telefone = form.querySelector('input[name="page_whatsapp"]')?.value.trim() || "";
+      const origem = form.querySelector('input[name="page_origem"]')?.value.trim() || "";
+      const destino = form.querySelector('input[name="page_destino"]')?.value.trim() || "";
+      const dataRaw = form.querySelector('input[name="page_data"]')?.value || "";
+      const horario = form.querySelector('input[name="page_horario"]')?.value || "";
+      const obs = form.querySelector('textarea[name="page_obs"]')?.value.trim() || "";
+
+      if (!nome || !telefone) {
+        alert("Por favor, preencha os campos obrigatórios (Nome e Telefone/WhatsApp).");
+        return;
+      }
+
+      let dataFormatada = "";
+      if (dataRaw) {
+        const partes = dataRaw.split("-");
+        if (partes.length === 3) {
+          dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+        } else {
+          dataFormatada = dataRaw;
+        }
+      }
+
+      const linhas = [];
+      linhas.push("🛡️ *SOLICITAÇÃO DE COTAÇÃO - TRANSFER BLINDADO*");
+      linhas.push("──────────────────────────");
+      linhas.push(`🚘 *Categoria:* ${catNome}`);
+      linhas.push(`⭐ *Opção / Configuração:* ${modeloEscolhido}`);
+      linhas.push(`🔄 *Tipo de Trajeto:* ${tipoTrajeto}`);
+      linhas.push("");
+      linhas.push(`👤 *Responsável:* ${nome}`);
+      linhas.push(`📱 *Telefone / WhatsApp:* ${telefone}`);
+      if (origem) {
+        linhas.push(`🛫 *Local de Saída / Origem:* ${origem}`);
+      }
+      if (destino) {
+        linhas.push(`🏁 *Destino:* ${destino}`);
+      }
+      if (dataFormatada) {
+        const horaStr = horario ? ` às ${horario}` : "";
+        linhas.push(`📅 *Data do Translado:* ${dataFormatada}${horaStr}`);
+      }
+      if (obs) {
+        linhas.push("");
+        linhas.push(`📝 *Observações / Necessidades:* ${obs}`);
+      }
+      linhas.push("──────────────────────────");
+      linhas.push("⚡ *Solicitado via Portal Oficial Transfer Blindado*");
+
+      const mensagemFinal = linhas.join("\n");
+      const whatsappUrl = `https://wa.me/5511986829141?text=${encodeURIComponent(mensagemFinal)}`;
+      window.open(whatsappUrl, "_blank");
+    });
+  });
+}
+
 
 

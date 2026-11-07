@@ -533,6 +533,21 @@ def frota():
     return redirect(url_for("index") + "#frota")
 
 
+@app.route("/cotacao")
+def cotacao():
+    categoria_ativa = request.args.get("categoria", "sedan").lower()
+    modelo_ativo = request.args.get("modelo", "")
+    cat_atual = next((c for c in CATEGORIAS_TERRESTRES if c["slug"] == categoria_ativa), CATEGORIAS_TERRESTRES[0])
+    return render_template(
+        "cotacao.html",
+        categoria_ativa=cat_atual["slug"],
+        cat_atual=cat_atual,
+        modelo_ativo=modelo_ativo,
+        categorias_terrestres=CATEGORIAS_TERRESTRES,
+        capitais=CAPITAIS
+    )
+
+
 @app.route("/reserva")
 def reserva():
     # Suporta preenchimento rápido via query string (ex: ?servico=Sedan&cidade=São Paulo)

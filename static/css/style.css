@@ -2608,3 +2608,35 @@ body {
     padding-right: 1.25rem !important;
   }
 }
+
+/* ==========================================================================
+   Tela Dedicada de Cotação (/cotacao)
+   ========================================================================== */
+.drvn-quote-cat-btn {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  font-size: 0.92rem;
+}
+
+.drvn-quote-cat-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.drvn-quote-cat-btn.active {
+  background: #d4af37 !important;
+  color: #0f172a !important;
+  border-color: #d4af37 !important;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
+
+.drvn-car-title-link {
+  color: #0f172a;
+  transition: color 0.2s ease;
+}
+
+.drvn-car-title-link:hover {
+  color: #c9a776;
+}

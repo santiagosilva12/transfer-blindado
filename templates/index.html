@@ -400,21 +400,21 @@
               <div class="drvn-fleet-card p-3 p-lg-3 px-lg-4" id="{{ m.id }}">
                 <div class="row g-3 g-lg-4 align-items-center">
                   
-                  <!-- Imagem do Veículo em Sketch (Apenas o Desenho, sem fundo - Clicável para abrir o formulário) -->
+                  <!-- Imagem do Veículo em Sketch (Apenas o Desenho, sem fundo - Clicável para abrir tela nova de cotação) -->
                   <div class="col-lg-5 text-center">
-                    <div class="drvn-fleet-image-box drvn-cursor-pointer position-relative" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#modalFrota-{{ cat.slug }}" data-model-id="{{ m.id }}" data-category="{{ cat.slug }}" title="Clique para cotar {{ m.nome }}">
+                    <a href="{{ url_for('cotacao') }}?categoria={{ cat.slug }}&modelo={{ m.id }}" target="_blank" class="drvn-fleet-image-box drvn-cursor-pointer position-relative d-block text-decoration-none" title="Clique para cotar {{ m.nome }}">
                       <img src="{{ m.imagem }}?v=14" alt="Sketch {{ m.nome }}" class="drvn-fleet-car-img" loading="lazy">
                       <span class="drvn-click-hint-pill">
                         <i class="bi bi-shield-check text-gold me-1"></i> <span data-i18n="fleet_click_to_quote">Clique para Cotar</span>
                       </span>
-                    </div>
+                    </a>
                   </div>
 
                   <!-- Informações e Especificações -->
                   <div class="col-lg-7">
                     <div class="ps-lg-2">
                       <div class="d-flex align-items-center justify-content-between mb-1">
-                        <h3 class="h4 fw-bold mb-0 drvn-cursor-pointer" role="button" data-bs-toggle="modal" data-bs-target="#modalFrota-{{ cat.slug }}" data-model-id="{{ m.id }}" data-category="{{ cat.slug }}" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">{{ m.nome }}</h3>
+                        <a href="{{ url_for('cotacao') }}?categoria={{ cat.slug }}&modelo={{ m.id }}" target="_blank" class="h4 fw-bold mb-0 text-decoration-none d-block drvn-car-title-link" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">{{ m.nome }}</a>
                         <span class="badge bg-light text-dark border px-2 py-1 small font-monospace">
                           <i class="bi {{ m.tag_icone }} text-gold me-1"></i><span data-i18n="model_tag_{{ m.id }}">{{ m.tag }}</span>
                         </span>
@@ -433,15 +433,15 @@
                         {% endfor %}
                       </div>
 
-                      <!-- Ação de Reserva Direto no Formulário de Cotação da Categoria -->
+                      <!-- Ação de Reserva Direto em Nova Tela de Cotação da Categoria -->
                       <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-10">
                         <span class="text-secondary small">
                           <i class="bi bi-geo-alt text-gold me-1"></i> <span data-i18n="fleet_avail_cities">Disponível em Todo o Brasil</span>
                         </span>
-                        <button type="button" class="btn btn-link link-with-icon fw-bold text-gold text-decoration-none p-0 border-0 drvn-fleet-quote-trigger" data-bs-toggle="modal" data-bs-target="#modalFrota-{{ cat.slug }}" data-model-id="{{ m.id }}" data-category="{{ cat.slug }}">
+                        <a href="{{ url_for('cotacao') }}?categoria={{ cat.slug }}&modelo={{ m.id }}" target="_blank" class="link-with-icon fw-bold text-gold text-decoration-none drvn-fleet-quote-trigger">
                           <span data-i18n="fleet_quote_cta">Solicitar Cotação para esta Frota</span>
                           <i class="bi bi-arrow-right-circle-fill ms-1 text-gold"></i>
-                        </button>
+                        </a>
                       </div>
 
                     </div>
@@ -484,137 +484,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-    {% endfor %}
-
-    <!-- ======================================================================
-         4 MODAIS EXCLUSIVOS DE COTAÇÃO DA FROTA TERRESTRE (Sedan, SUV, Van, Ônibus)
-         Abre ao clicar no veículo ou no botão de cotação com a opção pré-selecionada
-         ====================================================================== -->
-    {% for cat in categorias_terrestres %}
-    <div class="modal fade drvn-fleet-modal" id="modalFrota-{{ cat.slug }}" tabindex="-1" aria-labelledby="modalLabel-{{ cat.slug }}" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-        <div class="modal-content drvn-modal-content">
-          
-          <!-- Header do Modal -->
-          <div class="modal-header border-0 pb-2 pt-4 px-4 px-md-5 d-flex align-items-start justify-content-between">
-            <div>
-              <div class="heading-flavor-text mb-1">
-                <i class="bi bi-shield-check text-gold"></i>
-                <span data-i18n="modal_quote_tag">COTAÇÃO DIRETA & DISPONIBILIDADE</span>
-              </div>
-              <h3 class="modal-title h4 fw-bold text-white mb-0" id="modalLabel-{{ cat.slug }}">
-                <span data-i18n="modal_title_prefix">Cotação para Categoria</span> <span class="text-gold modal-title-cat" data-i18n="cat_nav_{{ cat.slug }}">{{ cat.nome }}</span>
-              </h3>
-              <p class="text-secondary small mb-0 mt-1" data-i18n="cat_sub_{{ cat.slug }}">{{ cat.subtitulo_galeria }}</p>
-            </div>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
-          </div>
-
-          <!-- Corpo do Modal com Formulário -->
-          <div class="modal-body px-4 px-md-5 py-3">
-            <form class="fleet-category-modal-form" data-category="{{ cat.slug }}">
-              
-              <!-- 1. SELETOR DE MODELO / CONFIGURAÇÃO (Blindado, Convencional, etc.) -->
-              <div class="mb-4">
-                <label class="form-label text-gold small fw-bold text-uppercase mb-2 d-flex align-items-center">
-                  <i class="bi bi-grid-fill me-1"></i> <span data-i18n="modal_lbl_config">1. Escolha a Opção / Configuração Desejada</span>
-                </label>
-                <div class="row g-2 drvn-model-picker-grid">
-                  {% for m in cat.modelos %}
-                  <div class="col-sm-6 col-md-4">
-                    <label class="drvn-model-radio-card w-100">
-                      <input type="radio" name="modal_model_{{ cat.slug }}" value="{{ m.nome }}" data-model-id="{{ m.id }}" {% if loop.first %}checked{% endif %}>
-                      <div class="drvn-model-card-inner">
-                        <div class="d-flex align-items-center justify-content-between mb-1">
-                          <span class="badge drvn-model-badge">
-                            <i class="bi {{ m.tag_icone }} me-1"></i><span data-i18n="model_tag_{{ m.id }}">{{ m.tag }}</span>
-                          </span>
-                          <i class="bi bi-check-circle-fill drvn-check-indicator"></i>
-                        </div>
-                        <div class="drvn-model-radio-img-box text-center my-1">
-                          <img src="{{ m.imagem }}?v=14" alt="{{ m.nome }}" class="img-fluid" style="max-height: 48px; object-fit: contain;">
-                        </div>
-                        <div class="drvn-model-card-title fw-bold text-truncate" data-i18n="model_name_{{ m.id }}" title="{{ m.nome }}">{{ m.nome }}</div>
-                        <div class="drvn-model-card-sub small text-muted text-truncate" data-i18n="model_cap_{{ m.id }}">{{ m.capacidade }}</div>
-                      </div>
-                    </label>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-
-              <!-- 2. TIPO DE TRAJETO (Só Ida / Ida e Volta) -->
-              <div class="mb-3">
-                <label class="form-label text-white small fw-bold mb-1 d-flex align-items-center">
-                  <i class="bi bi-arrow-left-right text-gold me-1"></i> <span data-i18n="modal_lbl_trip_type">2. Tipo de Trajeto</span>
-                </label>
-                <div class="drvn-modal-trip-toggle d-flex">
-                  <label class="drvn-modal-trip-btn flex-grow-1 text-center">
-                    <input type="radio" name="modal_trip_{{ cat.slug }}" value="Só Ida" checked>
-                    <span class="drvn-modal-trip-label" data-i18n="trip_one_way">Só Ida</span>
-                  </label>
-                  <label class="drvn-modal-trip-btn flex-grow-1 text-center">
-                    <input type="radio" name="modal_trip_{{ cat.slug }}" value="Ida e Volta">
-                    <span class="drvn-modal-trip-label" data-i18n="trip_round_trip">Ida e Volta</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- 3. CAMPOS DE INFORMAÇÕES DO CLIENTE E ROTA -->
-              <div class="mb-2">
-                <label class="form-label text-gold small fw-bold text-uppercase mb-2 d-flex align-items-center">
-                  <i class="bi bi-geo-alt-fill me-1"></i> <span data-i18n="modal_lbl_client_data">3. Informações do Translado</span>
-                </label>
-              </div>
-
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_name">Nome / Responsável *</label>
-                  <input type="text" name="modal_nome" class="form-control drvn-modal-input" placeholder="Seu nome ou da empresa" required data-i18n-ph="ph_name">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_phone">WhatsApp / Telefone *</label>
-                  <input type="tel" name="modal_whatsapp" class="form-control drvn-modal-input" placeholder="(11) 99999-9999" required data-i18n-ph="ph_phone">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_origin">Local de Saída / Origem *</label>
-                  <input type="text" name="modal_origem" class="form-control drvn-modal-input" placeholder="Aeroporto, hotel ou endereço" required data-i18n-ph="ph_origin">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_destination">Destino *</label>
-                  <input type="text" name="modal_destino" class="form-control drvn-modal-input" placeholder="Endereço final ou cidade" required data-i18n-ph="ph_destination">
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_date">Data do Translado *</label>
-                  <input type="date" name="modal_data" class="form-control drvn-modal-input" required>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_time">Horário Estimado</label>
-                  <input type="time" name="modal_horario" class="form-control drvn-modal-input">
-                </div>
-                <div class="col-12">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_notes">Observações ou Necessidades Especiais (Opcional)</label>
-                  <textarea name="modal_obs" rows="2" class="form-control drvn-modal-input" placeholder="Ex: Voo, quantidade de bagagens, itinerário corporativo..." data-i18n-ph="ph_notes"></textarea>
-                </div>
-              </div>
-
-              <!-- Rodapé do Modal com Botão WhatsApp -->
-              <div class="pt-4 mt-3 border-top border-secondary border-opacity-25 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
-                <div class="text-secondary small d-flex align-items-center">
-                  <i class="bi bi-shield-lock-fill text-gold me-2 fs-5 flex-shrink-0"></i>
-                  <span data-i18n="modal_security_notice">Atendimento 100% confidencial com resposta em até 15 minutos.</span>
-                </div>
-                <button type="submit" class="btn btn-gold btn-lg fw-bold px-4 py-2 text-nowrap w-100 w-sm-auto shadow-sm">
-                  <i class="bi bi-whatsapp me-2"></i><span data-i18n="modal_submit_cta">Receber Cotação no WhatsApp</span>
-                </button>
-              </div>
-
-            </form>
-          </div>
-
-        </div>
       </div>
     </div>
     {% endfor %}

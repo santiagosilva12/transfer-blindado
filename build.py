@@ -47,8 +47,22 @@ def build_static_site():
             f.write(rendered_reserva)
         print("[OK] reserva.html renderizado em dist/reserva.html")
 
-    # 3. Criar arquivo de regras de redirecionamento do Netlify (_redirects)
-    redirects_content = """/reserva    /reserva.html    200
+        # 3. cotacao.html (Tela Dedicada com 4 Categorias e Seleção Completa)
+        rendered_cotacao = render_template(
+            "cotacao.html",
+            categoria_ativa="sedan",
+            cat_atual=CATEGORIAS_TERRESTRES[0],
+            modelo_ativo="",
+            categorias_terrestres=CATEGORIAS_TERRESTRES,
+            capitais=CAPITAIS
+        )
+        with open(os.path.join(DIST_DIR, "cotacao.html"), "w", encoding="utf-8") as f:
+            f.write(rendered_cotacao)
+        print("[OK] cotacao.html renderizado em dist/cotacao.html")
+
+    # 4. Criar arquivo de regras de redirecionamento do Netlify (_redirects)
+    redirects_content = """/cotacao    /cotacao.html    200
+/reserva    /reserva.html    200
 /frota      /#frota          301
 /servicos   /#servicos       301
 /capitais   /#capitais       301
