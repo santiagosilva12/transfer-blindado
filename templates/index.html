@@ -403,7 +403,7 @@
                   <!-- Imagem do Veículo em Sketch (Apenas o Desenho, sem fundo - Clicável para abrir tela nova de cotação) -->
                   <div class="col-lg-5 text-center">
                     <a href="{{ url_for('cotacao') }}?categoria={{ cat.slug }}&modelo={{ m.id }}" target="_blank" class="drvn-fleet-image-box drvn-cursor-pointer position-relative d-block text-decoration-none" title="Clique para cotar {{ m.nome }}">
-                      <img src="{{ m.imagem }}?v=14" alt="Sketch {{ m.nome }}" class="drvn-fleet-car-img" loading="lazy">
+                      <img src="{{ m.imagem }}?v=17" alt="Sketch {{ m.nome }}" class="drvn-fleet-car-img" loading="lazy">
                       <span class="drvn-click-hint-pill">
                         <i class="bi bi-shield-check text-gold me-1"></i> <span data-i18n="fleet_click_to_quote">Clique para Cotar</span>
                       </span>
@@ -472,7 +472,7 @@
                     <i class="bi {{ m.tag_icone }} text-gold"></i>
                   </span>
                   <div class="drvn-thumb-img-wrapper">
-                    <img src="{{ m.imagem }}?v=14" alt="{{ m.nome }}" class="drvn-thumb-img" loading="lazy">
+                    <img src="{{ m.imagem }}?v=17" alt="{{ m.nome }}" class="drvn-thumb-img" loading="lazy">
                   </div>
                   <div class="drvn-thumb-title fw-bold text-uppercase" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">
                     {{ m.nome }}
