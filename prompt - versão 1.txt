@@ -1,0 +1,64 @@
+prompt - versão 1 
+
+(Crianção de um site para transporte executivo) 
+
+Crie a estrutura de um site institucional de alto padrão utilizando Python (Flask para rotas), Bootstrap 5 e JavaScript.
+
+Projeto: TRANSFER BLINDADO
+Referência de UX/UI: Plataforma drvn e sites de aviação executiva.Identidade Visual: Fundo predominante em Grafite (Dark Grey) e Preto, tipografia sem serifa elegante, transmitindo luxo, segurança e exclusividade. Textos e detalhes em Branco e Dourado/Prata. Não utilize banco de dados.
+
+1. Estrutura do Cabeçalho (Navbar):
+
+Crie uma navbar fixa no topo com fundo escuro.
+
+À esquerda: Espaço reservado para o logótipo.
+
+Ao centro: Links de navegação (Home, Quem Somos, Serviços, Frota, Capitais, Perguntas Frequentes).
+
+À direita: Botão CTA "Fale Conosco" com ícone do WhatsApp, utilizando uma cor de contraste elegante.
+
+2. Estrutura de Páginas (Flask Templates):
+
+index.html (Home):
+
+Banner Hero: Título "Sua agenda em movimento. Sua segurança intransigente", subtítulo focado em logística premium e botão CTA.
+
+Quem Somos (Institucional): Seção com "Nossa Missão", "Nossa Visão" e "Nossos Valores" (Segurança Intransigente, Excelência, Prontidão Absoluta, Confidencialidade, Inteligência em Mobilidade). Utilize blocos limpos, com bastante espaçamento (negative space) para dar sensação de luxo.
+
+Carrossel de Capitais (Explore Nossos Mercados): Crie um slider (usando Bootstrap Carousel ou Swiper.js) contendo cards no estilo da imagem de referência: imagem de fundo escurecida, nome da cidade em branco no canto inferior esquerdo e a frase "Saiba Mais ->". Capitais a incluir: São Paulo (Sede), Rio de Janeiro, Brasília, Fortaleza, Recife, Belo Horizonte, Salvador, Porto Alegre, Curitiba, Goiânia, Vitória, Cuiabá, Belém, Natal, Teresina, João Pessoa, Aracaju.
+
+frota.html (Nossas Frotas):
+
+Listagem de categorias empilhadas (uma abaixo da outra).
+
+Ordem terrestre (imagens em estilo sketch): 1. Sedan, 2. SUV, 3. Mini Van, 4. Van, 5. Ônibus.
+
+Ordem aérea (imagens fotográficas de alto padrão): 6. Avião a Jato, 7. Helicóptero.
+
+Cada bloco de categoria deve agir como um botão que redireciona para a página de reserva.
+
+reserva.html (Formulário sob demanda):
+
+Formulário de orçamento focado em soluções corporativas.
+
+Rodapé Global: E-mail (contato@transferblindado.com.br), CNPJ (69.880.706/0001-91) e WhatsApp (55 11 98682-9141).
+
+3. Estrutura do Formulário e Integração WhatsApp (reserva.html):
+Crie um formulário com os campos:
+
+Nome Completo / Nome do Responsável (Text)
+
+Empresa (Opcional) (Text)
+
+E-mail Corporativo (Email)
+
+Telefone / WhatsApp (Text)
+
+Tipo de Serviço (Checkboxes): Sedan Luxo Blindado, Sedan Executivo Blindado, Táxi Blindado, Sedan Executivo Convencional, Táxi Convencional, Van, Ônibus, Avião a Jato, Helicóptero, Logística para Grandes Eventos, Outros.
+
+Detalhes da Demanda (Textarea): Placeholder exato: "Por favor, informe a data prevista, cidades de interesse, número de passageiros, se deseja um veículo específico ou particularidades do evento."
+
+Ação do Formulário (JavaScript Vanilla): Intercepte o evento de submit (sem POST ao backend). Capture os valores preenchidos, monte uma string formatada com os dados do cliente e utilize window.open para redirecionar para a API do WhatsApp: [https://wa.me/5511986829141?text=](https://wa.me/5511986829141?text=) concatenado com o texto codificado (encodeURIComponent).
+
+Entrega esperada:
+Gere o arquivo app.py configurado apenas para renderizar os templates. Gere o HTML/CSS de todas as páginas solicitadas e o JavaScript do WhatsApp, garantindo um código limpo, modular e responsivo.

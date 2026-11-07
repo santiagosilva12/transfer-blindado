@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 36" width="170" height="36">
+  <!-- BRICS Dynamic Color Ribbons -->
+  <g transform="translate(6, 6)">
+    <path d="M 2,20 C 6,6 20,4 26,12" stroke="#009B3A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M 6,22 C 10,9 22,7 28,15" stroke="#FEDF00" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M 10,24 C 14,12 24,10 30,18" stroke="#002776" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="44" y="20" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="13" fill="#0f172a" letter-spacing="1.5">BRICS</text>
+  <text x="44" y="29" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="700" font-size="7.5" fill="#0284c7" letter-spacing="1">RIO DE JANEIRO</text>
+</svg>

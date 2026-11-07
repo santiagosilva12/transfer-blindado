@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175 36" width="175" height="36">
+  <!-- Compass Star in Ring -->
+  <g transform="translate(6, 6)">
+    <circle cx="12" cy="12" r="10" fill="none" stroke="#b89358" stroke-width="1.5"/>
+    <polygon points="12,3 14,10 21,12 14,14 12,21 10,14 3,12 10,10" fill="#0f172a"/>
+    <circle cx="12" cy="12" r="2" fill="#b89358"/>
+  </g>
+  <text x="36" y="19" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="12" fill="#0f172a" letter-spacing="1">CATARINA</text>
+  <text x="37" y="28" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="700" font-size="7" fill="#64748b" letter-spacing="1.2">AEROPORTO EXECUTIVO</text>
+</svg>

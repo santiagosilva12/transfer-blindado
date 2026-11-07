@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="100%" height="100%">
+  <clipPath id="s">
+    <path d="M0,0 v60 h100 v-60 z"/>
+  </clipPath>
+  <clipPath id="t">
+    <path d="M50,30 L0,0 v60 z M50,30 L100,0 v60 z M50,30 L0,0 h100 z M50,30 L0,60 h100 z"/>
+  </clipPath>
+  <!-- Blue Field -->
+  <rect width="100" height="60" fill="#012169"/>
+  <!-- St Andrew White Saltire -->
+  <path d="M0,0 L100,60 M100,0 L0,60" stroke="#ffffff" stroke-width="12"/>
+  <!-- St Patrick Red Saltire -->
+  <path d="M0,0 L100,60 M100,0 L0,60" stroke="#C8102E" stroke-width="7" clip-path="url(#t)"/>
+  <!-- St George White Cross -->
+  <path d="M50,0 v60 M0,30 h100" stroke="#ffffff" stroke-width="20"/>
+  <!-- St George Red Cross -->
+  <path d="M50,0 v60 M0,30 h100" stroke="#C8102E" stroke-width="12"/>
+</svg>

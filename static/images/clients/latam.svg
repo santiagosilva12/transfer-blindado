@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 36" width="160" height="36">
+  <!-- LATAM Origami Ribbons (Red & Navy) -->
+  <g transform="translate(6, 8)">
+    <polygon points="4,10 14,2 20,7 10,15" fill="#E31B23"/>
+    <polygon points="12,14 18,8 24,14 18,20" fill="#1B2444"/>
+  </g>
+  <text x="38" y="21" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="14" fill="#1B2444" letter-spacing="1">LATAM</text>
+  <text x="39" y="30" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="800" font-size="7.5" fill="#E31B23" letter-spacing="1.5">EXECUTIVE</text>
+</svg>

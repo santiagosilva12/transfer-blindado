@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradMv" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14171d"/>
+      <stop offset="100%" stop-color="#0a0c0f"/>
+    </linearGradient>
+    <linearGradient id="goldStrokeMv" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9a815a"/>
+      <stop offset="50%" stop-color="#e8cca4"/>
+      <stop offset="100%" stop-color="#9a815a"/>
+    </linearGradient>
+    <pattern id="gridMv" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="320" rx="12" fill="url(#bgGradMv)"/>
+  <rect width="600" height="320" fill="url(#gridMv)"/>
+
+  <!-- Blueprint Technical Annotations -->
+  <g opacity="0.45" font-family="'Courier New', monospace" font-size="10" fill="#c5a880">
+    <text x="30" y="35">TB-SPEC // 03-MINIVAN-VIP</text>
+    <text x="30" y="50">CABIN: 6-SEATER EXECUTIVE LOUNGE</text>
+    <text x="440" y="35">SCALE: 1:25 ISO</text>
+    <text x="440" y="50">ACCESS: DUAL POWER SLIDERS</text>
+  </g>
+
+  <!-- Technical Axis Lines -->
+  <line x1="30" y1="260" x2="570" y2="260" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="30" y1="200" x2="570" y2="200" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
+  <line x1="160" y1="60" x2="160" y2="260" stroke="rgba(197,168,128,0.15)" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="450" y1="60" x2="450" y2="260" stroke="rgba(197,168,128,0.15)" stroke-width="0.8" stroke-dasharray="2 2"/>
+
+  <!-- Minivan Silhouette Sketch -->
+  <g fill="none" stroke="#dcdedf" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="305" cy="256" rx="235" ry="8" fill="rgba(0,0,0,0.6)" stroke="none"/>
+
+    <!-- Outline Body -->
+    <path d="M 60 225 
+             C 80 220, 110 220, 120 220
+             C 135 180, 185 180, 200 220
+             L 400 220
+             C 415 180, 465 180, 480 220
+             L 535 220
+             C 550 220, 555 205, 550 185
+             C 545 130, 540 105, 525 90
+             L 310 90
+             C 240 90, 180 105, 140 145
+             C 105 180, 75 195, 55 205
+             C 48 215, 52 222, 60 225 Z" 
+          stroke="url(#goldStrokeMv)" stroke-width="2.2" opacity="0.95"/>
+
+    <!-- Windows (VIP Privacy Tint) -->
+    <path d="M 148 145 L 305 95 L 518 95 L 532 155 L 180 155 Z" stroke="#c5a880" stroke-width="1.4" opacity="0.8" fill="rgba(197,168,128,0.06)"/>
+    <line x1="245" y1="102" x2="245" y2="220" stroke="#718096" stroke-width="1.2" opacity="0.8"/>
+    <line x1="330" y1="95" x2="330" y2="220" stroke="#718096" stroke-width="1.4" opacity="0.9"/>
+    <line x1="435" y1="95" x2="435" y2="155" stroke="#718096" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Sliding Door Track Line -->
+    <line x1="335" y1="185" x2="520" y2="185" stroke="#ffffff" stroke-width="1.2" opacity="0.6"/>
+
+    <!-- Door Handles -->
+    <rect x="220" y="170" width="18" height="3" rx="1.5" fill="#e8cca4"/>
+    <rect x="345" y="170" width="18" height="3" rx="1.5" fill="#e8cca4"/>
+
+    <!-- Lights -->
+    <path d="M 55 205 L 80 198" stroke="#60a5fa" stroke-width="3" opacity="0.9"/>
+    <path d="M 550 150 L 545 200" stroke="#ef4444" stroke-width="3" opacity="0.9"/>
+
+    <!-- Wheels -->
+    <g transform="translate(160, 220)">
+      <circle cx="0" cy="0" r="35" stroke="#475569" stroke-width="3"/>
+      <circle cx="0" cy="0" r="30" stroke="#e2e8f0" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="18" stroke="#94a3b8" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="6" fill="#c5a880"/>
+      <line x1="-18" y1="0" x2="18" y2="0" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="0" y1="-18" x2="0" y2="18" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="-13" y1="-13" x2="13" y2="13" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="-13" y1="13" x2="13" y2="-13" stroke="#c5a880" stroke-width="1.2"/>
+    </g>
+
+    <g transform="translate(440, 220)">
+      <circle cx="0" cy="0" r="35" stroke="#475569" stroke-width="3"/>
+      <circle cx="0" cy="0" r="30" stroke="#e2e8f0" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="18" stroke="#94a3b8" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="6" fill="#c5a880"/>
+      <line x1="-18" y1="0" x2="18" y2="0" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="0" y1="-18" x2="0" y2="18" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="-13" y1="-13" x2="13" y2="13" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="-13" y1="13" x2="13" y2="-13" stroke="#c5a880" stroke-width="1.2"/>
+    </g>
+  </g>
+
+  <!-- Dimension line -->
+  <g stroke="#c5a880" stroke-width="0.8" opacity="0.6">
+    <line x1="50" y1="285" x2="550" y2="285"/>
+    <line x1="50" y1="280" x2="50" y2="290"/>
+    <line x1="550" y1="280" x2="550" y2="290"/>
+    <text x="300" y="299" font-family="'Courier New', monospace" font-size="10" fill="#e8cca4" text-anchor="middle" stroke="none">OVERALL LENGTH: 5,155 mm // WHEELBASE: 3,090 mm</text>
+  </g>
+</svg>

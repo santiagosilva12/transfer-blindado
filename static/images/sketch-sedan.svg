@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14171d"/>
+      <stop offset="100%" stop-color="#0a0c0f"/>
+    </linearGradient>
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9a815a"/>
+      <stop offset="50%" stop-color="#e8cca4"/>
+      <stop offset="100%" stop-color="#9a815a"/>
+    </linearGradient>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="600" height="320" rx="12" fill="url(#bgGrad)"/>
+  <rect width="600" height="320" fill="url(#grid)"/>
+
+  <!-- Blueprint Technical Annotations -->
+  <g opacity="0.45" font-family="'Courier New', monospace" font-size="10" fill="#c5a880">
+    <text x="30" y="35">TB-SPEC // 01-SEDAN-ARMORED</text>
+    <text x="30" y="50">BALLISTIC CERT: NIJ III-A (BR6)</text>
+    <text x="440" y="35">SCALE: 1:25 ISO</text>
+    <text x="440" y="50">CHASSIS: REINFORCED</text>
+  </g>
+
+  <!-- Technical Axis Lines -->
+  <line x1="30" y1="260" x2="570" y2="260" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="30" y1="210" x2="570" y2="210" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
+  <line x1="150" y1="60" x2="150" y2="260" stroke="rgba(197,168,128,0.15)" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="450" y1="60" x2="450" y2="260" stroke="rgba(197,168,128,0.15)" stroke-width="0.8" stroke-dasharray="2 2"/>
+
+  <!-- Car Silhouette Sketch (Sedan de Luxo Executivo) -->
+  <g fill="none" stroke="#dcdedf" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Ground Line Shadow -->
+    <ellipse cx="300" cy="256" rx="230" ry="8" fill="rgba(0,0,0,0.6)" stroke="none"/>
+
+    <!-- Main Silhouette Outline (Sketch Lines) -->
+    <path d="M 70 230 
+             C 80 220, 110 220, 120 220
+             C 140 185, 180 185, 200 220
+             L 390 220
+             C 410 185, 450 185, 470 220
+             L 520 220
+             C 535 220, 545 205, 535 190
+             C 510 160, 480 155, 440 150
+             C 380 145, 330 115, 270 115
+             C 210 115, 175 140, 130 170
+             C 95 190, 75 200, 60 215
+             C 55 225, 60 230, 70 230 Z" 
+          stroke="url(#goldStroke)" stroke-width="2.2" opacity="0.95"/>
+
+    <!-- Secondary Sketch Accent Lines -->
+    <path d="M 68 218 L 125 218" stroke="#ffffff" stroke-width="1.2" opacity="0.6"/>
+    <path d="M 130 170 C 180 142, 215 120, 270 120 C 330 120, 375 148, 435 152" stroke="#ffffff" stroke-width="1" opacity="0.7"/>
+    <path d="M 170 175 C 240 165, 360 165, 440 172" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="1 1"/>
+
+    <!-- Greenhouse & Armored Glass Windows (Sketch) -->
+    <path d="M 215 160 
+             L 265 128 
+             L 345 128 
+             L 345 160 Z" 
+          stroke="#c5a880" stroke-width="1.4" opacity="0.8" fill="rgba(197,168,128,0.06)"/>
+    <path d="M 355 128 
+             L 415 155 
+             L 355 160 Z" 
+          stroke="#c5a880" stroke-width="1.4" opacity="0.8" fill="rgba(197,168,128,0.06)"/>
+
+    <!-- Pillar and Door Cuts -->
+    <line x1="285" y1="130" x2="280" y2="220" stroke="#718096" stroke-width="1" opacity="0.7"/>
+    <line x1="350" y1="130" x2="350" y2="220" stroke="#718096" stroke-width="1.4" opacity="0.9"/>
+    <line x1="415" y1="155" x2="410" y2="218" stroke="#718096" stroke-width="1" opacity="0.7"/>
+    
+    <!-- Door Handles -->
+    <rect x="250" y="172" width="18" height="3" rx="1.5" fill="#e8cca4"/>
+    <rect x="365" y="172" width="18" height="3" rx="1.5" fill="#e8cca4"/>
+
+    <!-- Headlight & Taillight Blueprint Glow -->
+    <path d="M 62 214 L 85 210" stroke="#60a5fa" stroke-width="2.5" opacity="0.9"/>
+    <path d="M 533 192 L 525 205" stroke="#ef4444" stroke-width="2.5" opacity="0.9"/>
+
+    <!-- Front Wheel Blueprint -->
+    <g transform="translate(160, 220)">
+      <circle cx="0" cy="0" r="34" stroke="#475569" stroke-width="3"/>
+      <circle cx="0" cy="0" r="30" stroke="#e2e8f0" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="20" stroke="#94a3b8" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="6" fill="#c5a880"/>
+      <!-- Multi-spoke Rim Lines -->
+      <line x1="-20" y1="0" x2="20" y2="0" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="0" y1="-20" x2="0" y2="20" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="-14" y1="-14" x2="14" y2="14" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="-14" y1="14" x2="14" y2="-14" stroke="#c5a880" stroke-width="1.2"/>
+    </g>
+
+    <!-- Rear Wheel Blueprint -->
+    <g transform="translate(430, 220)">
+      <circle cx="0" cy="0" r="34" stroke="#475569" stroke-width="3"/>
+      <circle cx="0" cy="0" r="30" stroke="#e2e8f0" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="20" stroke="#94a3b8" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="6" fill="#c5a880"/>
+      <!-- Multi-spoke Rim Lines -->
+      <line x1="-20" y1="0" x2="20" y2="0" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="0" y1="-20" x2="0" y2="20" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="-14" y1="-14" x2="14" y2="14" stroke="#c5a880" stroke-width="1.2"/>
+      <line x1="-14" y1="14" x2="14" y2="-14" stroke="#c5a880" stroke-width="1.2"/>
+    </g>
+  </g>
+
+  <!-- Technical Dimension Callouts -->
+  <g stroke="#c5a880" stroke-width="0.8" opacity="0.6">
+    <line x1="60" y1="280" x2="535" y2="280"/>
+    <line x1="60" y1="275" x2="60" y2="285"/>
+    <line x1="535" y1="275" x2="535" y2="285"/>
+    <text x="270" y="295" font-family="'Courier New', monospace" font-size="10" fill="#e8cca4" text-anchor="middle" stroke="none">OVERALL LENGTH: 5,080 mm</text>
+  </g>
+</svg>

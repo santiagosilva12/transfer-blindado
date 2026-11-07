@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <path id="circlePath" d="M 80, 80 m -62, 0 a 62,62 0 1,1 124,0 a 62,62 0 1,1 -124,0"/>
+  </defs>
+  <text fill="#bb9669" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" letter-spacing="3.2">
+    <textPath href="#circlePath" startOffset="0%">
+      • TRANSFER BLINDADO • SOLICITAR RESERVA •
+    </textPath>
+  </text>
+</svg>

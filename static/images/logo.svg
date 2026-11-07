@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" width="320" height="60">
+  <defs>
+    <linearGradient id="shieldGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#dfbe8b"/>
+      <stop offset="50%" stop-color="#c5a880"/>
+      <stop offset="100%" stop-color="#8d704b"/>
+    </linearGradient>
+    <linearGradient id="shieldDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a2e37"/>
+      <stop offset="100%" stop-color="#12141a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Armored Shield Monogram Icon -->
+  <g transform="translate(10, 6)">
+    <!-- Shield Faceted Outer Border -->
+    <path d="M 24 2 L 44 9 L 44 26 C 44 38, 24 47, 24 47 C 24 47, 4 38, 4 26 L 4 9 Z" 
+          fill="url(#shieldDark)" stroke="url(#shieldGold)" stroke-width="2"/>
+    
+    <!-- Shield Facet Line -->
+    <path d="M 24 2 L 24 47" stroke="url(#shieldGold)" stroke-width="1.2" opacity="0.6"/>
+
+    <!-- Subtle Internal Shield Highlight -->
+    <path d="M 24 7 L 39 12 L 39 25 C 39 34, 24 41, 24 41" 
+          fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+    <!-- Monogram 'TB' Cutout -->
+    <text x="24" y="28" font-family="'Cinzel', 'Trajan Pro', 'Georgia', serif" font-weight="700" font-size="14" 
+          fill="url(#shieldGold)" text-anchor="middle" letter-spacing="1">TB</text>
+  </g>
+
+  <!-- Brand Typography -->
+  <g transform="translate(68, 12)">
+    <!-- Primary Title -->
+    <text x="0" y="21" font-family="'Plus Jakarta Sans', 'Montserrat', -apple-system, sans-serif" 
+          font-weight="800" font-size="16.5" fill="#f8fafc" letter-spacing="3.5">
+      TRANSFER <tspan fill="url(#shieldGold)">BLINDADO</tspan>
+    </text>
+    
+    <!-- Subtitle descriptor -->
+    <text x="0.5" y="34" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" 
+          font-weight="500" font-size="7.5" fill="#94a3b8" letter-spacing="3.8">
+      EXECUTIVE MOBILITY &amp; DEFENSE
+    </text>
+  </g>
+</svg>

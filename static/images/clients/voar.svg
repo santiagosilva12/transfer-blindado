@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 36" width="150" height="36">
+  <!-- Aviation Stylized Wing Insignia -->
+  <g transform="translate(6, 8)">
+    <path d="M 2,16 L 16,3 L 26,16 L 18,16 L 14,8 L 10,16 Z" fill="#0f172a"/>
+    <path d="M 18,16 L 24,16 L 21,11 Z" fill="#c9a776"/>
+  </g>
+  <text x="38" y="21" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="14" fill="#0f172a" letter-spacing="1.2">VOAR</text>
+  <text x="39" y="29" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="700" font-size="7" fill="#64748b" letter-spacing="1.8">AVIATION</text>
+</svg>

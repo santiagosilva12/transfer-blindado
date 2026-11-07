@@ -1,0 +1,786 @@
+{% extends "base.html" %}
+
+{% block title %}TRANSFER BLINDADO | Ground Travel &amp; Aviation Platform{% endblock %}
+
+{% block content %}
+
+<!-- ==========================================================================
+     1. Hero Section (Estilo Mockup - Cadillac Escalade Central + Cotação Vertical)
+     ========================================================================== -->
+<section class="drvn-hero" id="hero">
+  
+  <!-- Cadillac Escalade Preta Realista no Centro-Direita (Estilo Mockup) -->
+  <div class="hero-center-escalade" aria-hidden="true">
+    <img src="{{ url_for('static', filename='images/hero-escalade-studio.png') }}?v=3" alt="Cadillac Escalade Blindada">
+  </div>
+
+  <div class="container-xl position-relative" style="z-index: 3;">
+    
+    <div class="golden-hero-grid">
+      
+      <!-- Lado Esquerdo: Conteúdo Editorial -->
+      <div class="golden-hero-main">
+        <div class="heading-flavor-text">
+          <i class="bi bi-shield"></i>
+          <span data-i18n="hero_tag">OPERAÇÃO 24/7/365 • ATENDIMENTO PREMIUM • VEÍCULOS BLINDADOS</span>
+        </div>
+
+        <h1 class="hero-main-title">
+          <span class="hero-title-line-1" data-i18n="hero_title_1">Sua agenda em<br>movimento.</span>
+          <span class="hero-title-line-2" data-i18n="hero_title_2">SEGURANÇA<br>INTRANSIGENTE.</span>
+        </h1>
+
+        <!-- Lista de Diferenciais com Escudos Contornados (Estilo Mockup) -->
+        <div class="hero-features-list">
+          <div class="hero-feature-row">
+            <i class="bi bi-shield hero-feature-shield"></i>
+            <p class="hero-lead mb-0" data-i18n="hero_lead_1">
+              Logística executiva premium com frotas blindadas. Gerenciamos deslocamentos de alta complexidade e frotas corporativas sob medida.
+            </p>
+          </div>
+          <div class="hero-feature-row">
+            <i class="bi bi-shield hero-feature-shield"></i>
+            <p class="hero-lead mb-0" data-i18n="hero_lead_2">
+              Monitoramento em tempo real e o mais alto padrão de atendimento corporativo do pré ao pós-viagem
+            </p>
+          </div>
+        </div>
+
+        <!-- Grupo CTA: Cápsula com Círculo Dourado + 2 Selos Circulares Escuros (Estilo Mockup) -->
+        <div class="d-flex align-items-center flex-wrap gap-2 pt-2">
+          
+          <a href="{{ url_for('reserva') }}" class="drvn-reserve-pill-btn">
+            <span class="drvn-reserve-pill-circle">
+              <span class="drvn-reserve-pill-dot"></span>
+            </span>
+            <span class="drvn-reserve-pill-text" data-i18n="hero_cta_circle">Solicite sua Reserva</span>
+          </a>
+
+          <!-- Dois Selos Circulares ao lado do botão (Estilo Mockup) -->
+          <div class="d-flex align-items-center gap-2 ms-1">
+            <div class="drvn-dark-seal-circle" title="Frota Homologada pelo Exército Brasileiro">
+              <i class="bi bi-patch-check-fill text-gold"></i>
+            </div>
+            <div class="drvn-dark-seal-circle drvn-dark-seal-dotted" title="Monitoramento em Tempo Real 24/7">
+              <span class="dotted-ring-icon"></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Lado Direito: Card Vertical de Cotação Rápida (1 Coluna Empilhada - Estilo Mockup) -->
+      <div class="golden-hero-side">
+        <div class="hero-booking-bar hero-booking-vertical-card">
+          <div class="hero-booking-bar-header">
+            <h2 class="hero-booking-title" data-i18n="form_title">Cotação</h2>
+            <a href="{{ url_for('reserva') }}" class="hero-booking-sublink">
+              <span data-i18n="form_detailed">Demanda detalhada</span> <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+
+          <form id="heroQuickForm" novalidate>
+            <div class="hero-vertical-fields">
+              
+              <!-- 1. Nome / Responsável -->
+              <div class="hero-form-group">
+                <input type="text" class="form-control" id="hero_nome" name="hero_nome" placeholder="Nome / Responsável" data-i18n-ph="ph_name" required>
+              </div>
+
+              <!-- 2. WhatsApp / Telefone -->
+              <div class="hero-form-group">
+                <input type="tel" class="form-control" id="hero_telefone" name="hero_telefone" placeholder="WhatsApp / Telefone" data-i18n-ph="ph_phone" required>
+              </div>
+
+              <!-- 3. Local de Saída / Origem -->
+              <div class="hero-form-group">
+                <input type="text" class="form-control" id="hero_origem" name="hero_origem" placeholder="Local de Saída / Origem" data-i18n-ph="ph_origin">
+              </div>
+
+              <!-- 4. Destino -->
+              <div class="hero-form-group">
+                <input type="text" class="form-control" id="hero_destino" name="hero_destino" placeholder="Destino" data-i18n-ph="ph_destination">
+              </div>
+
+              <!-- 5. Frota Desejada -->
+              <div class="hero-form-group">
+                <select class="form-select" id="hero_servico" name="hero_servico">
+                  <option value="" selected data-i18n="lbl_fleet">Frota Desejada</option>
+                  <option value="Sedan Luxo Blindado">Sedan Luxo Blindado</option>
+                  <option value="Sedan Executivo Blindado">Sedan Executivo Blindado</option>
+                  <option value="SUV Executivo Blindado">SUV Executivo Blindado</option>
+                  <option value="Van Executiva VIP">Van Executiva VIP</option>
+                  <option value="Mini Van VIP">Mini Van VIP</option>
+                  <option value="Ônibus Comitiva">Ônibus Comitiva</option>
+                  <option value="Avião a Jato">Avião a Jato</option>
+                  <option value="Helicóptero">Helicóptero</option>
+                  <option value="Logística Grandes Eventos">Logística Grandes Eventos</option>
+                </select>
+              </div>
+
+              <!-- 6. Data do Translado -->
+              <div class="hero-form-group">
+                <input type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" class="form-control" id="hero_data" name="hero_data" placeholder="Data do Translado" data-i18n-ph="ph_date">
+              </div>
+
+              <!-- Botão Consultar Disponibilidade -->
+              <div class="mt-2 pt-1">
+                <button type="submit" class="hero-booking-btn w-100">
+                  <span data-i18n="btn_consult">Consultar Disponibilidade</span>
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra Inferior com 3 Pílulas Separadas (1ª Dourada Sólida, 2ª e 3ª Escuras - Estilo Mockup) -->
+    <div class="drvn-hero-bottom-badges">
+      <div class="drvn-badge-pill drvn-badge-gold-solid">
+        <i class="bi bi-headset"></i>
+        <span data-i18n="badge_247">Atendimento 24/7</span>
+      </div>
+      <div class="drvn-badge-pill drvn-badge-dark-glass">
+        <i class="bi bi-shield-fill-check text-gold"></i>
+        <span data-i18n="badge_armor">Blindagem Nível III-A</span>
+      </div>
+      <div class="drvn-badge-pill drvn-badge-dark-glass">
+        <i class="bi bi-shield-check text-gold"></i>
+        <span data-i18n="badge_army">Certificado pelo Exército</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Rodapé da Primeira Seção: Faixa Branca com Carrossel dos Principais Clientes Atendidos -->
+  <div class="drvn-clients-white-strip drvn-hero-footer-strip">
+    <div class="container-xl mb-1 pb-1">
+      <div class="d-flex align-items-center justify-content-center">
+        <span class="clients-strip-badge" data-i18n="clients_strip">PRINCIPAIS CLIENTES ATENDIDOS</span>
+      </div>
+    </div>
+    <div class="drvn-ticker-wrapper">
+      <!-- Loop 1 -->
+      <div class="drvn-client-logo-item" title="Nike"><img src="{{ url_for('static', filename='images/clients/nike.svg') }}?v=2" alt="Nike"></div>
+      <div class="drvn-client-logo-item" title="Red Bull"><img src="{{ url_for('static', filename='images/clients/redbull.svg') }}?v=2" alt="Red Bull"></div>
+      <div class="drvn-client-logo-item" title="Fórmula 1"><img src="{{ url_for('static', filename='images/clients/f1.svg') }}?v=2" alt="Fórmula 1"></div>
+      <div class="drvn-client-logo-item" title="BTG Pactual"><img src="{{ url_for('static', filename='images/clients/btg.svg') }}?v=2" alt="BTG Pactual"></div>
+      <div class="drvn-client-logo-item" title="BRICS Rio de Janeiro"><img src="{{ url_for('static', filename='images/clients/brics.svg') }}?v=2" alt="BRICS Rio de Janeiro"></div>
+      <div class="drvn-client-logo-item" title="Eternity Group Brasil"><img src="{{ url_for('static', filename='images/clients/eternity.svg') }}?v=2" alt="Eternity Group Brasil"></div>
+      <div class="drvn-client-logo-item" title="Voar Aviation"><img src="{{ url_for('static', filename='images/clients/voar.svg') }}?v=2" alt="Voar Aviation"></div>
+      <div class="drvn-client-logo-item" title="LATAM Executive"><img src="{{ url_for('static', filename='images/clients/latam.svg') }}?v=2" alt="LATAM Executive"></div>
+      <div class="drvn-client-logo-item" title="Aeroporto Executivo Catarina"><img src="{{ url_for('static', filename='images/clients/catarina.svg') }}?v=2" alt="Aeroporto Executivo Catarina"></div>
+      <div class="drvn-client-logo-item" title="Premier Executive"><img src="{{ url_for('static', filename='images/clients/premier.svg') }}?v=2" alt="Premier Executive"></div>
+
+      <!-- Loop 2 (Repetição Contínua) -->
+      <div class="drvn-client-logo-item" title="Nike"><img src="{{ url_for('static', filename='images/clients/nike.svg') }}?v=2" alt="Nike"></div>
+      <div class="drvn-client-logo-item" title="Red Bull"><img src="{{ url_for('static', filename='images/clients/redbull.svg') }}?v=2" alt="Red Bull"></div>
+      <div class="drvn-client-logo-item" title="Fórmula 1"><img src="{{ url_for('static', filename='images/clients/f1.svg') }}?v=2" alt="Fórmula 1"></div>
+      <div class="drvn-client-logo-item" title="BTG Pactual"><img src="{{ url_for('static', filename='images/clients/btg.svg') }}?v=2" alt="BTG Pactual"></div>
+      <div class="drvn-client-logo-item" title="BRICS Rio de Janeiro"><img src="{{ url_for('static', filename='images/clients/brics.svg') }}?v=2" alt="BRICS Rio de Janeiro"></div>
+      <div class="drvn-client-logo-item" title="Eternity Group Brasil"><img src="{{ url_for('static', filename='images/clients/eternity.svg') }}?v=2" alt="Eternity Group Brasil"></div>
+      <div class="drvn-client-logo-item" title="Voar Aviation"><img src="{{ url_for('static', filename='images/clients/voar.svg') }}?v=2" alt="Voar Aviation"></div>
+      <div class="drvn-client-logo-item" title="LATAM Executive"><img src="{{ url_for('static', filename='images/clients/latam.svg') }}?v=2" alt="LATAM Executive"></div>
+      <div class="drvn-client-logo-item" title="Aeroporto Executivo Catarina"><img src="{{ url_for('static', filename='images/clients/catarina.svg') }}?v=2" alt="Aeroporto Executivo Catarina"></div>
+      <div class="drvn-client-logo-item" title="Premier Executive"><img src="{{ url_for('static', filename='images/clients/premier.svg') }}?v=2" alt="Premier Executive"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     3. Estrutura Institucional de Alto Padrão - Quem Somos (Missão, Visão e Valores)
+     ========================================================================== -->
+<section class="drvn-mission-section" id="quem-somos">
+  <div class="container-xl">
+    
+    <!-- Cabeçalho Institucional -->
+    <div class="text-center max-w-760 mx-auto mb-5">
+      <div class="heading-flavor-text justify-content-center">
+        <i class="bi bi-shield-check"></i>
+        <span data-i18n="about_tag">ESTRUTURA INSTITUCIONAL DE ALTO PADRÃO • QUEM SOMOS</span>
+      </div>
+      <h2 class="drvn-section-title mb-3" data-i18n="about_title">
+        Excelência e Rigor Operacional em Cada Trajeto
+      </h2>
+      <p class="text-secondary lead fs-6" data-i18n="about_lead">
+        Conheça os alicerces éticos, a visão de futuro e os compromissos inegociáveis que norteiam cada operação da Transfer Blindado.
+      </p>
+    </div>
+
+    <!-- Bloco 1: Nossa Missão & Nossa Visão (Cards Executivos Sólidos e Elegantes) -->
+    <div class="row g-4 mb-5">
+      
+      <!-- Nossa Missão -->
+      <div class="col-lg-6">
+        <div class="drvn-pillar-card h-100">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <span class="drvn-pillar-badge"><i class="bi bi-compass me-1"></i> <span data-i18n="mission_badge">NOSSA MISSÃO</span></span>
+            <span class="text-gold fs-5"><i class="bi bi-shield-lock"></i></span>
+          </div>
+          <h3 class="drvn-pillar-headline" data-i18n="mission_headline">
+            Conectar pessoas em movimento com excelência e segurança absoluta
+          </h3>
+          <blockquote class="drvn-pillar-quote mb-0" data-i18n="mission_quote">
+            “Prover soluções de mobilidade terrestre blindada com os mais rigorosos padrões de segurança, discrição e eficiência. Integramos tecnologia de ponta, motoristas de elite e suporte ininterrupto para garantir uma experiência de viagem impecável, do planejamento ao destino final.”
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- Nossa Visão -->
+      <div class="col-lg-6">
+        <div class="drvn-pillar-card h-100">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <span class="drvn-pillar-badge"><i class="bi bi-eye me-1"></i> <span data-i18n="vision_badge">NOSSA VISÃO</span></span>
+            <span class="text-gold fs-5"><i class="bi bi-stars"></i></span>
+          </div>
+          <h3 class="drvn-pillar-headline" data-i18n="vision_headline">
+            Onde queremos chegar e como queremos ser reconhecidos no futuro
+          </h3>
+          <blockquote class="drvn-pillar-quote mb-0" data-i18n="vision_quote">
+            “Ser a referência absoluta no Brasil em gerenciamento de logística segura com veículos blindados e transporte executivo premium, consolidando um ecossistema de mobilidade que antecipa riscos e redefine o conceito de tranquilidade em movimento.”
+          </blockquote>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bloco 2: Nossos Valores (Os Pilares da Experiência TRANSFER BLINDADO) -->
+    <div class="pt-3">
+      <div class="mb-4">
+        <div class="heading-flavor-text">
+          <i class="bi bi-gem"></i>
+          <span data-i18n="values_badge">NOSSOS VALORES</span>
+        </div>
+        <h3 class="h2 fw-bold mb-1" style="color: #0f172a;" data-i18n="values_title">Os Pilares da Experiência TRANSFER BLINDADO</h3>
+        <p class="text-secondary small" data-i18n="values_sub">Princípios que guiam nossos motoristas, analistas de risco e central 24/7 em todo o território nacional.</p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Valor 1: Segurança Intransigente -->
+        <div class="col-lg-4 col-md-6">
+          <div class="drvn-value-card">
+            <div class="drvn-value-icon">
+              <i class="bi bi-shield-fill-check"></i>
+            </div>
+            <h4 class="drvn-value-title" data-i18n="val_1_title">Segurança Intransigente</h4>
+            <p class="drvn-value-desc" data-i18n="val_1_desc">
+              A preservação da vida e da integridade de nossos passageiros é a nossa prioridade absoluta. Operamos com inteligência de mitigação de riscos para que a proteção seja máxima, mas a experiência seja fluida e discreta.
+            </p>
+          </div>
+        </div>
+
+        <!-- Valor 2: Excelência em Cada Detalhe -->
+        <div class="col-lg-4 col-md-6">
+          <div class="drvn-value-card">
+            <div class="drvn-value-icon">
+              <i class="bi bi-award-fill"></i>
+            </div>
+            <h4 class="drvn-value-title" data-i18n="val_2_title">Excelência em Cada Detalhe</h4>
+            <p class="drvn-value-desc" data-i18n="val_2_desc">
+              O alto padrão se manifesta nos detalhes invisíveis. Da apresentação impecável de nossos motoristas à manutenção rigorosa da frota blindada, cada etapa do trajeto é executada sob o mais alto nível de exigência.
+            </p>
+          </div>
+        </div>
+
+        <!-- Valor 3: Prontidão Absoluta (24/7/365) -->
+        <div class="col-lg-4 col-md-6">
+          <div class="drvn-value-card">
+            <div class="drvn-value-icon">
+              <i class="bi bi-clock-history"></i>
+            </div>
+            <h4 class="drvn-value-title" data-i18n="val_3_title">Prontidão Absoluta (24/7/365)</h4>
+            <p class="drvn-value-desc" data-i18n="val_3_desc">
+              O tempo é o ativo mais valioso de nossos clientes. Por isso, nosso ecossistema de suporte humano e gerenciamento em tempo real nunca desliga, garantindo respostas imediatas e flexibilidade total a qualquer hora do dia ou da noite.
+            </p>
+          </div>
+        </div>
+
+        <!-- Valor 4: Confidencialidade e Prestígio -->
+        <div class="col-lg-6 col-md-6">
+          <div class="drvn-value-card">
+            <div class="drvn-value-icon">
+              <i class="bi bi-lock-fill"></i>
+            </div>
+            <h4 class="drvn-value-title" data-i18n="val_4_title">Confidencialidade e Prestígio</h4>
+            <p class="drvn-value-desc" data-i18n="val_4_desc">
+              Compreendemos a importância estratégica de cada deslocamento. Tratamos cada itinerário com o mais estrito sigilo corporativo, assegurando que autoridades, CEOs e expatriados transitem com total privacidade.
+            </p>
+          </div>
+        </div>
+
+        <!-- Valor 5: Inteligência em Mobilidade -->
+        <div class="col-lg-6 col-md-12">
+          <div class="drvn-value-card">
+            <div class="drvn-value-icon">
+              <i class="bi bi-cpu-fill"></i>
+            </div>
+            <h4 class="drvn-value-title" data-i18n="val_5_title">Inteligência em Mobilidade</h4>
+            <p class="drvn-value-desc" data-i18n="val_5_desc">
+              Mais do que transportar, nós gerenciamos a jornada. Combinamos a profunda expertise de motoristas locais qualificados com tecnologia de ponta para antecipar imprevistos e transformar trajetos complexos em rotas seguras e produtivas.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     4. Frota Executiva Blindada & Aérea (Estilo Sketch CAD & Mockup)
+     Posicionada logo abaixo de Missão, Visão e Valores
+     ========================================================================== -->
+<section class="drvn-fleet-section" id="frota">
+  <div class="container-xl">
+
+    <!-- Frota Terrestre (Estilo Sketch CAD) -->
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <h3 class="drvn-divisao-title mb-0" data-i18n="div_1_title">FROTA TERRESTRE</h3>
+      <div class="drvn-divisao-line flex-grow-1"></div>
+    </div>
+
+    <!-- Navegação Rápida entre as Categorias (Sedan, SUV, Mini Van, Van, Ônibus) -->
+    <div class="drvn-category-nav-wrapper d-flex flex-wrap justify-content-center gap-2 mb-5">
+      {% for cat in categorias_terrestres %}
+      <a href="#cat-{{ cat.slug }}" class="drvn-category-nav-pill">
+        <i class="bi {{ cat.icone }}"></i>
+        <span>{{ cat.nome }}</span>
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- Categorias da Frota Terrestre (Uma debaixo da outra) -->
+    {% for cat in categorias_terrestres %}
+    <div class="drvn-category-block" id="cat-{{ cat.slug }}">
+      
+      <!-- Cabeçalho da Categoria / Galeria -->
+      <div class="text-center mb-4">
+        <div class="drvn-gallery-badge-title">
+          <i class="bi {{ cat.icone }} text-gold me-2"></i>{{ cat.titulo_galeria }}
+        </div>
+        <p class="text-secondary small mt-2 mb-0">{{ cat.subtitulo_galeria }}</p>
+      </div>
+
+      <!-- Carrossel da Frota Terrestre da Categoria -->
+      <div class="drvn-fleet-carousel-wrapper position-relative mb-4" data-category="{{ cat.slug }}">
+        
+        <!-- Botões de Navegação Flutuantes Laterais (< e >) -->
+        <button class="drvn-fleet-nav-btn drvn-fleet-prev" type="button" aria-label="Modelo Anterior">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="drvn-fleet-nav-btn drvn-fleet-next" type="button" aria-label="Próximo Modelo">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+
+        <!-- 1. Swiper Principal: Card de Destaque do Veículo Ativo -->
+        <div class="swiper fleet-main-swiper-{{ cat.slug }}">
+          <div class="swiper-wrapper">
+            {% for m in cat.modelos %}
+            <div class="swiper-slide">
+              <div class="drvn-fleet-card p-3 p-lg-3 px-lg-4" id="{{ m.id }}">
+                <div class="row g-3 g-lg-4 align-items-center">
+                  
+                  <!-- Imagem do Veículo em Sketch (Apenas o Desenho, sem fundo) -->
+                  <div class="col-lg-5 text-center">
+                    <div class="drvn-fleet-image-box">
+                      <img src="{{ m.imagem }}?v=14" alt="Sketch {{ m.nome }}" class="drvn-fleet-car-img" loading="lazy">
+                    </div>
+                  </div>
+
+                  <!-- Informações e Especificações -->
+                  <div class="col-lg-7">
+                    <div class="ps-lg-2">
+                      <div class="d-flex align-items-center justify-content-between mb-1">
+                        <h3 class="h4 fw-bold mb-0" style="color: #0f172a;">{{ m.nome }}</h3>
+                        <span class="badge bg-light text-dark border px-2 py-1 small font-monospace">
+                          <i class="bi {{ m.tag_icone }} text-gold me-1"></i>{{ m.tag }}
+                        </span>
+                      </div>
+                      <div class="text-gold fw-semibold small mb-2">{{ m.subtitulo }}</div>
+                      
+                      <p class="text-secondary small mb-2">
+                        <strong style="color: #0f172a;" data-i18n="fleet_ref_label">Modelos de Referência:</strong> {{ m.exemplo }}
+                      </p>
+
+                      <!-- Especificações em Pills -->
+                      <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="drvn-cap-pill"><i class="bi bi-person-fill text-gold me-1"></i> {{ m.capacidade }}</span>
+                        {% for d in m.destaques %}
+                        <span class="drvn-cap-pill"><i class="bi bi-check2 text-gold me-1"></i> {{ d }}</span>
+                        {% endfor %}
+                      </div>
+
+                      <!-- Ação de Reserva Direto no WhatsApp -->
+                      <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-10">
+                        <span class="text-secondary small">
+                          <i class="bi bi-geo-alt text-gold me-1"></i> <span data-i18n="fleet_avail_cities">Disponível em Todo o Brasil</span>
+                        </span>
+                        <a href="https://wa.me/5511986829141?text={{ ('Olá! Gostaria de solicitar uma cotação para ' ~ m.nome ~ ' da Transfer Blindado.') | urlencode }}" target="_blank" rel="noopener noreferrer" class="link-with-icon fw-bold text-gold text-decoration-none">
+                          <span data-i18n="fleet_quote_cta">Solicitar Cotação para esta Frota</span>
+                          <i class="bi bi-whatsapp ms-1"></i>
+                        </a>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- 2. Barra Inferior "SELECIONE O MODELO" (Thumbnails Selector) -->
+        <div class="mt-3 pt-0">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="drvn-thumbs-label fw-bold small text-uppercase" style="letter-spacing: 0.08em; color: #475569;">
+              <i class="bi bi-grid-fill text-gold me-1"></i> <span data-i18n="lbl_select_model">SELECIONE O MODELO</span>
+            </span>
+          </div>
+
+          <!-- Swiper de Miniaturas Clicáveis -->
+          <div class="swiper fleet-thumbs-swiper-{{ cat.slug }}">
+            <div class="swiper-wrapper">
+              {% for m in cat.modelos %}
+              <div class="swiper-slide">
+                <div class="drvn-fleet-thumb-card text-center position-relative" data-category="{{ cat.slug }}" data-index="{{ loop.index0 }}">
+                  <span class="drvn-thumb-corner-badge" title="{{ m.tag }}">
+                    <i class="bi {{ m.tag_icone }} text-gold"></i>
+                  </span>
+                  <div class="drvn-thumb-img-wrapper">
+                    <img src="{{ m.imagem }}?v=14" alt="{{ m.nome }}" class="drvn-thumb-img" loading="lazy">
+                  </div>
+                  <div class="drvn-thumb-title fw-bold text-uppercase" style="color: #0f172a;">
+                    {{ m.nome }}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+
+    <!-- Frota Aérea (Um do lado do outro) -->
+    <div class="d-flex align-items-center gap-3 my-5 pt-3">
+      <h3 class="drvn-divisao-title mb-0" data-i18n="div_2_title">FROTA AÉREA</h3>
+      <div class="drvn-divisao-line flex-grow-1"></div>
+    </div>
+
+    <div class="row g-4">
+      {% for f in frotas if f.tipo == 'aerea' %}
+      <div class="col-lg-6">
+        <a href="https://wa.me/5511986829141?text={{ ('Olá! Gostaria de solicitar uma cotação para ' ~ f.nome ~ ' da Transfer Blindado.') | urlencode }}" target="_blank" rel="noopener noreferrer" class="drvn-fleet-card p-4 p-lg-4 d-flex flex-column h-100 text-decoration-none" id="{{ f.id }}" title="Fretar {{ f.nome }} via WhatsApp">
+          
+          <!-- Imagem da Aeronave (Fotografia Executiva Real) -->
+          {% if f.estilo_imagem == 'foto' %}
+          <div class="drvn-fleet-photo-box">
+            <img src="{{ f.imagem }}?v=16" alt="{{ f.nome }}" class="drvn-fleet-photo-img" loading="lazy">
+          </div>
+          {% else %}
+          <div class="drvn-fleet-image-box" style="height: 230px;">
+            <img src="{{ f.imagem }}?v=16" alt="{{ f.nome }}" class="drvn-fleet-car-img" loading="lazy">
+          </div>
+          {% endif %}
+
+          <!-- Informações e Destaques (Sem Categoria, Sem ANAC, Sem Subtítulo, Sem Aeronaves Ref, Sem Passageiros) -->
+          <div class="mt-3 d-flex flex-column flex-grow-1 justify-content-between">
+            <div>
+              <h2 class="h3 fw-bold mb-3" style="color: #0f172a;">{{ f.nome }}</h2>
+              
+              <!-- Especificações em Pills (Apenas Destaques, sem capacidade de passageiros) -->
+              <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+                {% for d in f.destaques %}
+                <span class="drvn-cap-pill text-nowrap"><i class="bi bi-check2 text-gold me-1"></i> {{ d }}</span>
+                {% endfor %}
+              </div>
+            </div>
+
+            <!-- Ação de Reserva Direto no WhatsApp -->
+            <div class="d-flex justify-content-end align-items-center pt-3 border-top border-secondary border-opacity-10 mt-2">
+              <span class="link-with-icon fw-bold text-gold">
+                <span data-i18n="fleet_quote_cta">Solicitar Cotação para esta Frota</span>
+                <i class="bi bi-whatsapp ms-1"></i>
+              </span>
+            </div>
+
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     5. Soluções & Serviços Especializados (Safe Driver, Bilíngue, Aéreo, Escolta)
+     ========================================================================== -->
+<section class="drvn-services-section" id="servicos">
+  <div class="container-xl">
+    
+    <div class="text-center max-w-760 mx-auto mb-5">
+      <div class="heading-flavor-text justify-content-center">
+        <i class="bi bi-shield-check"></i>
+        <span data-i18n="svc_tag">SOLUÇÕES CORPORATIVAS DE ELITE</span>
+      </div>
+      <h2 class="drvn-section-title mb-3" data-i18n="svc_title">
+        Serviços Sob Medida para Cada Demanda
+      </h2>
+      <p class="text-secondary lead fs-6" data-i18n="svc_lead">
+        Muito além da nossa frota blindada, oferecemos soluções sob medida em mobilidade de elite: motoristas executivos altamente qualificados, atendimento exclusivo para casamentos e eventos de gala, e planejamento tático de segurança.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      
+      <!-- Card 1: Safe Driver / Motorista Dedicado (Seu Veículo Conduzido) -->
+      <div class="col-lg-6 col-xl-3">
+        <div class="drvn-service-card">
+          <div>
+            <div class="drvn-service-icon-box">
+              <i class="bi bi-car-front-fill"></i>
+            </div>
+            <span class="drvn-service-badge" data-i18n="svc_safedriver_badge">SEU CARRO CONDUZIDO</span>
+            <h3 class="drvn-service-title" data-i18n="svc_safedriver_title">Safe Driver VIP</h3>
+            <div class="drvn-service-subtitle" data-i18n="svc_safedriver_sub">Motorista Profissional no Seu Veículo</div>
+            <p class="drvn-service-desc" data-i18n="svc_safedriver_desc">
+              Saiu para um jantar, evento corporativo ou confraternização, consumiu bebida alcoólica e não quer dirigir? Nosso motorista executivo vai até você e conduz o seu próprio carro com total discrição, conforto e segurança até sua residência.
+            </p>
+            <div class="drvn-service-pills">
+              <span class="drvn-service-pill"><i class="bi bi-shield-check text-gold me-1"></i> <span data-i18n="svc_safedriver_pill1">Retorno Seguro</span></span>
+              <span class="drvn-service-pill"><i class="bi bi-check2 text-gold me-1"></i> <span data-i18n="svc_safedriver_pill2">No Seu Veículo</span></span>
+              <span class="drvn-service-pill"><i class="bi bi-clock-history text-gold me-1"></i> <span data-i18n="svc_safedriver_pill3">Prontidão 24/7</span></span>
+            </div>
+          </div>
+          <a href="{{ url_for('reserva', servico='Safe Driver (Condução do Próprio Veículo)') }}" class="link-with-icon fw-bold mt-auto">
+            <span data-i18n="svc_safedriver_cta">Contratar Safe Driver</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: Motoristas Executivos Bilíngues -->
+      <div class="col-lg-6 col-xl-3">
+        <div class="drvn-service-card">
+          <div>
+            <div class="drvn-service-icon-box">
+              <i class="bi bi-translate"></i>
+            </div>
+            <span class="drvn-service-badge" data-i18n="svc_bilingual_badge">COMITIVAS &amp; EXPATRIADOS</span>
+            <h3 class="drvn-service-title" data-i18n="svc_bilingual_title">Motoristas Bilíngues</h3>
+            <div class="drvn-service-subtitle" data-i18n="svc_bilingual_sub">Fluência em Inglês e Espanhol</div>
+            <p class="drvn-service-desc" data-i18n="svc_bilingual_desc">
+              Recepção de alta classe para delegações internacionais, diplomatas e investidores estrangeiros. Condutores treinados em etiqueta corporativa de alto escalão, confidencialidade estrita (NDA) e direção defensiva avançada.
+            </p>
+            <div class="drvn-service-pills">
+              <span class="drvn-service-pill"><i class="bi bi-globe2 text-gold me-1"></i> <span data-i18n="svc_bilingual_pill1">Inglês &amp; Espanhol</span></span>
+            </div>
+          </div>
+          <a href="{{ url_for('reserva', servico='Motorista Executivo Bilíngue') }}" class="link-with-icon fw-bold mt-auto">
+            <span data-i18n="svc_bilingual_cta">Solicitar Motorista Bilíngue</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: Serviço de Casamentos & Eventos Sociais VIP -->
+      <div class="col-lg-6 col-xl-3">
+        <div class="drvn-service-card">
+          <div>
+            <div class="drvn-service-icon-box">
+              <i class="bi bi-gem"></i>
+            </div>
+            <span class="drvn-service-badge" data-i18n="svc_wedding_badge">EVENTOS &amp; CELEBRAÇÕES</span>
+            <h3 class="drvn-service-title" data-i18n="svc_wedding_title">Serviço de Casamentos</h3>
+            <div class="drvn-service-subtitle" data-i18n="svc_wedding_sub">Elegância e Requinte no Grande Dia</div>
+            <p class="drvn-service-desc" data-i18n="svc_wedding_desc">
+              Translados impecáveis para noivas, noivos e comitivas em sedans e SUVs de luxo blindados. Motoristas em traje a rigor, pontualidade britânica, ambientação personalizada e total serenidade para o dia do seu casamento.
+            </p>
+            <div class="drvn-service-pills">
+              <span class="drvn-service-pill"><i class="bi bi-heart text-gold me-1"></i> <span data-i18n="svc_wedding_pill1">Carro da Noiva</span></span>
+              <span class="drvn-service-pill"><i class="bi bi-person-badge text-gold me-1"></i> <span data-i18n="svc_wedding_pill2">Traje a Rigor</span></span>
+            </div>
+          </div>
+          <a href="{{ url_for('reserva', servico='Transporte para Casamentos e Eventos') }}" class="link-with-icon fw-bold mt-auto">
+            <span data-i18n="svc_wedding_cta">Cotar Transporte para Casamento</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4: Escolta Tática & Gestão de Comitivas -->
+      <div class="col-lg-6 col-xl-3">
+        <div class="drvn-service-card">
+          <div>
+            <div class="drvn-service-icon-box">
+              <i class="bi bi-shield-shaded"></i>
+            </div>
+            <span class="drvn-service-badge" data-i18n="svc_escort_badge">SEGURANÇA TÁTICA</span>
+            <h3 class="drvn-service-title" data-i18n="svc_escort_title">Escolta &amp; Comitivas</h3>
+            <div class="drvn-service-subtitle" data-i18n="svc_escort_sub">Gestão de Comboios e Análise de Risco</div>
+            <p class="drvn-service-desc" data-i18n="svc_escort_desc">
+              Operações de alta complexidade para autoridades, megaeventos e cúpulas corporativas. Planejamento preditivo de itinerários, equipes de contra-vigilância, batedores e monitoramento ininterrupto por telemetria 24/7.
+            </p>
+          </div>
+          <a href="{{ url_for('reserva', servico='Escolta Tática e Gestão de Comitivas') }}" class="link-with-icon fw-bold mt-auto">
+            <span data-i18n="svc_escort_cta">Planejar Operação Especial</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     6. Explore Nossos Mercados (Carrossel de Capitais em Todo o Brasil)
+     ========================================================================== -->
+<section class="drvn-markets-section" id="capitais">
+  <div class="container-xl">
+    
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5">
+      <div>
+        <div class="heading-flavor-text">
+          <i class="bi bi-geo-alt-fill text-gold me-1"></i>
+          <span data-i18n="markets_tag">COBERTURA EM TODO O BRASIL</span>
+        </div>
+        <h2 class="drvn-section-title mb-1" data-i18n="markets_title">Explore Nossos Mercados</h2>
+        <p class="drvn-lead-text mb-0" data-i18n="markets_lead">Atendimento e logística executiva em todo o território nacional. Bases operacionais estratégicas e pronta resposta com frota blindada nas principais capitais.</p>
+      </div>
+      <div class="d-flex gap-2 mt-3 mt-md-0">
+        <button class="swiper-button-prev position-static m-0" aria-label="Anterior"></button>
+        <button class="swiper-button-next position-static m-0" aria-label="Próximo"></button>
+      </div>
+    </div>
+
+    <!-- Swiper Container -->
+    <div class="swiper capitais-swiper">
+      <div class="swiper-wrapper">
+        {% for cap in capitais %}
+        <div class="swiper-slide">
+          <div class="capital-card">
+            <!-- Imagem de fundo escurecida -->
+            <img src="{{ cap.imagem }}" alt="{{ cap.nome }}" class="capital-bg" loading="lazy">
+            <div class="capital-overlay"></div>
+
+            <!-- Nome da Capital -->
+            <div class="capital-content">
+              <h3 class="capital-title mb-0">{{ cap.nome }}</h3>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination mt-4 position-relative"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ==========================================================================
+     6. Perguntas Frequentes (drvn Clean Accordion)
+     ========================================================================== -->
+<section class="section-padding" id="faq">
+  <div class="container-xl">
+    
+    <div class="text-center mb-5">
+      <h2 class="drvn-section-title" data-i18n="faq_title">Perguntas Frequentes</h2>
+      <p class="drvn-lead-text mx-auto" style="max-width: 650px;">
+        Conheça nossos padrões operacionais de proteção balística, faturamento e sigilo.
+      </p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+
+        <div class="drvn-faq-item">
+          <button class="drvn-faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq1">
+            <span>Qual é o nível de blindagem balística dos veículos terrestres?</span>
+            <i class="bi bi-plus-lg gold-text"></i>
+          </button>
+          <div id="drvnFaq1" class="collapse show">
+            <div class="drvn-faq-body">
+              Nossa frota blindada opera sob o <strong>Nível III-A</strong> (norma NIJ 0108.01 e Exército Brasileiro), a máxima proteção civil autorizada. Resiste a disparos de armas de alto calibre (incluindo pistolas 9mm, .44 Magnum e submetralhadoras), equipada com manta de aramida, vidros curvos multi-camadas de alta transparência balística e cintas de aço run-flat nos pneus.
+            </div>
+          </div>
+        </div>
+
+        <div class="drvn-faq-item">
+          <button class="drvn-faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq2">
+            <span>Qual é a capacitação dos condutores executivos?</span>
+            <i class="bi bi-plus-lg gold-text"></i>
+          </button>
+          <div id="drvnFaq2" class="collapse">
+            <div class="drvn-faq-body">
+              Todos os nossos motoristas são certificados em Direção Defensiva e Evasiva, Primeiros Socorros e Protocolos VIP de Segurança. Possuem checagem criminal e comportamental periódica, postura discreta e opções de motoristas bilíngues (Inglês e Espanhol).
+            </div>
+          </div>
+        </div>
+
+        <div class="drvn-faq-item">
+          <button class="drvn-faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq3">
+            <span>Como funciona a contratação corporativa e faturamento?</span>
+            <i class="bi bi-plus-lg gold-text"></i>
+          </button>
+          <div id="drvnFaq3" class="collapse">
+            <div class="drvn-faq-body">
+              Atendemos sob demanda imediata bem como via contratos faturados para empresas (quinzenal ou mensal com emissão de NF-e através do CNPJ 69.880.706/0001-91 e SLA prioritário com atendimento dedicado).
+            </div>
+          </div>
+        </div>
+
+        <div class="drvn-faq-item">
+          <button class="drvn-faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq4">
+            <span>Vocês realizam a integração entre voo privado e transfer blindado?</span>
+            <i class="bi bi-plus-lg gold-text"></i>
+          </button>
+          <div id="drvnFaq4" class="collapse">
+            <div class="drvn-faq-body">
+              Sim. Nossa assessoria coordena a logística ponta a ponta: o veículo blindado posiciona-se no hangar executivo (FBO) ou pista autorizada, recebendo os passageiros assim que desembarcam da aeronave fretada ou helicóptero.
+            </div>
+          </div>
+        </div>
+
+        <div class="drvn-faq-item">
+          <button class="drvn-faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq5">
+            <span>Como é garantida a confidencialidade e sigilo das agendas?</span>
+            <i class="bi bi-plus-lg gold-text"></i>
+          </button>
+          <div id="drvnFaq5" class="collapse">
+            <div class="drvn-faq-body">
+              Todos os prestadores e colaboradores assinam Acordos de Não Divulgação (NDA). Itinerários e dados de passageiros são protegidos em ambiente seguro garantindo a integridade estratégica de cada cliente.
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-5">
+          <a href="{{ url_for('reserva') }}" class="drvn-btn-gold px-4 py-3">
+            <i class="bi bi-calendar-check"></i>
+            <span>Iniciar Solicitação de Reserva Sob Demanda</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

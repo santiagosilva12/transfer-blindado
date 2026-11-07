@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 600" width="100%" height="100%" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#141824" stop-opacity="0.45" />
+      <stop offset="50%" stop-color="#0f131d" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#08090d" stop-opacity="0.0" />
+    </linearGradient>
+    <linearGradient id="towerGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#181e2e" stop-opacity="0.6" />
+      <stop offset="80%" stop-color="#121622" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0c0e15" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="towerGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#1f263b" stop-opacity="0.7" />
+      <stop offset="80%" stop-color="#151a28" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#0d1017" stop-opacity="0.08" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.25" />
+      <stop offset="70%" stop-color="#cbd5e1" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0" />
+    </linearGradient>
+    <linearGradient id="cableGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#64748b" stop-opacity="0.0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Far Layer Skyline (Deep Silhouette) -->
+  <g fill="url(#towerGrad1)">
+    <!-- Tower Far Left -->
+    <rect x="40" y="240" width="65" height="360" />
+    <polygon points="40,240 72,190 105,240" />
+    <line x1="72" y1="190" x2="72" y2="130" stroke="url(#lineGrad)" stroke-width="1.5" />
+
+    <!-- Group 1 -->
+    <rect x="130" y="280" width="85" height="320" />
+    <rect x="235" y="220" width="90" height="380" />
+    <polygon points="235,220 280,170 325,220" />
+    <line x1="280" y1="170" x2="280" y2="110" stroke="url(#lineGrad)" stroke-width="1.5" />
+
+    <!-- Landmark Tower (drvn style - like Burj/Empire) -->
+    <path d="M 440,600 L 440,320 L 455,300 L 455,220 L 465,200 L 465,140 L 470,120 L 470,70 L 472,70 L 472,40 L 474,70 L 474,120 L 479,140 L 479,200 L 489,220 L 489,300 L 504,320 L 504,600 Z" />
+    <line x1="472" y1="40" x2="472" y2="10" stroke="url(#lineGrad)" stroke-width="2" />
+
+    <!-- Towers Mid-Left -->
+    <rect x="530" y="260" width="70" height="340" />
+    <rect x="620" y="310" width="110" height="290" />
+    <polygon points="620,310 730,270 730,310" />
+
+    <!-- Center Bridge Pylon / Estaiada silhouette -->
+    <path d="M 780,600 L 830,160 L 840,160 L 890,600 Z" />
+    <line x1="835" y1="160" x2="835" y2="100" stroke="url(#lineGrad)" stroke-width="2" />
+    <!-- Cable Stays (Delicate lines) -->
+    <line x1="835" y1="200" x2="720" y2="600" stroke="url(#cableGrad)" stroke-width="0.8" />
+    <line x1="835" y1="240" x2="745" y2="600" stroke="url(#cableGrad)" stroke-width="0.8" />
+    <line x1="835" y1="280" x2="770" y2="600" stroke="url(#cableGrad)" stroke-width="0.8" />
+    <line x1="835" y1="320" x2="795" y2="600" stroke="url(#cableGrad)" stroke-width="0.8" />
+    <line x1="835" y1="200" x2="950" y2="600" stroke="url(#cableGrad)" stroke-width="0.8" />
+    <line x1="835" y1="240" x2="925" y2="600" stroke="url(#cableGrad)" stroke-width="0.8" />
+    <line x1="835" y1="280" x2="900" y2="600" stroke="url(#cableGrad)" stroke-width="0.8" />
+    <line x1="835" y1="320" x2="875" y2="600" stroke="url(#cableGrad)" stroke-width="0.8" />
+
+    <!-- Financial Towers Center-Right -->
+    <rect x="980" y="240" width="80" height="360" />
+    <rect x="1080" y="190" width="100" height="410" />
+    <polygon points="1080,190 1130,130 1180,190" />
+    <line x1="1130" y1="130" x2="1130" y2="70" stroke="url(#lineGrad)" stroke-width="1.5" />
+
+    <!-- Towers Right -->
+    <rect x="1210" y="270" width="95" height="330" />
+    <rect x="1330" y="220" width="120" height="380" />
+    <polygon points="1330,220 1450,180 1450,220" />
+    <rect x="1480" y="260" width="85" height="340" />
+    <rect x="1590" y="300" width="105" height="300" />
+    <rect x="1720" y="230" width="90" height="370" />
+    <line x1="1765" y1="230" x2="1765" y2="150" stroke="url(#lineGrad)" stroke-width="1.5" />
+    <rect x="1830" y="270" width="80" height="330" />
+  </g>
+
+  <!-- Mid Layer (Slightly crisper contour & architectural highlights) -->
+  <g fill="url(#towerGrad2)">
+    <rect x="80" y="340" width="75" height="260" />
+    <rect x="180" y="300" width="90" height="300" />
+    <line x1="180" y1="300" x2="270" y2="300" stroke="url(#lineGrad)" stroke-width="1" />
+
+    <!-- Modern Stepped Tower Left -->
+    <path d="M 340,600 L 340,360 L 355,360 L 355,290 L 370,290 L 370,230 L 390,230 L 390,290 L 405,290 L 405,360 L 420,360 L 420,600 Z" />
+    <line x1="380" y1="230" x2="380" y2="170" stroke="url(#lineGrad)" stroke-width="1.5" />
+
+    <rect x="670" y="350" width="85" height="250" />
+    <rect x="910" y="320" width="95" height="280" />
+    
+    <!-- Diagonal Sliced Tower Right -->
+    <polygon points="1030,600 1030,340 1090,280 1090,600" />
+    <rect x="1150" y="310" width="80" height="290" />
+    <rect x="1260" y="350" width="90" height="250" />
+    <rect x="1410" y="290" width="100" height="310" />
+    <rect x="1540" y="340" width="85" height="260" />
+    <rect x="1650" y="320" width="95" height="280" />
+  </g>
+
+  <!-- Delicate Architectural Grid Lines (Subtle Window Contours) -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1" stroke-dasharray="2,6">
+    <line x1="195" y1="320" x2="195" y2="580" />
+    <line x1="215" y1="320" x2="215" y2="580" />
+    <line x1="235" y1="320" x2="235" y2="580" />
+    <line x1="255" y1="320" x2="255" y2="580" />
+
+    <line x1="360" y1="380" x2="360" y2="580" />
+    <line x1="380" y1="300" x2="380" y2="580" />
+    <line x1="400" y1="380" x2="400" y2="580" />
+
+    <line x1="1050" y1="360" x2="1050" y2="580" />
+    <line x1="1070" y1="330" x2="1070" y2="580" />
+
+    <line x1="1435" y1="310" x2="1435" y2="580" />
+    <line x1="1460" y1="310" x2="1460" y2="580" />
+    <line x1="1485" y1="310" x2="1485" y2="580" />
+  </g>
+
+  <!-- Bottom Horizon Vignette Fade -->
+  <rect x="0" y="520" width="1920" height="80" fill="url(#skyGrad)" />
+</svg>

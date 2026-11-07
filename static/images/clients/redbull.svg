@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 36" width="150" height="36">
+  <!-- Golden Sun -->
+  <circle cx="26" cy="18" r="11" fill="#FFCC00"/>
+  <!-- Left Charging Bull (Red) -->
+  <path fill="#ED1C24" d="M 6,24 C 9,21 14,21 18,17 C 20,15 22,13 25,14 C 23,16 21,17 22,19 C 23,21 26,20 28,19 C 26,22 23,23 20,22 C 17,25 12,26 6,24 Z"/>
+  <path fill="#ED1C24" d="M 19,13 C 21,11 25,11 27,13 C 25,13 23,14 21,14 Z"/>
+  <!-- Right Charging Bull (Red) -->
+  <path fill="#ED1C24" d="M 46,24 C 43,21 38,21 34,17 C 32,15 30,13 27,14 C 29,16 31,17 30,19 C 29,21 26,20 24,19 C 26,22 29,23 32,22 C 35,25 40,26 46,24 Z"/>
+  <path fill="#ED1C24" d="M 33,13 C 31,11 27,11 25,13 C 27,13 29,14 31,14 Z"/>
+  <!-- Crisp Text -->
+  <text x="56" y="24" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="15" fill="#001F4D" letter-spacing="0.5">Red Bull</text>
+</svg>

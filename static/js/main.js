@@ -1,0 +1,331 @@
+/**
+ * TRANSFER BLINDADO - Core JavaScript Logic
+ * Executive Mobility & Armored Transportation
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  initNavbarScroll();
+  initSwiperCapitais();
+  initFleetCarousel();
+  initReservationForm();
+  initHeroQuickForm();
+  initPreselectionFromUrl();
+});
+
+/**
+ * 1. Navbar Scroll Effect
+ */
+function initNavbarScroll() {
+  const navbar = document.querySelector(".tb-navbar");
+  if (!navbar) return;
+
+  const handleScroll = () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+}
+
+/**
+ * 2. Swiper.js Carrossel de Capitais (Explore Nossos Mercados)
+ */
+function initSwiperCapitais() {
+  const swiperElem = document.querySelector(".capitais-swiper");
+  if (!swiperElem) return;
+
+  if (typeof Swiper !== "undefined") {
+    new Swiper(".capitais-swiper", {
+      slidesPerView: 1.15,
+      spaceBetween: 20,
+      centeredSlides: false,
+      loop: true,
+      grabCursor: true,
+      speed: 600,
+      autoplay: {
+        delay: 2400,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        992: {
+          slidesPerView: 3,
+          spaceBetween: 24,
+        },
+        1300: {
+          slidesPerView: 4,
+          spaceBetween: 28,
+        },
+      },
+    });
+  }
+}
+
+/**
+ * 2.1 Swiper.js Carrosséis da Frota Terrestre (Uma categoria abaixo da outra com autoplay)
+ */
+function initFleetCarousel() {
+  if (typeof Swiper === "undefined") return;
+
+  const categories = ["sedan", "suv", "van", "onibus"];
+  const categorySwipers = {};
+
+  categories.forEach((cat) => {
+    const mainElem = document.querySelector(`.fleet-main-swiper-${cat}`);
+    const thumbsElem = document.querySelector(`.fleet-thumbs-swiper-${cat}`);
+    const prevBtn = document.querySelector(`[data-category="${cat}"] .drvn-fleet-prev`);
+    const nextBtn = document.querySelector(`[data-category="${cat}"] .drvn-fleet-next`);
+    if (!mainElem) return;
+
+    let thumbsSwiper = null;
+    if (thumbsElem) {
+      thumbsSwiper = new Swiper(`.fleet-thumbs-swiper-${cat}`, {
+        slidesPerView: 2.2,
+        spaceBetween: 14,
+        watchSlidesProgress: true,
+        breakpoints: {
+          576: { slidesPerView: 3, spaceBetween: 16 },
+          768: { slidesPerView: 4, spaceBetween: 18 },
+          992: { slidesPerView: 5, spaceBetween: 20 },
+        },
+      });
+    }
+
+    const mainSwiper = new Swiper(`.fleet-main-swiper-${cat}`, {
+      slidesPerView: 1,
+      spaceBetween: 28,
+      speed: 550,
+      autoHeight: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
+      navigation: {
+        nextEl: nextBtn,
+        prevEl: prevBtn,
+      },
+    });
+
+    // Ao atingir o último modelo, retorna suavemente ao primeiro para manter o carrossel andando continuamente
+    mainSwiper.on("reachEnd", () => {
+      setTimeout(() => {
+        if (mainSwiper && !mainSwiper.destroyed && mainSwiper.isEnd) {
+          mainSwiper.slideTo(0, 600);
+        }
+      }, 3500);
+    });
+
+    // Sincroniza o seletor de miniaturas com o modelo ativo
+    mainSwiper.on("slideChange", () => {
+      if (thumbsSwiper && !thumbsSwiper.destroyed) {
+        thumbsSwiper.slideTo(mainSwiper.activeIndex);
+      }
+    });
+
+    categorySwipers[cat] = { main: mainSwiper, thumbs: thumbsSwiper };
+
+    // Clique direto nas miniaturas para selecionar o modelo
+    const thumbCards = document.querySelectorAll(`.drvn-fleet-thumb-card[data-category="${cat}"]`);
+    thumbCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const idx = parseInt(card.getAttribute("data-index"), 10);
+        if (!isNaN(idx)) {
+          mainSwiper.slideTo(idx);
+        }
+      });
+    });
+  });
+
+  // Rolagem suave nos botões de categoria do topo
+  const categoryPills = document.querySelectorAll('.drvn-category-nav-pill[href^="#"]');
+  categoryPills.forEach((pill) => {
+    pill.addEventListener('click', (e) => {
+      const targetId = pill.getAttribute('href');
+      const targetElem = document.querySelector(targetId);
+      if (targetElem) {
+        e.preventDefault();
+        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        categoryPills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      }
+    });
+  });
+}
+
+/**
+ * 3. Formulário de Reserva & Integração WhatsApp
+ * Requisito: Interceptar submit sem POST no backend, capturar campos,
+ * formatar a mensagem e abrir via window.open na API do WhatsApp:
+ * https://wa.me/5511986829141?text= + encodeURIComponent(...)
+ */
+function initReservationForm() {
+  const form = document.getElementById("reservationForm");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Captura dos valores
+    const nome = document.getElementById("nome")?.value.trim() || "";
+    const empresa = document.getElementById("empresa")?.value.trim() || "";
+    const email = document.getElementById("email")?.value.trim() || "";
+    const telefone = document.getElementById("telefone")?.value.trim() || "";
+    const detalhes = document.getElementById("detalhes")?.value.trim() || "";
+
+    // Captura dos checkboxes selecionados
+    const checkboxes = document.querySelectorAll('input[name="tipo_servico"]:checked');
+    const servicos = Array.from(checkboxes).map((cb) => cb.value);
+
+    // Validação mínima amigável
+    if (!nome || !email || !telefone) {
+      alert("Por favor, preencha os campos obrigatórios (Nome, E-mail Corporativo e Telefone/WhatsApp).");
+      return;
+    }
+
+    if (servicos.length === 0) {
+      const confirmProceed = confirm("Nenhum tipo de serviço específico foi selecionado. Deseja prosseguir mesmo assim?");
+      if (!confirmProceed) return;
+    }
+
+    // Montagem da mensagem formatada para WhatsApp
+    const linhas = [];
+    linhas.push("🛡️ *SOLICITAÇÃO DE ORÇAMENTO - TRANSFER BLINDADO*");
+    linhas.push("──────────────────────────");
+    linhas.push(`👤 *Responsável:* ${nome}`);
+    if (empresa) {
+      linhas.push(`🏢 *Empresa:* ${empresa}`);
+    }
+    linhas.push(`✉️ *E-mail Corporativo:* ${email}`);
+    linhas.push(`📱 *Telefone / WhatsApp:* ${telefone}`);
+    linhas.push("");
+    linhas.push("📋 *Tipo(s) de Serviço Solicitado(s):*");
+    if (servicos.length > 0) {
+      servicos.forEach((s) => linhas.push(`  • ${s}`));
+    } else {
+      linhas.push("  • A definir com a assessoria operacional");
+    }
+
+    if (detalhes) {
+      linhas.push("");
+      linhas.push("📝 *Detalhes da Demanda:*");
+      linhas.push(`_${detalhes}_`);
+    }
+
+    linhas.push("");
+    linhas.push("──────────────────────────");
+    linhas.push("⚡ *Solicitado via Portal Oficial Transfer Blindado*");
+
+    const mensagemFinal = linhas.join("\n");
+    const whatsappUrl = `https://wa.me/5511986829141?text=${encodeURIComponent(mensagemFinal)}`;
+
+    // Redireciona via window.open conforme especificado
+    window.open(whatsappUrl, "_blank");
+  });
+}
+
+/**
+ * 4. Pré-seleção inteligente a partir de parâmetros de URL (?servico=... / ?cidade=...)
+ */
+function initPreselectionFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const servicoParam = urlParams.get("servico");
+  const cidadeParam = urlParams.get("cidade");
+
+  // Marca checkbox caso corresponda
+  if (servicoParam) {
+    const checkboxes = document.querySelectorAll('input[name="tipo_servico"]');
+    checkboxes.forEach((cb) => {
+      if (
+        cb.value.toLowerCase().includes(servicoParam.toLowerCase()) ||
+        servicoParam.toLowerCase().includes(cb.value.toLowerCase())
+      ) {
+        cb.checked = true;
+      }
+    });
+  }
+
+  // Preenche cidade de interesse no campo de detalhes se o campo estiver vazio
+  if (cidadeParam) {
+    const detalhesTextarea = document.getElementById("detalhes");
+    if (detalhesTextarea && !detalhesTextarea.value) {
+      detalhesTextarea.value = `Demanda para a praça de: ${cidadeParam}. `;
+    }
+  }
+}
+
+/**
+ * 5. Formulário Rápido do Hero (Home Booking Widget)
+ */
+function initHeroQuickForm() {
+  const form = document.getElementById("heroQuickForm");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById("hero_nome")?.value.trim() || "";
+    const telefone = document.getElementById("hero_telefone")?.value.trim() || "";
+    const servico = document.getElementById("hero_servico")?.value || "";
+    const origem = document.getElementById("hero_origem")?.value.trim() || "";
+    const destino = document.getElementById("hero_destino")?.value.trim() || "";
+    const dataRaw = document.getElementById("hero_data")?.value || "";
+
+    if (!nome || !telefone) {
+      alert("Por favor, preencha os campos obrigatórios (Nome e Telefone/WhatsApp).");
+      return;
+    }
+
+    // Formatar data para DD/MM/AAAA se preenchida
+    let dataFormatada = "";
+    if (dataRaw) {
+      const partes = dataRaw.split("-");
+      if (partes.length === 3) {
+        dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+      } else {
+        dataFormatada = dataRaw;
+      }
+    }
+
+    const linhas = [];
+    linhas.push("🛡️ *COTAÇÃO RÁPIDA - TRANSFER BLINDADO*");
+    linhas.push("──────────────────────────");
+    linhas.push(`👤 *Responsável:* ${nome}`);
+    linhas.push(`📱 *Telefone / WhatsApp:* ${telefone}`);
+    linhas.push(`🚘 *Frota Desejada:* ${servico}`);
+    if (origem) {
+      linhas.push(`🛫 *Saída / Origem:* ${origem}`);
+    }
+    if (destino) {
+      linhas.push(`🏁 *Destino:* ${destino}`);
+    }
+    if (dataFormatada) {
+      linhas.push(`📅 *Data do Translado:* ${dataFormatada}`);
+    }
+    linhas.push("──────────────────────────");
+    linhas.push("⚡ *Solicitado via Portal Oficial Transfer Blindado*");
+
+    const mensagemFinal = linhas.join("\n");
+    const whatsappUrl = `https://wa.me/5511986829141?text=${encodeURIComponent(mensagemFinal)}`;
+
+    window.open(whatsappUrl, "_blank");
+  });
+}
+

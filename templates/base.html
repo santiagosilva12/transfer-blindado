@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}TRANSFER BLINDADO | Ground Travel &amp; Aviation Platform{% endblock %}</title>
+  <meta name="description" content="{% block meta_desc %}Plataforma corporativa de transporte executivo blindado Nível III-A e aviação executiva nas principais capitais do Brasil.{% endblock %}">
+  
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo-clean.png') }}">
+
+  <!-- Google Fonts: Plus Jakarta Sans + Playfair Display (Luxury Editorial Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Custom Stylesheet (drvn Inspired) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=69">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+  <!-- Navbar (drvn style) -->
+  <nav class="navbar navbar-expand-lg sticky-top drvn-navbar" id="mainNavbar">
+    <div class="container-xl">
+      <!-- À esquerda: Marca Tipográfica Empilhada (Estilo Mockup) -->
+      <a class="navbar-brand drvn-brand-text" href="{{ url_for('index') }}" aria-label="Transfer Blindado - Home">
+        <span class="brand-line-top">TRANSFER</span>
+        <span class="brand-line-bottom">BLINDADO</span>
+      </a>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Abrir menu">
+        <i class="bi bi-list text-white fs-2"></i>
+      </button>
+
+      <!-- Ao centro: Links de navegação (Home, Soluções com chevron, demais limpos) -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center gap-1 gap-xl-3">
+          <li class="nav-item">
+            <a class="drvn-nav-link" href="{{ url_for('index') }}">
+              <span data-i18n="nav_home">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="drvn-nav-link" href="{{ url_for('index') }}#servicos">
+              <span data-i18n="nav_solutions">Soluções</span>
+              <i class="bi bi-chevron-down nav-chevron"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="drvn-nav-link" href="{{ url_for('index') }}#frota">
+              <span data-i18n="nav_fleet">Frota</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="drvn-nav-link" href="{{ url_for('index') }}#capitais">
+              <span data-i18n="nav_cities">Capitais</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="drvn-nav-link" href="{{ url_for('index') }}#quem-somos">
+              <span data-i18n="nav_about">Sobre</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="drvn-nav-link" href="{{ url_for('index') }}#faq">
+              <span data-i18n="nav_faq">FAQ</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- À direita: Seletor PT | EN | ES + Botão FALE CONOSCO + Lupa -->
+        <div class="d-flex align-items-center gap-3 gap-xl-4 mt-3 mt-lg-0">
+          
+          <!-- Seletor de Idiomas (Bandeiras: Brasil para PT, EUA para EN, Espanha para ES) -->
+          <div class="drvn-lang-switcher" role="group" aria-label="Selecione o idioma / Select language">
+            <button type="button" class="drvn-lang-btn active" data-lang="pt" title="Português (Brasil)" aria-pressed="true">
+              <img src="{{ url_for('static', filename='images/flags/br.svg') }}" alt="Brasil" class="drvn-lang-flag">
+              <span>PT</span>
+            </button>
+            <span class="drvn-lang-sep">|</span>
+            <button type="button" class="drvn-lang-btn" data-lang="en" title="English (USA)" aria-pressed="false">
+              <img src="{{ url_for('static', filename='images/flags/us.svg') }}" alt="USA" class="drvn-lang-flag">
+              <span>EN</span>
+            </button>
+            <span class="drvn-lang-sep">|</span>
+            <button type="button" class="drvn-lang-btn" data-lang="es" title="Español (España)" aria-pressed="false">
+              <img src="{{ url_for('static', filename='images/flags/es.svg') }}" alt="España" class="drvn-lang-flag">
+              <span>ES</span>
+            </button>
+          </div>
+
+          <a href="https://wa.me/5511986829141?text={{ 'Olá! Gostaria de falar com um especialista da Transfer Blindado sobre soluções corporativas.' | urlencode }}" 
+             target="_blank" 
+             rel="noopener noreferrer" 
+             class="drvn-btn-gold">
+            <span data-i18n="nav_contact">FALE CONOSCO</span>
+            <i class="bi bi-whatsapp"></i>
+          </a>
+          <a href="#heroQuickForm" class="drvn-nav-search d-none d-lg-inline-flex" title="Cotação" aria-label="Pesquisa rápida">
+            <i class="bi bi-search"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Botão Flutuante de WhatsApp com Balão 'Fale conosco agora!' (Estilo Mockup) -->
+  <div class="floating-whatsapp-container">
+    <div class="floating-whatsapp-bubble">
+      <span>Fale conosco agora!</span>
+    </div>
+    <a href="https://wa.me/5511986829141?text={{ 'Olá! Gostaria de atendimento executivo com a Transfer Blindado.' | urlencode }}" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="floating-whatsapp" 
+       title="Conversar via WhatsApp" 
+       aria-label="Atendimento via WhatsApp">
+      <i class="bi bi-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Footer Global (drvn style) -->
+  <footer class="drvn-footer">
+    <div class="container-xl">
+      <div class="row g-4 justify-content-between">
+        
+        <!-- Logo & Identidade -->
+        <div class="col-lg-5 col-md-6">
+          <a href="{{ url_for('index') }}" class="d-inline-block mb-3">
+            <img src="{{ url_for('static', filename='images/logo-silver-horizontal.png') }}?v=7" alt="Transfer Blindado" class="drvn-footer-logo" height="64">
+          </a>
+          <p class="text-secondary" style="font-size: 0.92rem; line-height: 1.7; max-width: 380px;">
+            Plataforma corporativa de mobilidade executiva blindada e aviação privada. Prontidão absoluta e conformidade total com os mais rigorosos protocolos de proteção patrimonial e pessoal.
+          </p>
+        </div>
+
+        <!-- Links Rápidos -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="drvn-footer-heading">Navegação</h4>
+          <a href="{{ url_for('index') }}" class="drvn-footer-link">Home</a>
+          <a href="{{ url_for('index') }}#quem-somos" class="drvn-footer-link">Quem Somos</a>
+          <a href="{{ url_for('index') }}#servicos" class="drvn-footer-link">Serviços</a>
+          <a href="{{ url_for('frota') }}" class="drvn-footer-link">Nossas Frotas</a>
+          <a href="{{ url_for('index') }}#capitais" class="drvn-footer-link">Mercados Atendidos</a>
+          <a href="{{ url_for('index') }}#faq" class="drvn-footer-link">Perguntas Frequentes</a>
+          <a href="{{ url_for('reserva') }}" class="drvn-footer-link">Solicitar Reserva</a>
+        </div>
+
+        <!-- Dados de Contato e Faturamento Solicitados -->
+        <div class="col-lg-4 col-md-6">
+          <h4 class="drvn-footer-heading">Central de Operações</h4>
+          
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <i class="bi bi-whatsapp text-gold fs-5"></i>
+            <div>
+              <span class="d-block text-secondary small">WhatsApp 24/7</span>
+              <a href="https://wa.me/5511986829141" target="_blank" rel="noopener noreferrer" class="text-white fw-bold">
+                +55 11 98682-9141
+              </a>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <i class="bi bi-envelope-at text-gold fs-5"></i>
+            <div>
+              <span class="d-block text-secondary small">E-mail Corporativo</span>
+              <a href="mailto:contato@transferblindado.com.br" class="text-white fw-bold">
+                contato@transferblindado.com.br
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <a href="{{ url_for('reserva') }}" class="drvn-btn-secondary w-100 justify-content-center">
+              <span>Orçamento Sob Demanda</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Legal footer -->
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 border-top border-secondary border-opacity-10 pt-4 mt-5">
+        <p class="mb-0 text-secondary small">
+          &copy; 2026 TRANSFER BLINDADO. CNPJ 69.880.706/0001-91. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}?v=25"></script>
+  <script src="{{ url_for('static', filename='js/translations.js') }}?v=69"></script>
+
+  <!-- Headless Google Translate Bridge (tradução profunda de parágrafos e termos) -->
+  <div id="google_translate_element" style="display:none; position:absolute; left:-9999px;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'pt',
+        includedLanguages: 'pt,en,es',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

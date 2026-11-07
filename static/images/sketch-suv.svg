@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradSuv" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14171d"/>
+      <stop offset="100%" stop-color="#0a0c0f"/>
+    </linearGradient>
+    <linearGradient id="goldStrokeSuv" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9a815a"/>
+      <stop offset="50%" stop-color="#e8cca4"/>
+      <stop offset="100%" stop-color="#9a815a"/>
+    </linearGradient>
+    <pattern id="gridSuv" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.8"/>
+    </pattern>
+  </defs>
+
+  <rect width="600" height="320" rx="12" fill="url(#bgGradSuv)"/>
+  <rect width="600" height="320" fill="url(#gridSuv)"/>
+
+  <!-- Blueprint Technical Annotations -->
+  <g opacity="0.45" font-family="'Courier New', monospace" font-size="10" fill="#c5a880">
+    <text x="30" y="35">TB-SPEC // 02-SUV-ARMORED</text>
+    <text x="30" y="50">BALLISTIC CERT: NIJ III-A + RUNFLAT SYS</text>
+    <text x="440" y="35">SCALE: 1:25 ISO</text>
+    <text x="440" y="50">DRIVETRAIN: AWD HIGH-CLEARANCE</text>
+  </g>
+
+  <!-- Technical Axis Lines -->
+  <line x1="30" y1="260" x2="570" y2="260" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="30" y1="195" x2="570" y2="195" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
+  <line x1="150" y1="60" x2="150" y2="260" stroke="rgba(197,168,128,0.15)" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="450" y1="60" x2="450" y2="260" stroke="rgba(197,168,128,0.15)" stroke-width="0.8" stroke-dasharray="2 2"/>
+
+  <!-- SUV Silhouette Sketch -->
+  <g fill="none" stroke="#dcdedf" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="300" cy="256" rx="230" ry="8" fill="rgba(0,0,0,0.6)" stroke="none"/>
+
+    <!-- SUV Main Outer Hull -->
+    <path d="M 65 220 
+             C 80 215, 110 215, 120 215
+             C 135 170, 185 170, 200 215
+             L 395 215
+             C 410 170, 460 170, 475 215
+             L 530 215
+             C 545 215, 550 200, 545 180
+             C 538 135, 530 110, 520 95
+             L 330 90
+             C 270 90, 210 100, 160 135
+             C 120 160, 85 175, 60 185
+             C 52 195, 55 215, 65 220 Z" 
+          stroke="url(#goldStrokeSuv)" stroke-width="2.2" opacity="0.95"/>
+
+    <!-- Roofline & Window Frame -->
+    <path d="M 165 135 L 330 95 L 510 98 L 525 155 L 205 155 Z" stroke="#c5a880" stroke-width="1.4" opacity="0.8" fill="rgba(197,168,128,0.06)"/>
+    <line x1="265" y1="105" x2="265" y2="215" stroke="#718096" stroke-width="1.2" opacity="0.8"/>
+    <line x1="365" y1="95" x2="365" y2="215" stroke="#718096" stroke-width="1.4" opacity="0.9"/>
+    <line x1="450" y1="97" x2="450" y2="155" stroke="#718096" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Body Beltline -->
+    <path d="M 60 185 C 150 180, 350 180, 545 180" stroke="#ffffff" stroke-width="1" opacity="0.6"/>
+
+    <!-- Door Handles -->
+    <rect x="235" y="165" width="20" height="3" rx="1.5" fill="#e8cca4"/>
+    <rect x="335" y="165" width="20" height="3" rx="1.5" fill="#e8cca4"/>
+
+    <!-- LED Signature Lights -->
+    <path d="M 60 185 L 85 180" stroke="#60a5fa" stroke-width="3" opacity="0.95"/>
+    <path d="M 545 140 L 542 195" stroke="#ef4444" stroke-width="3" opacity="0.95"/>
+
+    <!-- Wheels (SUV High Clearance) -->
+    <g transform="translate(160, 215)">
+      <circle cx="0" cy="0" r="38" stroke="#475569" stroke-width="3"/>
+      <circle cx="0" cy="0" r="33" stroke="#e2e8f0" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="22" stroke="#94a3b8" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="7" fill="#c5a880"/>
+      <line x1="-22" y1="0" x2="22" y2="0" stroke="#c5a880" stroke-width="1.4"/>
+      <line x1="0" y1="-22" x2="0" y2="22" stroke="#c5a880" stroke-width="1.4"/>
+      <line x1="-15" y1="-15" x2="15" y2="15" stroke="#c5a880" stroke-width="1.4"/>
+      <line x1="-15" y1="15" x2="15" y2="-15" stroke="#c5a880" stroke-width="1.4"/>
+    </g>
+
+    <g transform="translate(435, 215)">
+      <circle cx="0" cy="0" r="38" stroke="#475569" stroke-width="3"/>
+      <circle cx="0" cy="0" r="33" stroke="#e2e8f0" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="22" stroke="#94a3b8" stroke-width="1.2"/>
+      <circle cx="0" cy="0" r="7" fill="#c5a880"/>
+      <line x1="-22" y1="0" x2="22" y2="0" stroke="#c5a880" stroke-width="1.4"/>
+      <line x1="0" y1="-22" x2="0" y2="22" stroke="#c5a880" stroke-width="1.4"/>
+      <line x1="-15" y1="-15" x2="15" y2="15" stroke="#c5a880" stroke-width="1.4"/>
+      <line x1="-15" y1="15" x2="15" y2="-15" stroke="#c5a880" stroke-width="1.4"/>
+    </g>
+  </g>
+
+  <!-- Dimension line -->
+  <g stroke="#c5a880" stroke-width="0.8" opacity="0.6">
+    <line x1="55" y1="285" x2="545" y2="285"/>
+    <line x1="55" y1="280" x2="55" y2="290"/>
+    <line x1="545" y1="280" x2="545" y2="290"/>
+    <text x="300" y="299" font-family="'Courier New', monospace" font-size="10" fill="#e8cca4" text-anchor="middle" stroke="none">OVERALL LENGTH: 5,200 mm // RIDE HEIGHT: 220 mm</text>
+  </g>
+</svg>

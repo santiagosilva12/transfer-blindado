@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175 36" width="175" height="36">
+  <!-- Infinity Curve / Lemniscate Symbol -->
+  <g transform="translate(6, 6)">
+    <path d="M 12,12 C 4,4 0,16 6,20 C 14,24 18,4 26,4 C 32,4 34,14 28,18 C 22,22 18,12 12,12 Z" fill="none" stroke="#0f172a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="18" cy="12" r="2.5" fill="#c9a776"/>
+  </g>
+  <text x="46" y="19" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="900" font-size="11.5" fill="#0f172a" letter-spacing="0.8">ETERNITY GROUP</text>
+  <text x="47" y="29" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-weight="800" font-size="8" fill="#c9a776" letter-spacing="2">BRASIL</text>
+</svg>

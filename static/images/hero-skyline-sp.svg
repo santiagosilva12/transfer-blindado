@@ -1,0 +1,369 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 700" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Gradientes de Profundidade Arquitetônica (Onyx & Platina) -->
+    <linearGradient id="spFarBuilding" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#10141f" stop-opacity="0.6" />
+      <stop offset="60%" stop-color="#0c0f17" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#07080d" stop-opacity="0.0" />
+    </linearGradient>
+
+    <linearGradient id="spMidBuilding" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#161c2b" stop-opacity="0.75" />
+      <stop offset="70%" stop-color="#0f1420" stop-opacity="0.38" />
+      <stop offset="100%" stop-color="#090b11" stop-opacity="0.05" />
+    </linearGradient>
+
+    <linearGradient id="spPylonGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#1f273b" stop-opacity="0.85" />
+      <stop offset="50%" stop-color="#171d2b" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#0c0e16" stop-opacity="0.1" />
+    </linearGradient>
+
+    <!-- Linhas de Blueprint e Vidro Arquitetônico -->
+    <linearGradient id="spLineBright" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" stop-opacity="0.45" />
+      <stop offset="70%" stop-color="#cbd5e1" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.08" />
+    </linearGradient>
+
+    <linearGradient id="spLineFine" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#64748b" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#94a3b8" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#cbd5e1" stop-opacity="0.03" />
+    </linearGradient>
+
+    <!-- Cabos de Aço Estais da Ponte Estaiada -->
+    <linearGradient id="spStayCable" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.4" />
+      <stop offset="60%" stop-color="#94a3b8" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#475569" stop-opacity="0.04" />
+    </linearGradient>
+
+    <!-- Iluminação Suave de Janelas de Escritórios à Noite (Realismo) -->
+    <linearGradient id="spWindowGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.08" />
+    </linearGradient>
+
+    <!-- Fade Lateral para NUNCA Sobrepor a Cadillac à Direita -->
+    <linearGradient id="spFadeToRight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="65%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <mask id="spRightMask">
+      <rect x="0" y="0" width="1920" height="700" fill="url(#spFadeToRight)" />
+    </mask>
+  </defs>
+
+  <g mask="url(#spRightMask)">
+
+    <!-- =========================================================================
+         CAMADA 1: SILHUETAS DISTANTES DE SÃO PAULO (PROFUNDIDADE ATMOSFÉRICA)
+         ========================================================================= -->
+    <g fill="url(#spFarBuilding)">
+      <!-- Prédios Fundo Centro / Bela Vista / Consolação -->
+      <rect x="15" y="380" width="80" height="320" />
+      <rect x="100" y="320" width="35" height="380" />
+      <rect x="225" y="340" width="45" height="360" />
+      <rect x="275" y="270" width="65" height="430" />
+      <polygon points="275,270 307,230 340,270" />
+      
+      <!-- Fundo Centro-Oeste / Jardins -->
+      <rect x="510" y="330" width="70" height="370" />
+      <rect x="585" y="290" width="85" height="410" />
+      <polygon points="585,290 627,240 670,290" />
+      
+      <!-- Fundo Marginal / Faria Lima -->
+      <rect x="710" y="310" width="60" height="390" />
+      <rect x="915" y="280" width="85" height="420" />
+      <polygon points="915,280 957,220 1000,280" />
+      <rect x="1010" y="340" width="70" height="360" />
+    </g>
+
+
+    <!-- =========================================================================
+         CAMADA 2: OS ÍCONES ARQUITETÔNICOS REALISTAS DE SÃO PAULO
+         ========================================================================= -->
+
+    <!-- 1. TORRE DE TRANSMISSÃO DA AVENIDA PAULISTA (Canto Superior Esquerdo) -->
+    <!-- Proporções realistas de treliça 3D de telecomunicação -->
+    <g stroke="url(#spLineBright)" stroke-width="0.8" fill="none">
+      <!-- Colunas Mestras Tapered -->
+      <line x1="42" y1="700" x2="62" y2="110" />
+      <line x1="86" y1="700" x2="66" y2="110" />
+      <!-- Coluna Central de Rigidez -->
+      <line x1="64" y1="700" x2="64" y2="110" stroke-opacity="0.3" stroke-width="0.5" />
+
+      <!-- Plataformas de Manutenção -->
+      <line x1="45" y1="580" x2="83" y2="580" stroke-width="1.2" />
+      <line x1="49" y1="460" x2="79" y2="460" stroke-width="1.2" />
+      <line x1="53" y1="350" x2="75" y2="350" stroke-width="1.2" />
+      <line x1="57" y1="250" x2="71" y2="250" stroke-width="1" />
+      <line x1="60" y1="170" x2="68" y2="170" stroke-width="1" />
+
+      <!-- Treliças Diagonais Cruzadas em X (Realismo Estrutural) -->
+      <!-- Vão 1 -->
+      <line x1="45" y1="580" x2="79" y2="460" stroke-opacity="0.3" stroke-width="0.5" />
+      <line x1="83" y1="580" x2="49" y2="460" stroke-opacity="0.3" stroke-width="0.5" />
+      <!-- Vão 2 -->
+      <line x1="49" y1="460" x2="75" y2="350" stroke-opacity="0.3" stroke-width="0.5" />
+      <line x1="79" y1="460" x2="53" y2="350" stroke-opacity="0.3" stroke-width="0.5" />
+      <!-- Vão 3 -->
+      <line x1="53" y1="350" x2="71" y2="250" stroke-opacity="0.3" stroke-width="0.5" />
+      <line x1="75" y1="350" x2="57" y2="250" stroke-opacity="0.3" stroke-width="0.5" />
+      <!-- Vão 4 -->
+      <line x1="57" y1="250" x2="68" y2="170" stroke-opacity="0.3" stroke-width="0.5" />
+      <line x1="71" y1="250" x2="60" y2="170" stroke-opacity="0.3" stroke-width="0.5" />
+
+      <!-- Mastro Superior com Antenas e Balizador de Topo -->
+      <line x1="64" y1="110" x2="64" y2="30" stroke-width="1.4" stroke="#cbd5e1" />
+      <!-- Mini Parábolas de Micro-ondas -->
+      <ellipse cx="69" cy="200" rx="4" ry="7" fill="none" stroke-width="0.7" stroke="#cbd5e1" stroke-opacity="0.6" />
+      <ellipse cx="59" cy="280" rx="3.5" ry="6" fill="none" stroke-width="0.7" stroke="#cbd5e1" stroke-opacity="0.6" />
+      <!-- Luz de Aviação Noturna da Paulista em Platina/Champanhe -->
+      <circle cx="64" cy="30" r="2.2" fill="#cbd5e1" opacity="0.9" stroke="none" />
+      <circle cx="64" cy="30" r="5" fill="#cbd5e1" opacity="0.25" stroke="none" />
+    </g>
+
+
+    <!-- 2. FAROL SANTANDER / EDIFÍCIO ALTINO ARANTES (BANESPA) - ARQUITETURA REALISTA -->
+    <!-- Os recuos escalonados Art-Déco clássicos e o mirante de São Paulo -->
+    <g fill="url(#spMidBuilding)" stroke="url(#spLineBright)" stroke-width="0.8">
+      <!-- Bloco Base Inferior com Pilastras -->
+      <rect x="125" y="420" width="86" height="280" />
+      <!-- Cornija 1 -->
+      <line x1="122" y1="420" x2="214" y2="420" stroke-width="1.2" />
+
+      <!-- 1º Setback Escalonado -->
+      <rect x="133" y="310" width="70" height="110" />
+      <line x1="130" y1="310" x2="206" y2="310" stroke-width="1.2" />
+
+      <!-- 2º Setback Escalonado -->
+      <rect x="142" y="220" width="52" height="90" />
+      <line x1="139" y1="220" x2="197" y2="220" stroke-width="1.2" />
+
+      <!-- 3º Setback (Nível do Mirante e Relógio) -->
+      <rect x="150" y="150" width="36" height="70" />
+      <line x1="147" y1="150" x2="189" y2="150" stroke-width="1.2" />
+      <!-- Círculo do Relógio do Banespa -->
+      <circle cx="168" cy="185" r="5" fill="none" stroke-width="0.8" stroke="#cbd5e1" stroke-opacity="0.7" />
+
+      <!-- Lanterna Octogonal Superior -->
+      <rect x="157" y="110" width="22" height="40" />
+      <!-- Cúpula Art-Déco em Pirâmide -->
+      <polygon points="157,110 168,75 179,110" fill="#141c2b" stroke-width="0.9" />
+
+      <!-- Mastro da Bandeira & Para-raios Central -->
+      <line x1="168" y1="75" x2="168" y2="32" stroke-width="1.4" stroke="#c5a880" />
+      <circle cx="168" cy="32" r="2" fill="#c5a880" opacity="0.9" stroke="none" />
+
+      <!-- Pilastras Verticais Fluted (Realismo Art-Déco de fachada) -->
+      <g stroke="url(#spLineFine)" stroke-width="0.6">
+        <line x1="137" y1="420" x2="137" y2="690" />
+        <line x1="147" y1="310" x2="147" y2="690" />
+        <line x1="157" y1="220" x2="157" y2="690" />
+        <line x1="168" y1="150" x2="168" y2="690" stroke-width="0.8" stroke-opacity="0.4" />
+        <line x1="179" y1="220" x2="179" y2="690" />
+        <line x1="189" y1="310" x2="189" y2="690" />
+        <line x1="199" y1="420" x2="199" y2="690" />
+      </g>
+
+      <!-- Janelas Iluminadas Discretas (Vida Urbana Noturna) -->
+      <g fill="url(#spWindowGlow)" stroke="none">
+        <rect x="140" y="440" width="4" height="6" rx="1" />
+        <rect x="150" y="440" width="4" height="6" rx="1" />
+        <rect x="182" y="440" width="4" height="6" rx="1" />
+        <rect x="145" y="330" width="4" height="6" rx="1" />
+        <rect x="165" y="330" width="4" height="6" rx="1" />
+        <rect x="185" y="330" width="4" height="6" rx="1" />
+        <rect x="155" y="240" width="3" height="5" rx="1" />
+        <rect x="175" y="240" width="3" height="5" rx="1" />
+      </g>
+    </g>
+
+
+    <!-- 3. EDIFÍCIO ITÁLIA (ARQUITETURA CURVADA MODERNISTA COM O TERRAÇO ITÁLIA) -->
+    <g fill="url(#spMidBuilding)" stroke="url(#spLineBright)" stroke-width="0.8">
+      <!-- Fachada Principal com Sutil Curvatura Elíptica -->
+      <path d="M 230,700 L 230,240 C 235,220 250,210 270,210 L 290,210 C 302,210 310,220 315,240 L 315,700 Z" />
+      
+      <!-- Terraço Itália no Topo (Penthouse & Mirante Circular) -->
+      <rect x="245" y="195" width="55" height="15" rx="3" stroke-width="1" />
+      <line x1="272" y1="195" x2="272" y2="125" stroke-width="1.3" stroke="#cbd5e1" />
+      <circle cx="272" cy="125" r="1.5" fill="#cbd5e1" opacity="0.85" stroke="none" />
+
+      <!-- Brises Verticais (Grelha de Proteção Solar Típica do Edifício Itália) -->
+      <g stroke="url(#spLineFine)" stroke-width="0.55">
+        <line x1="242" y1="240" x2="242" y2="690" />
+        <line x1="254" y1="220" x2="254" y2="690" />
+        <line x1="266" y1="210" x2="266" y2="690" />
+        <line x1="278" y1="210" x2="278" y2="690" />
+        <line x1="290" y1="220" x2="290" y2="690" />
+        <line x1="302" y1="240" x2="302" y2="690" />
+      </g>
+      <!-- Linhas de Pavimento dos Andares -->
+      <g stroke="url(#spLineFine)" stroke-width="0.4" stroke-opacity="0.3">
+        <line x1="232" y1="270" x2="313" y2="270" />
+        <line x1="232" y1="320" x2="313" y2="320" />
+        <line x1="232" y1="370" x2="313" y2="370" />
+        <line x1="232" y1="420" x2="313" y2="420" />
+        <line x1="232" y1="470" x2="313" y2="470" />
+        <line x1="232" y1="520" x2="313" y2="520" />
+      </g>
+    </g>
+
+
+    <!-- 4. EDIFÍCIO COPAN (OSCAR NIEMEYER) - ONDA ESCULTURAL REALISTA -->
+    <g fill="url(#spMidBuilding)" stroke="url(#spLineBright)" stroke-width="0.85">
+      <!-- Silhueta da Onda Contínua de Niemeyer -->
+      <path d="M 335,700 L 335,370 C 355,330 380,360 405,335 C 430,310 455,345 480,320 C 495,305 508,325 515,315 L 515,700 Z" />
+
+      <!-- Juntas Estruturais de Dilatação (Divisão dos 6 Blocos Residenciais) -->
+      <g stroke="url(#spLineBright)" stroke-width="0.7" stroke-opacity="0.45">
+        <line x1="375" y1="355" x2="375" y2="690" />
+        <line x1="425" y1="325" x2="425" y2="690" />
+        <line x1="475" y1="330" x2="475" y2="690" />
+      </g>
+
+      <!-- As Famosas Brises-Soleil Horizontais Contínuas de Concreto (12 Lâminas Esculturais) -->
+      <g fill="none" stroke="url(#spLineFine)" stroke-width="0.65" stroke-opacity="0.38">
+        <path d="M 336,385 C 356,345 381,375 406,350 C 431,325 456,360 481,335 C 496,320 508,340 514,330" />
+        <path d="M 336,410 C 356,370 381,400 406,375 C 431,350 456,385 481,360 C 496,345 508,365 514,355" />
+        <path d="M 336,435 C 356,395 381,425 406,400 C 431,375 456,410 481,385 C 496,370 508,390 514,380" />
+        <path d="M 336,460 C 356,420 381,450 406,425 C 431,400 456,435 481,410 C 496,395 508,415 514,405" />
+        <path d="M 336,485 C 356,445 381,475 406,450 C 431,425 456,460 481,435 C 496,420 508,440 514,430" />
+        <path d="M 336,510 C 356,470 381,500 406,475 C 431,450 456,485 481,460 C 496,445 508,465 514,455" />
+        <path d="M 336,535 C 356,495 381,525 406,500 C 431,475 456,510 481,485 C 496,470 508,490 514,480" />
+        <path d="M 336,560 C 356,520 381,550 406,525 C 431,500 456,535 481,510 C 496,495 508,515 514,505" />
+      </g>
+    </g>
+
+
+    <!-- 5. MASP - MUSEU DE ARTE DE SÃO PAULO (LINA BO BARDI - REALISTA) -->
+    <!-- Os 2 pórticos protendidos em tons de grafite/platina sustentando a caixa de vidro no vão livre de 70m -->
+    <g>
+      <!-- Pórticos de Concreto Protendido em Prata / Grafite Arquitetônico (100% livre de vermelho) -->
+      <!-- Pilar Esquerdo -->
+      <rect x="532" y="480" width="10" height="150" fill="url(#spPylonGrad)" stroke="url(#spLineBright)" stroke-width="0.8" />
+      <!-- Pilar Direito -->
+      <rect x="622" y="480" width="10" height="150" fill="url(#spPylonGrad)" stroke="url(#spLineBright)" stroke-width="0.8" />
+      <!-- Viga Mestra Superior Suspensa -->
+      <rect x="528" y="472" width="108" height="16" fill="url(#spPylonGrad)" stroke="url(#spLineBright)" stroke-width="0.8" />
+
+      <!-- Caixa de Vidro Suspensa do Acervo (Corpo Principal do MASP) -->
+      <rect x="542" y="488" width="80" height="62" fill="url(#spMidBuilding)" stroke="url(#spLineBright)" stroke-width="0.8" />
+      <!-- Grelha de Vidro / Caixilhos da Fachada -->
+      <g stroke="url(#spLineFine)" stroke-width="0.5" stroke-opacity="0.4">
+        <line x1="562" y1="488" x2="562" y2="550" />
+        <line x1="582" y1="488" x2="582" y2="550" />
+        <line x1="602" y1="488" x2="602" y2="550" />
+        <line x1="542" y1="518" x2="622" y2="518" />
+      </g>
+      <!-- Vão Livre Aberto no Piso da Paulista (70 metros livres sob o edifício) -->
+      <line x1="532" y1="550" x2="632" y2="550" stroke="url(#spLineBright)" stroke-width="0.9" />
+    </g>
+
+
+    <!-- 6. CENTRO DA CENA: PONTE ESTAIADA OCTÁVIO FRIAS DE OLIVEIRA (REALISTA) -->
+    <!-- O icônico mastro central em "X" com cabos de aço em harpa e pistas curvas da Marginal -->
+    <g>
+      <!-- O Mastro Escultural em "X" com Chanfros e Volume de Concreto -->
+      <!-- Perna Esquerda (Sobe inclinando para a direita, cruza e abre) -->
+      <path d="M 765,700 L 802,480 L 848,340 L 832,170 L 844,135 L 855,135 L 865,225 L 836,395 L 795,700 Z" 
+            fill="url(#spPylonGrad)" stroke="url(#spLineBright)" stroke-width="0.95" />
+      
+      <!-- Perna Direita (Sobe inclinando para a esquerda, cruza formando o "X") -->
+      <path d="M 945,700 L 908,480 L 862,340 L 878,170 L 866,135 L 855,135 L 845,225 L 874,395 L 915,700 Z" 
+            fill="url(#spPylonGrad)" stroke="url(#spLineBright)" stroke-width="0.95" />
+
+      <!-- Bloco de Amarração e Travamento Central do "X" -->
+      <rect x="836" y="332" width="38" height="15" fill="#1e293b" opacity="0.8" stroke="url(#spLineBright)" stroke-width="0.8" />
+
+      <!-- Linhas de Chanfro de Concreto 3D nos Pilares -->
+      <line x1="802" y1="480" x2="848" y2="340" stroke="url(#spLineFine)" stroke-width="0.6" stroke-opacity="0.5" />
+      <line x1="908" y1="480" x2="862" y2="340" stroke="url(#spLineFine)" stroke-width="0.6" stroke-opacity="0.5" />
+
+      <!-- Mastro Superior e Luz Aeronáutica da Ponte -->
+      <line x1="855" y1="135" x2="855" y2="70" stroke-width="1.5" stroke="#c5a880" />
+      <circle cx="855" cy="70" r="2.4" fill="#c5a880" opacity="0.95" />
+      <circle cx="855" cy="70" r="6" fill="#c5a880" opacity="0.2" />
+
+      <!-- CABOS ESTAIS DE AÇO EM HARPA (Realismo Hiper-preciso de Tensão Estrutural) -->
+      <!-- Feixe Norte (Leque Lado Esquerdo) -->
+      <g stroke="url(#spStayCable)" stroke-width="0.75">
+        <line x1="848" y1="165" x2="690" y2="590" />
+        <line x1="849" y1="180" x2="710" y2="590" />
+        <line x1="850" y1="195" x2="730" y2="590" />
+        <line x1="851" y1="210" x2="750" y2="590" />
+        <line x1="852" y1="225" x2="770" y2="590" />
+        <line x1="853" y1="240" x2="790" y2="590" />
+        <line x1="854" y1="255" x2="810" y2="590" />
+        <line x1="855" y1="270" x2="825" y2="590" />
+
+        <!-- Feixe Sul (Leque Lado Direito) -->
+        <line x1="862" y1="165" x2="1020" y2="590" />
+        <line x1="861" y1="180" x2="1000" y2="590" />
+        <line x1="860" y1="195" x2="980" y2="590" />
+        <line x1="859" y1="210" x2="960" y2="590" />
+        <line x1="858" y1="225" x2="940" y2="590" />
+        <line x1="857" y1="240" x2="920" y2="590" />
+        <line x1="856" y1="255" x2="900" y2="590" />
+        <line x1="855" y1="270" x2="885" y2="590" />
+      </g>
+
+      <!-- Pistas Elevadas Estaiadas (Tabuleiros Curvos com Vigas de Sustentação) -->
+      <!-- Pista Superior -->
+      <path d="M 660,600 C 740,570 850,565 930,590 C 980,610 1025,635 1060,680" 
+            fill="none" stroke="url(#spLineBright)" stroke-width="1.4" stroke-opacity="0.5" />
+      <path d="M 660,612 C 740,582 850,577 930,602 C 980,622 1025,647 1060,692" 
+            fill="none" stroke="url(#spLineFine)" stroke-width="0.8" stroke-opacity="0.3" />
+
+      <!-- Pista Inferior Cruzada -->
+      <path d="M 640,635 C 730,610 840,600 940,625 C 995,640 1035,665 1070,700" 
+            fill="none" stroke="url(#spLineBright)" stroke-width="1.2" stroke-opacity="0.4" />
+    </g>
+
+
+    <!-- 7. TORRES CORPORATIVAS DA FARIA LIMA / BERRINI (ATÉ X: 1050 MAX) -->
+    <!-- Termina antes de X: 1050 para NUNCA encostar ou sobrepor a Cadillac Escalade! -->
+    <g fill="url(#spMidBuilding)" stroke="url(#spLineBright)" stroke-width="0.8">
+      
+      <!-- INFINITY TOWER (A Famosa Curva Náutica em Vela da Faria Lima) -->
+      <path d="M 1000,700 L 1000,340 C 1005,270 1028,215 1060,185 L 1060,700 Z" />
+      <!-- Lâminas de Vidro Curvas da Vela Náutica -->
+      <path d="M 1014,700 L 1014,320 C 1018,275 1035,230 1054,205" fill="none" stroke="url(#spLineFine)" stroke-width="0.6" stroke-opacity="0.35" />
+      <path d="M 1030,700 L 1030,310 C 1034,280 1045,248 1054,228" fill="none" stroke="url(#spLineFine)" stroke-width="0.6" stroke-opacity="0.35" />
+      <!-- Mastro da Infinity Tower -->
+      <line x1="1060" y1="185" x2="1060" y2="130" stroke="url(#spLineBright)" stroke-width="1.1" />
+
+      <!-- BIRMANN 32 (Edifício Minimalista Retangular com Coroamento) -->
+      <rect x="1075" y="240" width="55" height="460" />
+      <polygon points="1075,240 1102,185 1130,240" />
+      <line x1="1102" y1="185" x2="1102" y2="125" stroke="url(#spLineBright)" stroke-width="1.1" />
+
+      <!-- Grelha de Vidro / Mullions dos Edifícios Corporativos -->
+      <g stroke="url(#spLineFine)" stroke-width="0.5" stroke-opacity="0.3">
+        <line x1="1088" y1="240" x2="1088" y2="690" />
+        <line x1="1102" y1="240" x2="1102" y2="690" />
+        <line x1="1116" y1="240" x2="1116" y2="690" />
+      </g>
+    </g>
+
+  </g> <!-- Fim do Mask do Lado Direito -->
+
+  <!-- =========================================================================
+       CAMADA 3: LINHAS DE PISTA E ASFALTO DA METRÓPOLE (FLUXO DISCRETO NO CHÃO)
+       ========================================================================= -->
+  <!-- Linhas suaves no solo que conduzem o olhar para a Cadillac sem sobrepor seu corpo -->
+  <g stroke="url(#spLineFine)" stroke-width="0.75" opacity="0.25">
+    <line x1="200" y1="695" x2="800" y2="655" />
+    <line x1="400" y1="698" x2="950" y2="665" />
+    <line x1="600" y1="700" x2="1100" y2="675" />
+  </g>
+
+  <!-- Degradê Inferior para Fundir no Fundo Escuro do Site -->
+  <rect x="0" y="620" width="1920" height="80" fill="url(#spFarBuilding)" opacity="0.7" />
+</svg>
