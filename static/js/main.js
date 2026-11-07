@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initReservationForm();
   initHeroQuickForm();
   initPreselectionFromUrl();
+  initCategoryFleetModals();
 });
 
 /**
@@ -330,4 +331,114 @@ function initHeroQuickForm() {
     window.open(whatsappUrl, "_blank");
   });
 }
+
+/**
+ * 6. Modais Exclusivos de Cotação da Frota Terrestre (Sedan, SUV, Van, Ônibus)
+ */
+function initCategoryFleetModals() {
+  const fleetModals = document.querySelectorAll(".drvn-fleet-modal");
+  if (!fleetModals.length) return;
+
+  // Pré-selecionar o modelo específico clicado ao abrir o modal
+  fleetModals.forEach((modalEl) => {
+    modalEl.addEventListener("show.bs.modal", (event) => {
+      const trigger = event.relatedTarget;
+      if (!trigger) return;
+
+      const modelId = trigger.getAttribute("data-model-id");
+      if (modelId) {
+        const targetRadio = modalEl.querySelector(`input[type="radio"][data-model-id="${modelId}"]`);
+        if (targetRadio) {
+          targetRadio.checked = true;
+          // Scroll suave para visualização do radio card se necessário
+          targetRadio.closest(".drvn-model-radio-card")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }
+    });
+  });
+
+  // Envio do formulário do modal para o WhatsApp
+  const categoryForms = document.querySelectorAll(".fleet-category-modal-form");
+  categoryForms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const catSlug = form.getAttribute("data-category") || "";
+      const catTitleEl = form.closest(".modal-content")?.querySelector(".modal-title-cat");
+      const catNome = catTitleEl ? catTitleEl.textContent.trim() : catSlug.toUpperCase();
+
+      const selectedModelInput = form.querySelector(`input[name="modal_model_${catSlug}"]:checked`);
+      const modeloEscolhido = selectedModelInput ? selectedModelInput.value : "Padrão da Categoria";
+
+      const selectedTripInput = form.querySelector(`input[name="modal_trip_${catSlug}"]:checked`);
+      const tipoTrajeto = selectedTripInput ? selectedTripInput.value : "Só Ida";
+
+      const nome = form.querySelector('input[name="modal_nome"]')?.value.trim() || "";
+      const telefone = form.querySelector('input[name="modal_whatsapp"]')?.value.trim() || "";
+      const origem = form.querySelector('input[name="modal_origem"]')?.value.trim() || "";
+      const destino = form.querySelector('input[name="modal_destino"]')?.value.trim() || "";
+      const dataRaw = form.querySelector('input[name="modal_data"]')?.value || "";
+      const horario = form.querySelector('input[name="modal_horario"]')?.value || "";
+      const obs = form.querySelector('textarea[name="modal_obs"]')?.value.trim() || "";
+
+      if (!nome || !telefone) {
+        alert("Por favor, preencha os campos obrigatórios (Nome e Telefone/WhatsApp).");
+        return;
+      }
+
+      // Formatar data para DD/MM/AAAA se preenchida
+      let dataFormatada = "";
+      if (dataRaw) {
+        const partes = dataRaw.split("-");
+        if (partes.length === 3) {
+          dataFormatada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+        } else {
+          dataFormatada = dataRaw;
+        }
+      }
+
+      const linhas = [];
+      linhas.push("🛡️ *SOLICITAÇÃO DE COTAÇÃO - TRANSFER BLINDADO*");
+      linhas.push("──────────────────────────");
+      linhas.push(`🚘 *Categoria:* ${catNome}`);
+      linhas.push(`⭐ *Opção / Configuração:* ${modeloEscolhido}`);
+      linhas.push(`🔄 *Tipo de Trajeto:* ${tipoTrajeto}`);
+      linhas.push("");
+      linhas.push(`👤 *Responsável:* ${nome}`);
+      linhas.push(`📱 *Telefone / WhatsApp:* ${telefone}`);
+      if (origem) {
+        linhas.push(`🛫 *Local de Saída / Origem:* ${origem}`);
+      }
+      if (destino) {
+        linhas.push(`🏁 *Destino:* ${destino}`);
+      }
+      if (dataFormatada) {
+        const horaStr = horario ? ` às ${horario}` : "";
+        linhas.push(`📅 *Data do Translado:* ${dataFormatada}${horaStr}`);
+      }
+      if (obs) {
+        linhas.push("");
+        linhas.push(`📝 *Observações / Necessidades:* ${obs}`);
+      }
+      linhas.push("──────────────────────────");
+      linhas.push("⚡ *Solicitado via Portal Oficial Transfer Blindado*");
+
+      const mensagemFinal = linhas.join("\n");
+      const whatsappUrl = `https://wa.me/5511986829141?text=${encodeURIComponent(mensagemFinal)}`;
+
+      // Fechar modal do Bootstrap de forma limpa
+      const modalEl = form.closest(".modal");
+      if (modalEl && typeof bootstrap !== "undefined" && bootstrap.Modal) {
+        const modalInstance = bootstrap.Modal.getInstance(modalEl);
+        if (modalInstance) {
+          modalInstance.hide();
+        }
+      }
+
+      // Abre WhatsApp
+      window.open(whatsappUrl, "_blank");
+    });
+  });
+}
+
 

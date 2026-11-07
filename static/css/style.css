@@ -2417,3 +2417,194 @@ body {
   border: none !important;
   box-shadow: none !important;
 }
+
+/* ==========================================================================
+   Modais de Cotação por Categoria de Frota (Sedan, SUV, Van, Ônibus)
+   ========================================================================== */
+.drvn-cursor-pointer {
+  cursor: pointer !important;
+}
+
+.drvn-click-hint-pill {
+  position: absolute;
+  bottom: 8px;
+  right: 14px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 50px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.25s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+}
+
+.drvn-fleet-image-box:hover .drvn-click-hint-pill {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.drvn-fleet-modal .modal-content {
+  background: #0b1120;
+  background: linear-gradient(155deg, #0f172a 0%, #070b14 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.38);
+  border-radius: 20px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.12);
+  color: #e2e8f0;
+}
+
+.drvn-fleet-modal .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drvn-fleet-modal .modal-title {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
+
+/* Radio Card do Modelo */
+.drvn-model-radio-card {
+  display: block;
+  cursor: pointer;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+.drvn-model-radio-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drvn-model-card-inner {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px 12px;
+  transition: all 0.25s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.drvn-model-card-inner:hover {
+  border-color: rgba(212, 175, 55, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.drvn-model-radio-card input[type="radio"]:checked + .drvn-model-card-inner {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.14);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.22);
+}
+
+.drvn-model-badge {
+  font-size: 0.68rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d4af37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+.drvn-check-indicator {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.drvn-model-radio-card input[type="radio"]:checked + .drvn-model-card-inner .drvn-check-indicator {
+  color: #d4af37;
+}
+
+.drvn-model-card-title {
+  color: #ffffff;
+  font-size: 0.84rem;
+  line-height: 1.25;
+  margin-top: 4px;
+}
+
+.drvn-model-card-sub {
+  color: #94a3b8 !important;
+  font-size: 0.72rem;
+  margin-top: 2px;
+}
+
+/* Toggle de Trajeto dentro do Modal */
+.drvn-modal-trip-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 3px;
+  max-width: 290px;
+}
+
+.drvn-modal-trip-btn {
+  cursor: pointer;
+  margin: 0;
+  user-select: none;
+}
+
+.drvn-modal-trip-btn input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drvn-modal-trip-label {
+  display: block;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+.drvn-modal-trip-btn input[type="radio"]:checked + .drvn-modal-trip-label {
+  background: #d4af37;
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Inputs do Modal */
+.drvn-modal-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  padding: 9px 12px;
+  transition: all 0.2s ease;
+}
+
+.drvn-modal-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #d4af37;
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+.drvn-modal-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.drvn-modal-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+@media (max-width: 575.98px) {
+  .drvn-fleet-modal .modal-header,
+  .drvn-fleet-modal .modal-body {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}

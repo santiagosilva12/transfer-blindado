@@ -328,7 +328,18 @@ const TRANSLATIONS = {
     "faq_a5": "Todos os prestadores e colaboradores assinam Acordos de Não Divulgação (NDA). Itinerários e dados de passageiros são protegidos em ambiente seguro garantindo a integridade estratégica de cada cliente.",
     "faq_cta": "Iniciar Solicitação de Reserva Sob Demanda",
     footer_rights: "Todos os direitos reservados.",
-    footer_army: "Frota Executiva Blindada Certificada pelo Exército Brasileiro."
+    footer_army: "Frota Executiva Blindada Certificada pelo Exército Brasileiro.",
+    modal_quote_tag: "COTAÇÃO DIRETA & DISPONIBILIDADE",
+    modal_title_prefix: "Cotação para Categoria",
+    modal_lbl_config: "1. Escolha a Opção / Configuração Desejada",
+    modal_lbl_trip_type: "2. Tipo de Trajeto",
+    modal_lbl_client_data: "3. Informações do Translado",
+    lbl_time: "Horário Estimado",
+    lbl_notes: "Observações ou Necessidades Especiais (Opcional)",
+    ph_notes: "Ex: Voo, quantidade de bagagens, itinerário corporativo...",
+    modal_security_notice: "Atendimento 100% confidencial com resposta em até 15 minutos.",
+    modal_submit_cta: "Receber Cotação no WhatsApp",
+    fleet_click_to_quote: "Clique para Cotar"
   },
 
   en: {
@@ -655,7 +666,18 @@ const TRANSLATIONS = {
     "faq_a5": "All drivers, coordinators, and operational staff execute binding Non-Disclosure Agreements (NDAs). Travel itineraries and passenger profiles are securely managed to guarantee complete privacy and strategic confidentiality.",
     "faq_cta": "Request On-Demand Reservation",
     footer_rights: "All rights reserved.",
-    footer_army: "Executive Armored Fleet Certified by the Brazilian Army."
+    footer_army: "Executive Armored Fleet Certified by the Brazilian Army.",
+    modal_quote_tag: "DIRECT QUOTE & AVAILABILITY",
+    modal_title_prefix: "Quote for Category",
+    modal_lbl_config: "1. Choose Your Preferred Vehicle / Configuration",
+    modal_lbl_trip_type: "2. Trip Type",
+    modal_lbl_client_data: "3. Transfer Details",
+    lbl_time: "Estimated Time",
+    lbl_notes: "Special Requests or Flight Details (Optional)",
+    ph_notes: "E.g., Flight number, baggage count, corporate itinerary...",
+    modal_security_notice: "100% confidential assistance with response within 15 minutes.",
+    modal_submit_cta: "Get Quote via WhatsApp",
+    fleet_click_to_quote: "Click to Request Quote"
   },
 
   es: {
@@ -812,7 +834,38 @@ const TRANSLATIONS = {
     fleet_opt_9: "Logística de Grandes Eventos",
 
     footer_rights: "Todos los derechos reservados.",
-    footer_army: "Flota Ejecutiva Blindada Certificada por el Ejército Brasileño."
+    footer_army: "Flota Ejecutiva Blindada Certificada por el Ejército Brasileño.",
+    modal_quote_tag: "COTIZACIÓN DIRECTA Y DISPONIBILIDAD",
+    modal_title_prefix: "Cotización para Categoría",
+    modal_lbl_config: "1. Elija la Opción / Configuración Deseada",
+    modal_lbl_trip_type: "2. Tipo de Trayecto",
+    modal_lbl_client_data: "3. Datos del Traslado",
+    lbl_time: "Hora Estimada",
+    lbl_notes: "Observaciones o Solicitudes Especiales (Opcional)",
+    ph_notes: "Ej: Vuelo, cantidad de equipaje, itinerario corporativo...",
+    modal_security_notice: "Atención 100% confidencial con respuesta en menos de 15 minutos.",
+    modal_submit_cta: "Recibir Cotización por WhatsApp",
+    fleet_click_to_quote: "Clic para Cotizar",
+    float_wa_bubble: "¡Contáctenos ahora!",
+    clients_strip: "PRINCIPALES CLIENTES ATENDIDOS",
+    trip_one_way: "Sólo Ida",
+    trip_round_trip: "Ida y Vuelta",
+    lbl_name: "Nombre / Responsable",
+    lbl_phone: "WhatsApp / Teléfono",
+    lbl_origin: "Punto de Partida / Origen",
+    lbl_destination: "Destino",
+    lbl_fleet: "Flota Deseada",
+    lbl_date: "Fecha del Traslado",
+    btn_consult: "Consultar Disponibilidad",
+    ph_name: "Nombre / Responsable",
+    ph_phone: "WhatsApp / Teléfono",
+    ph_origin: "Punto de Partida / Origen",
+    ph_destination: "Destino",
+    ph_date: "Fecha del Traslado",
+    fleet_ref_label: "Modelos de Referencia:",
+    fleet_avail_cities: "Disponible en Todo Brasil",
+    fleet_quote_cta: "Solicitar Cotización para esta Flota",
+    lbl_select_model: "SELECCIONE EL MODELO"
   }
 };
 
