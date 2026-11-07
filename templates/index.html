@@ -362,9 +362,9 @@
     <!-- Navegação Rápida entre as Categorias (Sedan, SUV, Mini Van, Van, Ônibus) -->
     <div class="drvn-category-nav-wrapper d-flex flex-wrap justify-content-center gap-2 mb-5">
       {% for cat in categorias_terrestres %}
-      <a href="#cat-{{ cat.slug }}" class="drvn-category-nav-pill notranslate" translate="no">
+      <a href="#cat-{{ cat.slug }}" class="drvn-category-nav-pill">
         <i class="bi {{ cat.icone }}"></i>
-        <span>{{ cat.nome }}</span>
+        <span data-i18n="cat_nav_{{ cat.slug }}">{{ cat.nome }}</span>
       </a>
       {% endfor %}
     </div>
@@ -375,10 +375,10 @@
       
       <!-- Cabeçalho da Categoria / Galeria -->
       <div class="text-center mb-4">
-        <div class="drvn-gallery-badge-title notranslate" translate="no">
-          <i class="bi {{ cat.icone }} text-gold me-2"></i>{{ cat.titulo_galeria }}
+        <div class="drvn-gallery-badge-title">
+          <i class="bi {{ cat.icone }} text-gold me-2"></i><span data-i18n="cat_gallery_{{ cat.slug }}">{{ cat.titulo_galeria }}</span>
         </div>
-        <p class="text-secondary small mt-2 mb-0">{{ cat.subtitulo_galeria }}</p>
+        <p class="text-secondary small mt-2 mb-0" data-i18n="cat_sub_{{ cat.slug }}">{{ cat.subtitulo_galeria }}</p>
       </div>
 
       <!-- Carrossel da Frota Terrestre da Categoria -->
@@ -411,22 +411,22 @@
                   <div class="col-lg-7">
                     <div class="ps-lg-2">
                       <div class="d-flex align-items-center justify-content-between mb-1">
-                        <h3 class="h4 fw-bold mb-0 notranslate" translate="no" style="color: #0f172a;">{{ m.nome }}</h3>
+                        <h3 class="h4 fw-bold mb-0" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">{{ m.nome }}</h3>
                         <span class="badge bg-light text-dark border px-2 py-1 small font-monospace">
-                          <i class="bi {{ m.tag_icone }} text-gold me-1"></i>{{ m.tag }}
+                          <i class="bi {{ m.tag_icone }} text-gold me-1"></i><span data-i18n="model_tag_{{ m.id }}">{{ m.tag }}</span>
                         </span>
                       </div>
-                      <div class="text-gold fw-semibold small mb-2">{{ m.subtitulo }}</div>
+                      <div class="text-gold fw-semibold small mb-2" data-i18n="model_sub_{{ m.id }}">{{ m.subtitulo }}</div>
                       
                       <p class="text-secondary small mb-2">
-                        <strong style="color: #0f172a;" data-i18n="fleet_ref_label">Modelos de Referência:</strong> {{ m.exemplo }}
+                        <strong style="color: #0f172a;" data-i18n="fleet_ref_label">Modelos de Referência:</strong> <span data-i18n="model_ex_{{ m.id }}">{{ m.exemplo }}</span>
                       </p>
 
                       <!-- Especificações em Pills -->
                       <div class="d-flex flex-wrap gap-2 mb-3">
-                        <span class="drvn-cap-pill"><i class="bi bi-person-fill text-gold me-1"></i> {{ m.capacidade }}</span>
+                        <span class="drvn-cap-pill"><i class="bi bi-person-fill text-gold me-1"></i> <span data-i18n="model_cap_{{ m.id }}">{{ m.capacidade }}</span></span>
                         {% for d in m.destaques %}
-                        <span class="drvn-cap-pill"><i class="bi bi-check2 text-gold me-1"></i> {{ d }}</span>
+                        <span class="drvn-cap-pill"><i class="bi bi-check2 text-gold me-1"></i> <span data-i18n="model_feat_{{ m.id }}_{{ loop.index0 }}">{{ d }}</span></span>
                         {% endfor %}
                       </div>
 
@@ -471,7 +471,7 @@
                   <div class="drvn-thumb-img-wrapper">
                     <img src="{{ m.imagem }}?v=14" alt="{{ m.nome }}" class="drvn-thumb-img" loading="lazy">
                   </div>
-                  <div class="drvn-thumb-title fw-bold text-uppercase notranslate" translate="no" style="color: #0f172a;">
+                  <div class="drvn-thumb-title fw-bold text-uppercase" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">
                     {{ m.nome }}
                   </div>
                 </div>
@@ -510,12 +510,12 @@
           <!-- Informações e Destaques (Sem Categoria, Sem ANAC, Sem Subtítulo, Sem Aeronaves Ref, Sem Passageiros) -->
           <div class="mt-3 d-flex flex-column flex-grow-1 justify-content-between">
             <div>
-              <h2 class="h3 fw-bold mb-3" style="color: #0f172a;">{{ f.nome }}</h2>
+              <h2 class="h3 fw-bold mb-3" style="color: #0f172a;" data-i18n="aerial_name_{{ f.id }}">{{ f.nome }}</h2>
               
               <!-- Especificações em Pills (Apenas Destaques, sem capacidade de passageiros) -->
               <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
                 {% for d in f.destaques %}
-                <span class="drvn-cap-pill text-nowrap"><i class="bi bi-check2 text-gold me-1"></i> {{ d }}</span>
+                <span class="drvn-cap-pill text-nowrap"><i class="bi bi-check2 text-gold me-1"></i> <span data-i18n="aerial_feat_{{ f.id }}_{{ loop.index0 }}">{{ d }}</span></span>
                 {% endfor %}
               </div>
             </div>
@@ -715,7 +715,7 @@
     
     <div class="text-center mb-5">
       <h2 class="drvn-section-title" data-i18n="faq_title">Perguntas Frequentes</h2>
-      <p class="drvn-lead-text mx-auto" style="max-width: 650px;">
+      <p class="drvn-lead-text mx-auto" style="max-width: 650px;" data-i18n="faq_lead">
         Conheça nossos padrões operacionais de proteção balística, faturamento e sigilo.
       </p>
     </div>
@@ -725,11 +725,11 @@
 
         <div class="drvn-faq-item">
           <button class="drvn-faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq1">
-            <span>Qual é o nível de blindagem balística dos veículos terrestres?</span>
+            <span data-i18n="faq_q1">Qual é o nível de blindagem balística dos veículos terrestres?</span>
             <i class="bi bi-plus-lg gold-text"></i>
           </button>
           <div id="drvnFaq1" class="collapse show">
-            <div class="drvn-faq-body">
+            <div class="drvn-faq-body" data-i18n="faq_a1">
               Nossa frota blindada opera sob o <strong>Nível III-A</strong> (norma NIJ 0108.01 e Exército Brasileiro), a máxima proteção civil autorizada. Resiste a disparos de armas de alto calibre (incluindo pistolas 9mm, .44 Magnum e submetralhadoras), equipada com manta de aramida, vidros curvos multi-camadas de alta transparência balística e cintas de aço run-flat nos pneus.
             </div>
           </div>
@@ -737,11 +737,11 @@
 
         <div class="drvn-faq-item">
           <button class="drvn-faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq2">
-            <span>Qual é a capacitação dos condutores executivos?</span>
+            <span data-i18n="faq_q2">Qual é a capacitação dos condutores executivos?</span>
             <i class="bi bi-plus-lg gold-text"></i>
           </button>
           <div id="drvnFaq2" class="collapse">
-            <div class="drvn-faq-body">
+            <div class="drvn-faq-body" data-i18n="faq_a2">
               Todos os nossos motoristas são certificados em Direção Defensiva e Evasiva, Primeiros Socorros e Protocolos VIP de Segurança. Possuem checagem criminal e comportamental periódica, postura discreta e opções de motoristas bilíngues (Inglês e Espanhol).
             </div>
           </div>
@@ -749,11 +749,11 @@
 
         <div class="drvn-faq-item">
           <button class="drvn-faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq3">
-            <span>Como funciona a contratação corporativa e faturamento?</span>
+            <span data-i18n="faq_q3">Como funciona a contratação corporativa e faturamento?</span>
             <i class="bi bi-plus-lg gold-text"></i>
           </button>
           <div id="drvnFaq3" class="collapse">
-            <div class="drvn-faq-body">
+            <div class="drvn-faq-body" data-i18n="faq_a3">
               Atendemos sob demanda imediata bem como via contratos faturados para empresas (quinzenal ou mensal com emissão de NF-e através do CNPJ 69.880.706/0001-91 e SLA prioritário com atendimento dedicado).
             </div>
           </div>
@@ -761,11 +761,11 @@
 
         <div class="drvn-faq-item">
           <button class="drvn-faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq4">
-            <span>Vocês realizam a integração entre voo privado e transfer blindado?</span>
+            <span data-i18n="faq_q4">Vocês realizam a integração entre voo privado e transfer blindado?</span>
             <i class="bi bi-plus-lg gold-text"></i>
           </button>
           <div id="drvnFaq4" class="collapse">
-            <div class="drvn-faq-body">
+            <div class="drvn-faq-body" data-i18n="faq_a4">
               Sim. Nossa assessoria coordena a logística ponta a ponta: o veículo blindado posiciona-se no hangar executivo (FBO) ou pista autorizada, recebendo os passageiros assim que desembarcam da aeronave fretada ou helicóptero.
             </div>
           </div>
@@ -773,11 +773,11 @@
 
         <div class="drvn-faq-item">
           <button class="drvn-faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#drvnFaq5">
-            <span>Como é garantida a confidencialidade e sigilo das agendas?</span>
+            <span data-i18n="faq_q5">Como é garantida a confidencialidade e sigilo das agendas?</span>
             <i class="bi bi-plus-lg gold-text"></i>
           </button>
           <div id="drvnFaq5" class="collapse">
-            <div class="drvn-faq-body">
+            <div class="drvn-faq-body" data-i18n="faq_a5">
               Todos os prestadores e colaboradores assinam Acordos de Não Divulgação (NDA). Itinerários e dados de passageiros são protegidos em ambiente seguro garantindo a integridade estratégica de cada cliente.
             </div>
           </div>
@@ -786,7 +786,7 @@
         <div class="text-center mt-5">
           <a href="{{ url_for('reserva') }}" class="drvn-btn-gold px-4 py-3">
             <i class="bi bi-calendar-check"></i>
-            <span>Iniciar Solicitação de Reserva Sob Demanda</span>
+            <span data-i18n="faq_cta">Iniciar Solicitação de Reserva Sob Demanda</span>
           </a>
         </div>
 
