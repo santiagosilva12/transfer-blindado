@@ -362,7 +362,7 @@
     <!-- Navegação Rápida entre as Categorias (Sedan, SUV, Mini Van, Van, Ônibus) -->
     <div class="drvn-category-nav-wrapper d-flex flex-wrap justify-content-center gap-2 mb-5">
       {% for cat in categorias_terrestres %}
-      <a href="#cat-{{ cat.slug }}" class="drvn-category-nav-pill">
+      <a href="#cat-{{ cat.slug }}" class="drvn-category-nav-pill notranslate" translate="no">
         <i class="bi {{ cat.icone }}"></i>
         <span>{{ cat.nome }}</span>
       </a>
@@ -375,7 +375,7 @@
       
       <!-- Cabeçalho da Categoria / Galeria -->
       <div class="text-center mb-4">
-        <div class="drvn-gallery-badge-title">
+        <div class="drvn-gallery-badge-title notranslate" translate="no">
           <i class="bi {{ cat.icone }} text-gold me-2"></i>{{ cat.titulo_galeria }}
         </div>
         <p class="text-secondary small mt-2 mb-0">{{ cat.subtitulo_galeria }}</p>
@@ -411,7 +411,7 @@
                   <div class="col-lg-7">
                     <div class="ps-lg-2">
                       <div class="d-flex align-items-center justify-content-between mb-1">
-                        <h3 class="h4 fw-bold mb-0" style="color: #0f172a;">{{ m.nome }}</h3>
+                        <h3 class="h4 fw-bold mb-0 notranslate" translate="no" style="color: #0f172a;">{{ m.nome }}</h3>
                         <span class="badge bg-light text-dark border px-2 py-1 small font-monospace">
                           <i class="bi {{ m.tag_icone }} text-gold me-1"></i>{{ m.tag }}
                         </span>
@@ -471,7 +471,7 @@
                   <div class="drvn-thumb-img-wrapper">
                     <img src="{{ m.imagem }}?v=14" alt="{{ m.nome }}" class="drvn-thumb-img" loading="lazy">
                   </div>
-                  <div class="drvn-thumb-title fw-bold text-uppercase" style="color: #0f172a;">
+                  <div class="drvn-thumb-title fw-bold text-uppercase notranslate" translate="no" style="color: #0f172a;">
                     {{ m.nome }}
                   </div>
                 </div>

@@ -325,7 +325,7 @@ const TRANSLATIONS = {
     banner_cta: "Solicitar vehículo blindado",
 
     // Navbar
-    nav_home: "Inicio",
+    nav_home: "Home",
     nav_solutions: "Soluciones",
     nav_fleet: "Flota",
     nav_cities: "Capitales",
@@ -461,8 +461,8 @@ const TRANSLATIONS = {
     faq_a3: "Todos nuestros vehículos cuentan con blindaje balístico Nivel III-A certificado por el Ejército Brasileño, con cristales curvos de última generación y rigurosas inspecciones técnicas periódicas.",
 
     // Opciones de flota
-    fleet_opt_1: "Sedán de Lujo Blindado",
-    fleet_opt_2: "Sedán Ejecutivo Blindado",
+    fleet_opt_1: "Sedan de Lujo Blindado",
+    fleet_opt_2: "Sedan Ejecutivo Blindado",
     fleet_opt_3: "SUV Ejecutivo Blindado",
     fleet_opt_4: "Van Ejecutiva VIP",
     fleet_opt_5: "Mini Van VIP",

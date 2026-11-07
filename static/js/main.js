@@ -110,10 +110,10 @@ function initFleetCarousel() {
     const mainSwiper = new Swiper(`.fleet-main-swiper-${cat}`, {
       slidesPerView: 1,
       spaceBetween: 28,
-      speed: 550,
+      speed: 750,
       autoHeight: true,
       autoplay: {
-        delay: 3500,
+        delay: 5500,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
@@ -128,9 +128,9 @@ function initFleetCarousel() {
     mainSwiper.on("reachEnd", () => {
       setTimeout(() => {
         if (mainSwiper && !mainSwiper.destroyed && mainSwiper.isEnd) {
-          mainSwiper.slideTo(0, 600);
+          mainSwiper.slideTo(0, 750);
         }
-      }, 3500);
+      }, 5500);
     });
 
     // Sincroniza o seletor de miniaturas com o modelo ativo
