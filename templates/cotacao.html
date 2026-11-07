@@ -49,7 +49,7 @@
 
     <!-- Container Central do Formulário em Fundo Branco Puro e Limpo -->
     <div class="row justify-content-center">
-      <div class="col-lg-10 col-xl-9">
+      <div class="col-12 col-xl-11">
         
         <div class="drvn-quote-box p-4 p-md-5 rounded-4 shadow-sm" style="background: #ffffff; border: 1.5px solid #e2e8f0;">
           
@@ -62,9 +62,9 @@
                 <label class="form-label small fw-bold text-uppercase mb-2 d-flex align-items-center" style="color: #0f172a; letter-spacing: 0.05em;">
                   <i class="bi bi-grid-fill text-gold me-2"></i> <span data-i18n="modal_lbl_config">1. Escolha a Opção / Configuração Desejada</span>
                 </label>
-                <div class="row g-3 drvn-model-picker-grid">
+                <div class="drvn-model-picker-grid drvn-grid-{{ cat.modelos|length }}">
                   {% for m in cat.modelos %}
-                  <div class="col-sm-6 col-md-4">
+                  <div class="drvn-model-col">
                     <label class="drvn-model-radio-card w-100 h-100">
                       <input type="radio" name="page_model_{{ cat.slug }}" value="{{ m.nome }}" data-model-id="{{ m.id }}" {% if (cat.slug == categoria_ativa and m.id == modelo_ativo) or (cat.slug == categoria_ativa and not modelo_ativo and loop.first) or (cat.slug != categoria_ativa and loop.first) %}checked{% endif %}>
                       <div class="drvn-model-card-inner">
