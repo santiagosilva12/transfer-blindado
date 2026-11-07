@@ -2658,26 +2658,85 @@ body {
 }
 
 /* ==========================================================================
-   Tela Dedicada de Cotação (/cotacao)
+   Tela Dedicada de Cotação (/cotacao) - Modo Claro Executivo
    ========================================================================== */
 .drvn-quote-cat-btn {
   background: transparent;
-  color: #94a3b8;
+  color: #475569;
   border: 1px solid transparent;
   transition: all 0.25s ease;
   font-size: 0.92rem;
 }
 
 .drvn-quote-cat-btn:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+  color: #0f172a;
+  background: #f1f5f9;
 }
 
 .drvn-quote-cat-btn.active {
   background: #d4af37 !important;
   color: #0f172a !important;
   border-color: #d4af37 !important;
-  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35) !important;
+}
+
+/* Toggle de Trajeto na Tela Clara */
+.drvn-page-trip-toggle {
+  background: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 4px;
+  max-width: 290px;
+}
+
+.drvn-page-trip-btn {
+  cursor: pointer;
+  margin: 0;
+  user-select: none;
+}
+
+.drvn-page-trip-btn input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drvn-page-trip-label {
+  display: block;
+  padding: 7px 16px;
+  border-radius: 7px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.drvn-page-trip-btn input[type="radio"]:checked + .drvn-page-trip-label {
+  background: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.2);
+}
+
+/* Inputs da Tela Clara */
+.drvn-page-input {
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  padding: 10px 14px;
+  transition: all 0.2s ease;
+}
+
+.drvn-page-input:focus {
+  background: #ffffff;
+  border-color: #d4af37;
+  color: #0f172a;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+.drvn-page-input::placeholder {
+  color: #94a3b8;
 }
 
 .drvn-car-title-link {

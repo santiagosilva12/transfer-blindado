@@ -4,37 +4,41 @@
 {% block meta_desc %}Solicite sua cotação personalizada para veículos blindados e executivos: Sedan, SUV, Van e Ônibus com atendimento imediato via WhatsApp.{% endblock %}
 
 {% block content %}
-<section class="drvn-quote-page-section py-5 position-relative" style="background: #080c16; min-height: 85vh;">
-  <!-- Efeito sutil de iluminação de fundo -->
-  <div class="position-absolute top-0 start-50 translate-middle-x" style="width: 80vw; height: 350px; background: radial-gradient(ellipse at top, rgba(212, 175, 55, 0.08) 0%, transparent 70%); pointer-events: none;"></div>
-
-  <div class="container-xl position-relative" style="z-index: 2;">
+<!-- Tela Toda com Fundo Claro Executivo de Alto Padrão -->
+<section class="drvn-quote-page-section py-5 position-relative" style="background: #f8fafc; min-height: 88vh; border-bottom: 1px solid #e2e8f0;">
+  
+  <div class="container-xl position-relative">
     
     <!-- Barra Superior de Navegação / Voltar -->
-    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-3 border-bottom border-secondary border-opacity-25">
-      <a href="{{ url_for('index') }}#frota" class="btn btn-outline-secondary btn-sm text-gold border-secondary border-opacity-50 rounded-pill px-3 d-inline-flex align-items-center gap-2">
-        <i class="bi bi-arrow-left"></i>
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-3 border-bottom border-light-theme">
+      <a href="{{ url_for('index') }}#frota" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 d-inline-flex align-items-center gap-2 fw-bold" style="background: #ffffff; border: 1.5px solid #cbd5e1; color: #0f172a;">
+        <i class="bi bi-arrow-left text-gold"></i>
         <span data-i18n="quote_back_fleet">Voltar para a Frota</span>
       </a>
 
       <div class="d-flex align-items-center gap-2">
-        <span class="badge border px-3 py-2 fw-semibold rounded-pill" style="background: rgba(212, 175, 55, 0.1); border-color: rgba(212, 175, 55, 0.35) !important; color: #d4af37 !important;">
-          <i class="bi bi-shield-check me-1"></i> <span data-i18n="modal_quote_tag">COTAÇÃO DIRETA & DISPONIBILIDADE</span>
+        <span class="badge px-3 py-2 fw-bold rounded-pill" style="background: #ffffff; border: 1.5px solid #cbd5e1; color: #0f172a; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+          <i class="bi bi-shield-check text-gold me-1"></i> <span data-i18n="modal_quote_tag">COTAÇÃO DIRETA & DISPONIBILIDADE</span>
         </span>
       </div>
     </div>
 
-    <!-- Cabeçalho Principal da Tela de Cotação -->
+    <!-- Cabeçalho Principal da Tela de Cotação em Fundo Claro -->
     <div class="text-center max-w-760 mx-auto mb-4">
-      <h1 class="drvn-section-title text-white mb-2">
+      <div class="heading-flavor-text justify-content-center mb-2">
+        <i class="bi bi-shield-check text-gold"></i>
+        <span data-i18n="modal_quote_tag">COTAÇÃO DIRETA & DISPONIBILIDADE</span>
+      </div>
+
+      <h1 class="drvn-section-title mb-2" style="color: #0f172a;">
         <span data-i18n="modal_title_prefix">Cotação para Categoria</span> <span class="text-gold" id="currentCatTitle">{{ cat_atual.nome }}</span>
       </h1>
-      <p class="text-secondary small mb-3" id="currentCatSubtitle" data-i18n="cat_sub_{{ cat_atual.slug }}">
+      <p class="lead fs-6 mx-auto mb-3" style="color: #475569; max-width: 650px;" id="currentCatSubtitle" data-i18n="cat_sub_{{ cat_atual.slug }}">
         {{ cat_atual.subtitulo_galeria }}
       </p>
 
-      <!-- Seletor de Categoria (Sedan, SUV, Van, Ônibus) em Pílulas -->
-      <div class="d-inline-flex flex-wrap justify-content-center gap-2 p-2 rounded-pill shadow-sm" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.12);">
+      <!-- Seletor de Categoria (Sedan, SUV, Van, Ônibus) em Pílulas com Fundo Claro -->
+      <div class="d-inline-flex flex-wrap justify-content-center gap-2 p-2 rounded-pill shadow-sm" style="background: #ffffff; border: 1.5px solid #cbd5e1;">
         {% for cat in categorias_terrestres %}
         <button type="button" class="drvn-quote-cat-btn btn rounded-pill px-3 px-md-4 py-2 fw-bold {% if cat.slug == categoria_ativa %}active{% endif %}" data-cat-slug="{{ cat.slug }}" data-cat-name="{{ cat.nome }}" data-cat-sub="{{ cat.subtitulo_galeria }}">
           <i class="bi {{ cat.icone }} me-1"></i> <span data-i18n="cat_nav_{{ cat.slug }}">{{ cat.nome }}</span>
@@ -43,20 +47,20 @@
       </div>
     </div>
 
-    <!-- Container Central do Formulário (Visual Idêntico ao Card Aprovado) -->
+    <!-- Container Central do Formulário em Fundo Branco Puro e Limpo -->
     <div class="row justify-content-center">
       <div class="col-lg-10 col-xl-9">
         
-        <div class="drvn-quote-box p-4 p-md-5 rounded-4" style="background: linear-gradient(155deg, #0f172a 0%, #070b14 100%); border: 1.5px solid rgba(212, 175, 55, 0.38); box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.12);">
+        <div class="drvn-quote-box p-4 p-md-5 rounded-4 shadow-sm" style="background: #ffffff; border: 1.5px solid #e2e8f0;">
           
           {% for cat in categorias_terrestres %}
           <div class="drvn-category-form-panel {% if cat.slug != categoria_ativa %}d-none{% endif %}" id="panel-cat-{{ cat.slug }}" data-category="{{ cat.slug }}">
             <form class="fleet-page-quotation-form" data-category="{{ cat.slug }}">
               
-              <!-- 1. ESCOLHA A OPÇÃO / CONFIGURAÇÃO DESEJADA (Cards Visuais com Imagens e Tags) -->
+              <!-- 1. ESCOLHA A OPÇÃO / CONFIGURAÇÃO DESEJADA -->
               <div class="mb-4">
-                <label class="form-label text-gold small fw-bold text-uppercase mb-2 d-flex align-items-center">
-                  <i class="bi bi-grid-fill me-1"></i> <span data-i18n="modal_lbl_config">1. Escolha a Opção / Configuração Desejada</span>
+                <label class="form-label small fw-bold text-uppercase mb-2 d-flex align-items-center" style="color: #0f172a; letter-spacing: 0.05em;">
+                  <i class="bi bi-grid-fill text-gold me-2"></i> <span data-i18n="modal_lbl_config">1. Escolha a Opção / Configuração Desejada</span>
                 </label>
                 <div class="row g-3 drvn-model-picker-grid">
                   {% for m in cat.modelos %}
@@ -66,15 +70,15 @@
                       <div class="drvn-model-card-inner">
                         <div class="d-flex align-items-center justify-content-between mb-1">
                           <span class="badge drvn-model-badge">
-                            <i class="bi {{ m.tag_icone }} me-1"></i><span data-i18n="model_tag_{{ m.id }}">{{ m.tag }}</span>
+                            <i class="bi {{ m.tag_icone }} text-gold me-1"></i><span data-i18n="model_tag_{{ m.id }}">{{ m.tag }}</span>
                           </span>
                           <i class="bi bi-check-circle-fill drvn-check-indicator"></i>
                         </div>
                         <div class="drvn-model-radio-img-box text-center my-2">
-                          <img src="{{ m.imagem }}?v=17" alt="{{ m.nome }}" class="img-fluid" style="max-height: 60px; object-fit: contain;">
+                          <img src="{{ m.imagem }}?v=17" alt="{{ m.nome }}" class="img-fluid" style="max-height: 62px; object-fit: contain;">
                         </div>
                         <div class="drvn-model-card-title fw-bold" data-i18n="model_name_{{ m.id }}">{{ m.nome }}</div>
-                        <div class="drvn-model-card-sub small text-muted mt-1" data-i18n="model_cap_{{ m.id }}">{{ m.capacidade }}</div>
+                        <div class="drvn-model-card-sub small mt-1" data-i18n="model_cap_{{ m.id }}">{{ m.capacidade }}</div>
                       </div>
                     </label>
                   </div>
@@ -84,61 +88,61 @@
 
               <!-- 2. TIPO DE TRAJETO (Só Ida / Ida e Volta) -->
               <div class="mb-4">
-                <label class="form-label text-white small fw-bold mb-2 d-flex align-items-center">
-                  <i class="bi bi-arrow-left-right text-gold me-1"></i> <span data-i18n="modal_lbl_trip_type">2. Tipo de Trajeto</span>
+                <label class="form-label small fw-bold text-uppercase mb-2 d-flex align-items-center" style="color: #0f172a; letter-spacing: 0.05em;">
+                  <i class="bi bi-arrow-left-right text-gold me-2"></i> <span data-i18n="modal_lbl_trip_type">2. Tipo de Trajeto</span>
                 </label>
-                <div class="drvn-modal-trip-toggle d-flex">
-                  <label class="drvn-modal-trip-btn flex-grow-1 text-center">
+                <div class="drvn-page-trip-toggle d-flex">
+                  <label class="drvn-page-trip-btn flex-grow-1 text-center">
                     <input type="radio" name="page_trip_{{ cat.slug }}" value="Só Ida" checked>
-                    <span class="drvn-modal-trip-label" data-i18n="trip_one_way">Só Ida</span>
+                    <span class="drvn-page-trip-label" data-i18n="trip_one_way">Só Ida</span>
                   </label>
-                  <label class="drvn-modal-trip-btn flex-grow-1 text-center">
+                  <label class="drvn-page-trip-btn flex-grow-1 text-center">
                     <input type="radio" name="page_trip_{{ cat.slug }}" value="Ida e Volta">
-                    <span class="drvn-modal-trip-label" data-i18n="trip_round_trip">Ida e Volta</span>
+                    <span class="drvn-page-trip-label" data-i18n="trip_round_trip">Ida e Volta</span>
                   </label>
                 </div>
               </div>
 
               <!-- 3. INFORMAÇÕES DO TRANSLADO -->
               <div class="mb-3">
-                <label class="form-label text-gold small fw-bold text-uppercase mb-2 d-flex align-items-center">
-                  <i class="bi bi-geo-alt-fill me-1"></i> <span data-i18n="modal_lbl_client_data">3. Informações do Translado</span>
+                <label class="form-label small fw-bold text-uppercase mb-2 d-flex align-items-center" style="color: #0f172a; letter-spacing: 0.05em;">
+                  <i class="bi bi-geo-alt-fill text-gold me-2"></i> <span data-i18n="modal_lbl_client_data">3. Informações do Translado</span>
                 </label>
               </div>
 
               <div class="row g-3 mb-4">
                 <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_name">Nome / Responsável *</label>
-                  <input type="text" name="page_nome" class="form-control drvn-modal-input" placeholder="Seu nome ou da empresa" required data-i18n-ph="ph_name">
+                  <label class="form-label fw-semibold small mb-1" style="color: #334155;" data-i18n="lbl_name">Nome / Responsável *</label>
+                  <input type="text" name="page_nome" class="form-control drvn-page-input" placeholder="Seu nome ou da empresa" required data-i18n-ph="ph_name">
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_phone">WhatsApp / Telefone *</label>
-                  <input type="tel" name="page_whatsapp" class="form-control drvn-modal-input" placeholder="(11) 99999-9999" required data-i18n-ph="ph_phone">
+                  <label class="form-label fw-semibold small mb-1" style="color: #334155;" data-i18n="lbl_phone">WhatsApp / Telefone *</label>
+                  <input type="tel" name="page_whatsapp" class="form-control drvn-page-input" placeholder="(11) 99999-9999" required data-i18n-ph="ph_phone">
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_origin">Local de Saída / Origem *</label>
-                  <input type="text" name="page_origem" class="form-control drvn-modal-input" placeholder="Aeroporto, hotel ou endereço" required data-i18n-ph="ph_origin">
+                  <label class="form-label fw-semibold small mb-1" style="color: #334155;" data-i18n="lbl_origin">Local de Saída / Origem *</label>
+                  <input type="text" name="page_origem" class="form-control drvn-page-input" placeholder="Aeroporto, hotel ou endereço" required data-i18n-ph="ph_origin">
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_destination">Destino *</label>
-                  <input type="text" name="page_destino" class="form-control drvn-modal-input" placeholder="Endereço final ou cidade" required data-i18n-ph="ph_destination">
+                  <label class="form-label fw-semibold small mb-1" style="color: #334155;" data-i18n="lbl_destination">Destino *</label>
+                  <input type="text" name="page_destino" class="form-control drvn-page-input" placeholder="Endereço final ou cidade" required data-i18n-ph="ph_destination">
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_date">Data do Translado *</label>
-                  <input type="date" name="page_data" class="form-control drvn-modal-input" required>
+                  <label class="form-label fw-semibold small mb-1" style="color: #334155;" data-i18n="lbl_date">Data do Translado *</label>
+                  <input type="date" name="page_data" class="form-control drvn-page-input" required>
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_time">Horário Estimado</label>
-                  <input type="time" name="page_horario" class="form-control drvn-modal-input">
+                  <label class="form-label fw-semibold small mb-1" style="color: #334155;" data-i18n="lbl_time">Horário Estimado</label>
+                  <input type="time" name="page_horario" class="form-control drvn-page-input">
                 </div>
                 <div class="col-12">
-                  <label class="form-label text-secondary small mb-1" data-i18n="lbl_notes">Observações ou Necessidades Especiais (Opcional)</label>
-                  <textarea name="page_obs" rows="3" class="form-control drvn-modal-input" placeholder="Ex: Voo, quantidade de bagagens, itinerário corporativo..." data-i18n-ph="ph_notes"></textarea>
+                  <label class="form-label fw-semibold small mb-1" style="color: #334155;" data-i18n="lbl_notes">Observações ou Necessidades Especiais (Opcional)</label>
+                  <textarea name="page_obs" rows="3" class="form-control drvn-page-input" placeholder="Ex: Voo, quantidade de bagagens, itinerário corporativo..." data-i18n-ph="ph_notes"></textarea>
                 </div>
               </div>
 
               <!-- Rodapé com Botão de Envio WhatsApp -->
-              <div class="pt-4 border-top border-secondary border-opacity-25 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
+              <div class="pt-4 border-top border-light-theme d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3">
                 <div class="text-secondary small d-flex align-items-center">
                   <i class="bi bi-shield-lock-fill text-gold me-2 fs-5 flex-shrink-0"></i>
                   <span data-i18n="modal_security_notice">Atendimento 100% confidencial com resposta em até 15 minutos.</span>
@@ -160,4 +164,3 @@
   </div>
 </section>
 {% endblock %}
-
