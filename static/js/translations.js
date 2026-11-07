@@ -36,6 +36,8 @@ const TRANSLATIONS = {
     // Formulário Cotação
     form_title: "Cotação",
     form_detailed: "Demanda detalhada",
+    trip_one_way: "Só Ida",
+    trip_round_trip: "Ida e Volta",
     lbl_name: "Nome / Responsável",
     lbl_phone: "WhatsApp / Telefone",
     lbl_origin: "Local de Saída / Origem",
@@ -191,6 +193,8 @@ const TRANSLATIONS = {
     // Quote Form
     form_title: "Quote",
     form_detailed: "Detailed request",
+    trip_one_way: "One Way",
+    trip_round_trip: "Round Trip",
     lbl_name: "Full Name / Officer",
     lbl_phone: "WhatsApp / Phone",
     lbl_origin: "Pick-up Location / Origin",
@@ -346,6 +350,8 @@ const TRANSLATIONS = {
     // Formulario Cotización
     form_title: "Cotización",
     form_detailed: "Demanda detallada",
+    trip_one_way: "Solo Ida",
+    trip_round_trip: "Ida y Vuelta",
     lbl_name: "Nombre / Responsable",
     lbl_phone: "WhatsApp / Teléfono",
     lbl_origin: "Lugar de Salida / Origen",

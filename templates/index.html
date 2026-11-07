@@ -82,6 +82,19 @@
           <form id="heroQuickForm" novalidate>
             <div class="hero-vertical-fields">
               
+              <!-- Opção de Trajeto: Só Ida ou Ida e Volta -->
+              <div class="hero-trip-type-toggle" role="group" aria-label="Tipo de trajeto">
+                <input type="radio" class="btn-check" name="hero_tipo_viagem" id="trip_so_ida" value="Só Ida" checked>
+                <label class="hero-trip-pill" for="trip_so_ida">
+                  <i class="bi bi-arrow-right"></i> <span data-i18n="trip_one_way">Só Ida</span>
+                </label>
+                
+                <input type="radio" class="btn-check" name="hero_tipo_viagem" id="trip_ida_volta" value="Ida e Volta">
+                <label class="hero-trip-pill" for="trip_ida_volta">
+                  <i class="bi bi-arrow-left-right"></i> <span data-i18n="trip_round_trip">Ida e Volta</span>
+                </label>
+              </div>
+
               <!-- 1. Nome / Responsável -->
               <div class="hero-form-group">
                 <input type="text" class="form-control" id="hero_nome" name="hero_nome" placeholder="Nome / Responsável" data-i18n-ph="ph_name" required>

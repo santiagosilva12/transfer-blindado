@@ -7,7 +7,7 @@
   <title>{% block title %}TRANSFER BLINDADO | Ground Travel &amp; Aviation Platform{% endblock %}</title>
   <meta name="description" content="{% block meta_desc %}Plataforma corporativa de transporte executivo blindado Nível III-A e aviação executiva nas principais capitais do Brasil.{% endblock %}">
   
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo-clean.png') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo-oficial.png') }}">
 
   <!-- Google Fonts: Plus Jakarta Sans + Playfair Display (Luxury Editorial Serif) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <!-- Custom Stylesheet (drvn Inspired) -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=69">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=70">
   {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -32,10 +32,9 @@
   <!-- Navbar (drvn style) -->
   <nav class="navbar navbar-expand-lg sticky-top drvn-navbar" id="mainNavbar">
     <div class="container-xl">
-      <!-- À esquerda: Marca Tipográfica Empilhada (Estilo Mockup) -->
-      <a class="navbar-brand drvn-brand-text" href="{{ url_for('index') }}" aria-label="Transfer Blindado - Home">
-        <span class="brand-line-top">TRANSFER</span>
-        <span class="brand-line-bottom">BLINDADO</span>
+      <!-- À esquerda: Logotipo Oficial da Empresa -->
+      <a class="navbar-brand drvn-navbar-brand-logo py-0" href="{{ url_for('index') }}" aria-label="Transfer Blindado - Home">
+        <img src="{{ url_for('static', filename='images/logo-oficial.png') }}?v=1" alt="Transfer Blindado" class="drvn-nav-logo-img">
       </a>
 
       <!-- Mobile Hamburger Toggle -->
@@ -143,7 +142,7 @@
         <!-- Logo & Identidade -->
         <div class="col-lg-5 col-md-6">
           <a href="{{ url_for('index') }}" class="d-inline-block mb-3">
-            <img src="{{ url_for('static', filename='images/logo-silver-horizontal.png') }}?v=7" alt="Transfer Blindado" class="drvn-footer-logo" height="64">
+            <img src="{{ url_for('static', filename='images/logo-oficial.png') }}?v=1" alt="Transfer Blindado" class="drvn-footer-logo" height="58">
           </a>
           <p class="text-secondary" style="font-size: 0.92rem; line-height: 1.7; max-width: 380px;">
             Plataforma corporativa de mobilidade executiva blindada e aviação privada. Prontidão absoluta e conformidade total com os mais rigorosos protocolos de proteção patrimonial e pessoal.
@@ -208,8 +207,8 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}?v=25"></script>
-  <script src="{{ url_for('static', filename='js/translations.js') }}?v=69"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}?v=26"></script>
+  <script src="{{ url_for('static', filename='js/translations.js') }}?v=70"></script>
 
   <!-- Headless Google Translate Bridge (tradução profunda de parágrafos e termos) -->
   <div id="google_translate_element" style="display:none; position:absolute; left:-9999px;"></div>

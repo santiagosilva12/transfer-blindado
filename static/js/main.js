@@ -287,6 +287,7 @@ function initHeroQuickForm() {
     const origem = document.getElementById("hero_origem")?.value.trim() || "";
     const destino = document.getElementById("hero_destino")?.value.trim() || "";
     const dataRaw = document.getElementById("hero_data")?.value || "";
+    const tipoViagem = form.querySelector('input[name="hero_tipo_viagem"]:checked')?.value || "Só Ida";
 
     if (!nome || !telefone) {
       alert("Por favor, preencha os campos obrigatórios (Nome e Telefone/WhatsApp).");
@@ -307,6 +308,7 @@ function initHeroQuickForm() {
     const linhas = [];
     linhas.push("🛡️ *COTAÇÃO RÁPIDA - TRANSFER BLINDADO*");
     linhas.push("──────────────────────────");
+    linhas.push(`🔄 *Tipo de Trajeto:* ${tipoViagem}`);
     linhas.push(`👤 *Responsável:* ${nome}`);
     linhas.push(`📱 *Telefone / WhatsApp:* ${telefone}`);
     linhas.push(`🚘 *Frota Desejada:* ${servico}`);
