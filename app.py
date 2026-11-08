@@ -160,6 +160,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-award-fill",
                 "destaques": ["Acabamento em Couro Nobre", "Blindagem Ultra-Lightweight", "Serviço de Bordo Executivo", "Máxima Discrição e Sigilo"],
                 "imagem": "/static/images/fleet-sedan-sketch.png",
+                "imagem_real": "/static/images/real/real-sedan-mercedes.jpg",
                 "param_reserva": "Sedan de Luxo Blindado"
             },
             {
@@ -172,6 +173,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-shield-lock-fill",
                 "destaques": ["Blindagem Nível III-A Certificada", "Ar-condicionado Dual Zone", "Wi-Fi 5G & Água Premium", "Motorista Profissional"],
                 "imagem": "/static/images/fleet-sedan-corolla-sketch.png",
+                "imagem_real": "/static/images/real/real-sedan-corolla.jpg",
                 "param_reserva": "Sedan Executivo Blindado"
             },
             {
@@ -184,6 +186,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-car-front",
                 "destaques": ["Translados Corporativos Diários", "Ar-condicionado Digital", "Condução Confortável e Segura", "Excelente Custo-Benefício"],
                 "imagem": "/static/images/fleet-sedan-corolla-sketch.png",
+                "imagem_real": "/static/images/real/real-sedan-corolla.jpg",
                 "param_reserva": "Sedan Convencional"
             },
             {
@@ -196,6 +199,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-shield-check",
                 "destaques": ["Acesso a Faixas Exclusivas e Corredores", "Blindagem Nível III-A", "Agilidade no Trânsito Urbano", "Tarifa Padronizada"],
                 "imagem": "/static/images/fleet-sedan-taxi-sketch.png",
+                "imagem_real": "/static/images/real/real-sedan-taxi.jpg",
                 "param_reserva": "Táxi Blindado"
             },
             {
@@ -208,6 +212,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-clock-history",
                 "destaques": ["Circulação em Corredores de Ônibus", "Deslocamento Rápido em SP", "Disponibilidade Imediata"],
                 "imagem": "/static/images/fleet-sedan-taxi-sketch.png",
+                "imagem_real": "/static/images/real/real-sedan-taxi.jpg",
                 "param_reserva": "Táxi Convencional"
             }
         ]
@@ -231,6 +236,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-award-fill",
                 "destaques": ["Acabamento Ultra-Luxo", "Blindagem de Última Geração", "Sistema Multimídia Executivo", "Máximo Espaço e Conforto"],
                 "imagem": "/static/images/fleet-suv-escalade-sketch.png",
+                "imagem_real": "/static/images/real/real-suv-escalade.jpg",
                 "param_reserva": "SUV de Luxo Blindado"
             },
             {
@@ -243,6 +249,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-shield-fill-check",
                 "destaques": ["Tração Integral 4x4 Inteligente", "Blindagem Nível III-A Ultra-Lightweight", "Amplo Espaço para Comitivas", "Telemetria e Rastreamento"],
                 "imagem": "/static/images/fleet-suv-sketch.png",
+                "imagem_real": "/static/images/real/real-suv-sw4.jpg",
                 "param_reserva": "SUV Executivo Blindado"
             },
             {
@@ -255,6 +262,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-car-front",
                 "destaques": ["Capacidade para Famílias e Equipes", "Tração Confiável em Qualquer Terreno", "Conforto Rodoviário Superior"],
                 "imagem": "/static/images/fleet-suv-landrover-sketch.png",
+                "imagem_real": "/static/images/real/real-suv-landrover.jpg",
                 "param_reserva": "SUV Convencional"
             },
             {
@@ -267,6 +275,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-shield-check",
                 "destaques": ["Acesso a Corredores Expressos", "Blindagem Balística Nível III-A", "Conforto Elevado no Asfalto", "Tarifa Padronizada"],
                 "imagem": "/static/images/fleet-suv-taxi-sketch.png",
+                "imagem_real": "/static/images/real/real-suv-taxi.jpg",
                 "param_reserva": "Táxi SUV Blindado"
             },
             {
@@ -279,6 +288,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-clock-history",
                 "destaques": ["Acesso Rápido a Faixas e Corredores", "Conforto Elevado para Bagagens", "Disponibilidade Imediata"],
                 "imagem": "/static/images/fleet-suv-landrover-taxi-sketch.png",
+                "imagem_real": "/static/images/real/real-suv-taxi.jpg",
                 "param_reserva": "Táxi SUV Convencional"
             }
         ]
@@ -302,6 +312,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-shield-lock-fill",
                 "destaques": ["Blindagem Balística Nível III-A", "Vidros Blindados Curvos", "Comunicação Criptografada", "Espaço Amplo para Equipes"],
                 "imagem": "/static/images/fleet-van-sketch.png",
+                "imagem_real": "/static/images/real/real-van-sprinter.jpg",
                 "param_reserva": "Van Executiva Blindada"
             },
             {
@@ -314,6 +325,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-car-front",
                 "destaques": ["Ar-condicionado com Dutos Individuais", "Som Ambiente & Conectividade", "Logística Pontual para Grupos"],
                 "imagem": "/static/images/fleet-van-sketch.png",
+                "imagem_real": "/static/images/real/real-van-sprinter.jpg",
                 "param_reserva": "Van Corporativa"
             },
             {
@@ -326,6 +338,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-shield-lock-fill",
                 "destaques": ["Blindagem Balística Nível III-A", "Poltronas Reclináveis em Couro", "Wi-Fi 5G & Telas Individuais", "Isolamento Acústico Avançado"],
                 "imagem": "/static/images/fleet-minivan-sketch.png",
+                "imagem_real": "/static/images/real/real-minivan-classev.jpg",
                 "param_reserva": "Mini Van de Luxo Blindada"
             },
             {
@@ -338,6 +351,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-car-front",
                 "destaques": ["Portas Elétricas com Acesso Fácil", "Ar Climatizado Tri-Zone", "Conforto Rodoviário Superior", "Amplo Espaço de Bagagem"],
                 "imagem": "/static/images/fleet-minivan-sketch.png",
+                "imagem_real": "/static/images/real/real-minivan-classev.jpg",
                 "param_reserva": "Mini Van Executiva"
             }
         ]
@@ -361,6 +375,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-award-fill",
                 "destaques": ["Poltronas Reclináveis 180° Tipo Leito", "Wi-Fi a Bordo & Frigobar Completo", "Toalete Climatizado", "Coordenação de Rota 24/7"],
                 "imagem": "/static/images/fleet-bus-sketch.png",
+                "imagem_real": "/static/images/real/real-bus-paradiso.jpg",
                 "param_reserva": "Ônibus Leito Turismo"
             },
             {
@@ -373,6 +388,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-people-fill",
                 "destaques": ["Ar-condicionado Central Climatizado", "Monitores e Sistema de Áudio Integrado", "Bagageiro de Grande Porte para Cargas"],
                 "imagem": "/static/images/fleet-bus-sketch.png",
+                "imagem_real": "/static/images/real/real-bus-paradiso.jpg",
                 "param_reserva": "Ônibus Executivo"
             },
             {
@@ -385,6 +401,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-bus-front",
                 "destaques": ["Acesso Fácil a Centros Urbanos e Hotéis", "Bancos Reclináveis Soft Touch", "Suspensão Pneumática Confortável"],
                 "imagem": "/static/images/fleet-microbus-sketch.png",
+                "imagem_real": "/static/images/real/real-microbus-senior.jpg",
                 "param_reserva": "Micro-ônibus Executivo"
             },
             {
@@ -397,6 +414,7 @@ CATEGORIAS_TERRESTRES = [
                 "tag_icone": "bi-calendar-check",
                 "destaques": ["Coordenação Central de Tráfego e Pontualidade", "Motoristas Qualificados com Escala", "Frota Padronizada e Monitorada"],
                 "imagem": "/static/images/fleet-bus-sketch.png",
+                "imagem_real": "/static/images/real/real-bus-paradiso.jpg",
                 "param_reserva": "Ônibus Fretamento"
             }
         ]

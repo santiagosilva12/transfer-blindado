@@ -2578,7 +2578,7 @@ body {
   background: transparent !important;
   border: none !important;
   border-radius: 0;
-  height: 74px;
+  height: 86px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2588,7 +2588,7 @@ body {
 }
 
 .drvn-model-radio-img-box img {
-  max-height: 62px;
+  max-height: 78px;
   max-width: 96%;
   width: auto;
   height: auto;
