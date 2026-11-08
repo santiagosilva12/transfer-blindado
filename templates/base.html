@@ -3,11 +3,23 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>{% block title %}TRANSFER BLINDADO | Ground Travel &amp; Aviation Platform{% endblock %}</title>
   <meta name="description" content="{% block meta_desc %}Plataforma corporativa de transporte executivo blindado Nível III-A e aviação executiva nas principais capitais do Brasil.{% endblock %}">
-  
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo-oficial.png') }}">
+
+  <!-- PWA & Mobile Web App Meta Tags -->
+  <meta name="theme-color" content="#12151c">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Transfer Blindado">
+  <meta name="application-name" content="Transfer Blindado">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" sizes="64x64" href="{{ url_for('static', filename='images/pwa/favicon-64.png') }}">
+  <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='images/pwa/icon-192.png') }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/pwa/apple-touch-icon.png') }}">
 
   <!-- Google Fonts: Plus Jakarta Sans + Playfair Display (Luxury Editorial Serif) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +36,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <!-- Custom Stylesheet (drvn Inspired) -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=78">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=80">
   {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -79,7 +91,7 @@
         </ul>
 
         <!-- À direita: Seletor PT | EN | ES + Botão FALE CONOSCO + Lupa -->
-        <div class="d-flex align-items-center gap-3 gap-xl-4 mt-3 mt-lg-0">
+        <div class="drvn-navbar-actions d-flex flex-wrap flex-lg-nowrap align-items-center justify-content-between justify-content-lg-end gap-2 gap-xl-3 mt-3 mt-lg-0 pt-3 pt-lg-0">
           
           <!-- Seletor de Idiomas (Bandeiras: Brasil para PT, EUA para EN, Espanha para ES) -->
           <div class="drvn-lang-switcher" role="group" aria-label="Selecione o idioma / Select language">
@@ -207,7 +219,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}?v=29"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}?v=31"></script>
   <script src="{{ url_for('static', filename='js/translations.js') }}?v=74"></script>
 
   <!-- Headless Google Translate Bridge (tradução profunda de parágrafos e termos) -->

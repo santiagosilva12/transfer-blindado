@@ -23,6 +23,13 @@ def build_static_site():
     shutil.copytree(static_src, static_dest)
     print("[OK] Pasta static copiada com sucesso.")
 
+    # Copiar manifest.json e sw.js para a raiz do dist/ (suporte nativo PWA)
+    for pwa_file in ("manifest.json", "sw.js"):
+        src_pwa = os.path.join(static_src, pwa_file)
+        if os.path.exists(src_pwa):
+            shutil.copy2(src_pwa, os.path.join(DIST_DIR, pwa_file))
+    print("[OK] Arquivos PWA (manifest.json e sw.js) copiados para a raiz de dist/.")
+
     # Renderizar index.html e reserva.html dentro do contexto do app Flask
     with app.test_request_context():
         # 1. index.html
@@ -61,7 +68,9 @@ def build_static_site():
         print("[OK] cotacao.html renderizado em dist/cotacao.html")
 
     # 4. Criar arquivo de regras de redirecionamento do Netlify (_redirects)
-    redirects_content = """/cotacao    /cotacao.html    200
+    redirects_content = """/manifest.json /manifest.json 200
+/sw.js      /sw.js           200
+/cotacao    /cotacao.html    200
 /reserva    /reserva.html    200
 /frota      /#frota          301
 /servicos   /#servicos       301

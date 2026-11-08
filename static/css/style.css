@@ -2826,3 +2826,430 @@ body {
 .btn-whatsapp i {
   color: #ffffff !important;
 }
+
+/* ==========================================================================
+   11. PWA & RESPONSIVIDADE MULTI-DISPOSITIVO COMPLETA
+   (Notebooks 13"/14"/15.6"/16", Tablets Retrato/Paisagem e Celulares)
+   ========================================================================== */
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Suporte a Safe Areas (iPhone Notch / Dynamic Island / PWA Standalone) */
+@supports (padding: max(0px)) {
+  .drvn-navbar {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+  .drvn-footer {
+    padding-bottom: max(2.5rem, calc(1.5rem + env(safe-area-inset-bottom)));
+  }
+  .floating-whatsapp-container {
+    bottom: max(78px, calc(64px + env(safe-area-inset-bottom)));
+    right: max(18px, calc(14px + env(safe-area-inset-right)));
+  }
+}
+
+@media (display-mode: standalone) {
+  .drvn-navbar {
+    padding-top: max(0.85rem, env(safe-area-inset-top));
+  }
+}
+
+/* Dispositivos Touch (Tablets e Celulares): exibir pill "Clique para Cotar" sem depender de mouse hover */
+@media (hover: none), (pointer: coarse) {
+  .drvn-click-hint-pill {
+    opacity: 0.94;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   A. NOTEBOOKS DE DIVERSOS MODELOS (13", 14", 15.6" HD/FHD com escala 100%-125%)
+   Larguras entre 992px e 1440px e alturas compactas (<= 840px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 992px) and (max-width: 1399.98px) {
+  /* Navbar enxuta para caber perfeitamente em 1 linha em notebooks 1280px e 1366px */
+  .drvn-navbar-brand-logo {
+    margin-right: 0.65rem;
+  }
+  .drvn-nav-logo-img {
+    height: 38px;
+    max-width: 195px;
+  }
+  .drvn-nav-link {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.6rem !important;
+  }
+  .drvn-lang-switcher {
+    padding: 0.18rem 0.45rem;
+    gap: 0.25rem;
+  }
+  .drvn-lang-btn {
+    font-size: 0.74rem;
+    padding: 0.1rem 0.22rem;
+  }
+  .drvn-btn-gold {
+    font-size: 0.76rem;
+    padding: 0.52rem 1.05rem;
+    white-space: nowrap;
+  }
+
+  /* Hero adaptado para telas de notebook (1280x720, 1366x768, 1440x900) */
+  .golden-hero-grid {
+    grid-template-columns: minmax(340px, 430px) 320px;
+    gap: 1.5rem;
+  }
+  .hero-main-title {
+    font-size: clamp(2.45rem, 3.2vw, 3.05rem);
+    margin-bottom: 1.2rem;
+  }
+  .hero-features-list {
+    gap: 0.8rem;
+    margin-bottom: 1.35rem;
+  }
+  .hero-center-escalade {
+    left: 52%;
+    width: 58vw;
+    max-width: 740px;
+    min-width: 440px;
+  }
+  .drvn-hero-bottom-badges {
+    margin: 1.75rem auto 0.9rem;
+  }
+
+  /* Grid de 5 veículos na tela de cotação em notebooks 1024px-1366px */
+  .drvn-model-picker-grid.drvn-grid-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 0.65rem !important;
+  }
+  .drvn-model-card-inner {
+    padding: 8px 9px;
+  }
+  .drvn-model-card-title {
+    font-size: 0.8rem;
+  }
+  .drvn-model-card-sub {
+    font-size: 0.69rem;
+  }
+}
+
+/* Ajuste fino para notebooks com altura de tela reduzida (ex: 1366x768 ou 1536x864) */
+@media (min-width: 992px) and (max-height: 820px) {
+  .drvn-navbar {
+    padding: 0.75rem 0;
+  }
+  .drvn-hero {
+    padding-top: 0.75rem;
+  }
+  .hero-main-title {
+    font-size: clamp(2.35rem, 3vw, 2.85rem);
+    margin-bottom: 1rem;
+  }
+  .hero-features-list {
+    gap: 0.65rem;
+    margin-bottom: 1.15rem;
+  }
+  .hero-booking-bar.hero-booking-vertical-card {
+    padding: 1rem 1.15rem;
+  }
+  .hero-form-group .form-control,
+  .hero-form-group .form-select {
+    height: 34px;
+    font-size: 0.79rem;
+  }
+  .hero-booking-btn {
+    height: 38px;
+  }
+  .drvn-hero-bottom-badges {
+    margin: 1.15rem auto 0.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B. TABLETS & MENU RETRÁTIL (iPad Mini, iPad Air/Pro, Tablets Android <= 991.98px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  /* Menu colapsável com visual executivo organizado */
+  .drvn-navbar .navbar-collapse {
+    background: rgba(14, 15, 19, 0.98);
+    border: 1px solid rgba(200, 171, 115, 0.22);
+    border-radius: 16px;
+    padding: 1rem 1.25rem;
+    margin-top: 0.75rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
+  }
+  .drvn-navbar .navbar-nav {
+    gap: 0.25rem !important;
+  }
+  .drvn-nav-link {
+    width: 100%;
+    padding: 0.6rem 0.75rem !important;
+    border-radius: 8px;
+    font-size: 0.96rem;
+  }
+  .drvn-nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .drvn-navbar-actions {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+  }
+
+  /* Hero centralizado e equilibrado em Tablets e Celulares */
+  .drvn-hero {
+    min-height: auto;
+    padding-top: 1.5rem;
+  }
+  .golden-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    text-align: left;
+  }
+  .golden-hero-main {
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .hero-features-list {
+    max-width: 100%;
+  }
+  .hero-center-escalade {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 540px;
+    min-width: 0;
+    margin: -0.5rem auto;
+    opacity: 0.92;
+  }
+  .hero-center-escalade img {
+    filter: blur(1.5px) contrast(1.04) brightness(0.92);
+  }
+  /* Centralizar card de cotação no tablet/celular (em vez de margin-left: auto) */
+  .hero-booking-bar.hero-booking-vertical-card {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 1.35rem 1.4rem;
+  }
+  .drvn-hero-bottom-badges {
+    margin: 2rem auto 1.25rem;
+    flex-wrap: wrap;
+    white-space: normal;
+    justify-content: center;
+  }
+
+  /* Seções com espaçamento proporcional em Tablets */
+  .drvn-mission-section,
+  .drvn-fleet-section,
+  .drvn-services-section,
+  .drvn-markets-section,
+  #faq {
+    padding: 4.25rem 0;
+  }
+
+  /* Grid de veículos na tela de cotação em Tablets (768px-991px) */
+  .drvn-model-picker-grid.drvn-grid-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+  }
+  .drvn-model-picker-grid.drvn-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   C. CELULARES E TELAS COMPACTAS (<= 767.98px e <= 575.98px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  /* Evitar auto-zoom forçado do iOS Safari ao focar em campos de formulário */
+  input.form-control,
+  select.form-select,
+  textarea.form-control,
+  .drvn-page-input {
+    font-size: 16px !important;
+  }
+  .hero-form-group .form-control,
+  .hero-form-group .form-select {
+    height: 42px;
+    font-size: 16px !important;
+  }
+
+  /* Tipografia fluida para títulos e subtítulos */
+  .heading-flavor-text {
+    font-size: 0.74rem;
+    line-height: 1.4;
+    white-space: normal;
+  }
+  .hero-main-title {
+    font-size: clamp(2rem, 7vw, 2.55rem);
+    margin-bottom: 1.25rem;
+  }
+  .drvn-section-title {
+    font-size: clamp(1.75rem, 5.5vw, 2.2rem);
+    margin-bottom: 1rem;
+  }
+  .drvn-lead-text {
+    font-size: 0.98rem;
+  }
+
+  /* Cards de Missão, Visão, Valores e Serviços mais enxutos no mobile */
+  .drvn-pillar-card,
+  .drvn-service-card {
+    padding: 1.5rem 1.35rem;
+  }
+  .drvn-value-card {
+    padding: 1.4rem 1.25rem;
+  }
+  .drvn-pillar-headline {
+    font-size: 1.18rem;
+  }
+  .drvn-pillar-quote {
+    font-size: 1.04rem;
+    padding-left: 1rem;
+  }
+
+  /* Frota Terrestre e Aérea no celular */
+  .drvn-gallery-badge-title {
+    padding: 0.45rem 1.1rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 100%;
+  }
+  .drvn-fleet-image-box {
+    height: 165px;
+  }
+  .drvn-fleet-car-img {
+    max-height: 150px;
+  }
+  .drvn-fleet-photo-box {
+    height: 200px;
+  }
+  .drvn-fleet-nav-btn {
+    top: 26%;
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+  .capital-card {
+    height: 360px;
+  }
+  .capital-card .capital-title {
+    font-size: 1.4rem;
+  }
+
+  /* FAQ no celular */
+  .drvn-faq-button {
+    font-size: 0.96rem;
+    padding: 1.15rem 1.2rem;
+    gap: 0.75rem;
+  }
+  .drvn-faq-body {
+    padding: 1.15rem 1.2rem;
+    font-size: 0.92rem;
+  }
+
+  /* Tela de Cotação (/cotacao) no celular */
+  .drvn-quote-cat-bar {
+    border-radius: 16px !important;
+    width: 100%;
+  }
+  .drvn-quote-cat-btn {
+    flex: 1 1 calc(50% - 0.5rem);
+    font-size: 0.84rem;
+    padding: 0.5rem 0.75rem !important;
+    text-align: center;
+  }
+  .drvn-page-trip-toggle {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* 2 colunas de veículos lado a lado em celulares padrão (380px-767px) para facilitar comparação */
+  .drvn-model-picker-grid.drvn-grid-4,
+  .drvn-model-picker-grid.drvn-grid-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.65rem !important;
+  }
+  .drvn-model-radio-img-box {
+    height: 60px;
+  }
+  .drvn-model-radio-img-box img {
+    max-height: 52px;
+  }
+  .drvn-model-card-title {
+    font-size: 0.82rem;
+  }
+  .drvn-model-card-sub {
+    font-size: 0.7rem;
+  }
+
+  /* Rodapé e Botão Flutuante WhatsApp no celular */
+  .drvn-footer {
+    padding: 3.5rem 0 2rem;
+  }
+  .floating-whatsapp {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    font-size: 1.65rem;
+  }
+  .floating-whatsapp-bubble {
+    font-size: 0.76rem;
+    padding: 0.4rem 0.9rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .drvn-nav-logo-img {
+    height: 36px;
+    max-width: 185px;
+  }
+  .drvn-navbar-actions {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+  }
+  .drvn-lang-switcher {
+    justify-content: center;
+    padding: 0.35rem 0.75rem;
+  }
+  .drvn-navbar-actions .drvn-btn-gold {
+    width: 100%;
+    justify-content: center;
+  }
+  .drvn-category-nav-wrapper {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    padding-bottom: 0.6rem;
+  }
+  .drvn-category-nav-pill {
+    flex-shrink: 0;
+    padding: 0.5rem 1.05rem;
+    font-size: 0.84rem;
+  }
+  .reservation-card-white {
+    padding: 1.5rem 1.15rem;
+  }
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Telas ultra-compactas (<= 370px, ex: iPhone SE / Galaxy Mini) */
+@media (max-width: 370px) {
+  .drvn-model-picker-grid.drvn-grid-4,
+  .drvn-model-picker-grid.drvn-grid-5 {
+    grid-template-columns: 1fr !important;
+  }
+  .floating-whatsapp-bubble {
+    display: none;
+  }
+}

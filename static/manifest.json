@@ -1,0 +1,64 @@
+{
+  "name": "Transfer Blindado | Mobilidade Executiva & Aviação",
+  "short_name": "Transfer Blindado",
+  "description": "Plataforma corporativa de transporte executivo blindado Nível III-A e aviação executiva nas principais capitais do Brasil.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#12151c",
+  "theme_color": "#12151c",
+  "categories": ["business", "travel", "transportation"],
+  "icons": [
+    {
+      "src": "/static/images/pwa/favicon-64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/images/pwa/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/images/pwa/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/images/pwa/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/images/pwa/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cotação Rápida de Frota",
+      "short_name": "Cotação",
+      "description": "Solicite cotação imediata para Sedan, SUV, Van ou Ônibus",
+      "url": "/cotacao",
+      "icons": [{ "src": "/static/images/pwa/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Reserva Sob Demanda",
+      "short_name": "Reserva",
+      "description": "Formulário corporativo completo para reservas e aviação",
+      "url": "/reserva",
+      "icons": [{ "src": "/static/images/pwa/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
+

@@ -413,7 +413,7 @@
                   <!-- Informações e Especificações -->
                   <div class="col-lg-7">
                     <div class="ps-lg-2">
-                      <div class="d-flex align-items-center justify-content-between mb-1">
+                      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-1">
                         <a href="{{ url_for('cotacao') }}?categoria={{ cat.slug }}&modelo={{ m.id }}" target="_blank" class="h4 fw-bold mb-0 text-decoration-none d-block drvn-car-title-link" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">{{ m.nome }}</a>
                         <span class="badge bg-light text-dark border px-2 py-1 small font-monospace">
                           <i class="bi {{ m.tag_icone }} text-gold me-1"></i><span data-i18n="model_tag_{{ m.id }}">{{ m.tag }}</span>
@@ -434,7 +434,7 @@
                       </div>
 
                       <!-- Ação de Reserva Direto em Nova Tela de Cotação da Categoria -->
-                      <div class="d-flex justify-content-between align-items-center pt-2 border-top border-secondary border-opacity-10">
+                      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-2 border-top border-secondary border-opacity-10">
                         <span class="text-secondary small">
                           <i class="bi bi-geo-alt text-gold me-1"></i> <span data-i18n="fleet_avail_cities">Disponível em Todo o Brasil</span>
                         </span>
@@ -518,7 +518,7 @@
               <!-- Especificações em Pills (Apenas Destaques, sem capacidade de passageiros) -->
               <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
                 {% for d in f.destaques %}
-                <span class="drvn-cap-pill text-nowrap"><i class="bi bi-check2 text-gold me-1"></i> <span data-i18n="aerial_feat_{{ f.id }}_{{ loop.index0 }}">{{ d }}</span></span>
+                <span class="drvn-cap-pill"><i class="bi bi-check2 text-gold me-1"></i> <span data-i18n="aerial_feat_{{ f.id }}_{{ loop.index0 }}">{{ d }}</span></span>
                 {% endfor %}
               </div>
             </div>
@@ -563,7 +563,7 @@
     <div class="row g-4">
       
       <!-- Card 1: Safe Driver / Motorista Dedicado (Seu Veículo Conduzido) -->
-      <div class="col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-6 col-xl-3">
         <div class="drvn-service-card">
           <div>
             <div class="drvn-service-icon-box">
@@ -589,7 +589,7 @@
       </div>
 
       <!-- Card 2: Motoristas Executivos Bilíngues -->
-      <div class="col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-6 col-xl-3">
         <div class="drvn-service-card">
           <div>
             <div class="drvn-service-icon-box">
@@ -613,7 +613,7 @@
       </div>
 
       <!-- Card 3: Serviço de Casamentos & Eventos Sociais VIP -->
-      <div class="col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-6 col-xl-3">
         <div class="drvn-service-card">
           <div>
             <div class="drvn-service-icon-box">
@@ -638,7 +638,7 @@
       </div>
 
       <!-- Card 4: Escolta Tática & Gestão de Comitivas -->
-      <div class="col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-6 col-xl-3">
         <div class="drvn-service-card">
           <div>
             <div class="drvn-service-icon-box">

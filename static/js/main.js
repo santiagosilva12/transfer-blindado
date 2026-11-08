@@ -5,6 +5,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavbarScroll();
+  initMobileMenuAutoClose();
+  initPWA();
   initSwiperCapitais();
   initFleetCarousel();
   initReservationForm();
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
  * 1. Navbar Scroll Effect
  */
 function initNavbarScroll() {
-  const navbar = document.querySelector(".tb-navbar");
+  const navbar = document.querySelector(".drvn-navbar, .tb-navbar, #mainNavbar");
   if (!navbar) return;
 
   const handleScroll = () => {
@@ -31,6 +33,44 @@ function initNavbarScroll() {
 
   window.addEventListener("scroll", handleScroll, { passive: true });
   handleScroll();
+}
+
+/**
+ * 1.1 Fechar automaticamente o menu mobile/tablet ao clicar em um link de navegação
+ */
+function initMobileMenuAutoClose() {
+  const navbarCollapse = document.getElementById("navbarContent");
+  if (!navbarCollapse) return;
+
+  const navLinks = navbarCollapse.querySelectorAll(".drvn-nav-link, .drvn-btn-gold");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
+        if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+          const instance = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
+          instance.hide();
+        } else {
+          navbarCollapse.classList.remove("show");
+        }
+      }
+    });
+  });
+}
+
+/**
+ * 1.2 Registro do Service Worker para PWA (Celulares, Tablets, Notebooks e Desktops)
+ */
+function initPWA() {
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/sw.js", { scope: "/" })
+        .catch(() => {
+          // Fallback caso servido a partir de subpasta estática
+          navigator.serviceWorker.register("/static/sw.js").catch(() => {});
+        });
+    });
+  }
 }
 
 /**
@@ -98,13 +138,16 @@ function initFleetCarousel() {
     let thumbsSwiper = null;
     if (thumbsElem) {
       thumbsSwiper = new Swiper(`.fleet-thumbs-swiper-${cat}`, {
-        slidesPerView: 2.2,
-        spaceBetween: 14,
+        slidesPerView: 1.8,
+        spaceBetween: 10,
         watchSlidesProgress: true,
+        freeMode: true,
         breakpoints: {
-          576: { slidesPerView: 3, spaceBetween: 16 },
-          768: { slidesPerView: 4, spaceBetween: 18 },
-          992: { slidesPerView: 5, spaceBetween: 20 },
+          400: { slidesPerView: 2.2, spaceBetween: 12 },
+          576: { slidesPerView: 3, spaceBetween: 14 },
+          768: { slidesPerView: 3.5, spaceBetween: 16 },
+          992: { slidesPerView: 4.5, spaceBetween: 18 },
+          1200: { slidesPerView: 5, spaceBetween: 20 },
         },
       });
     }

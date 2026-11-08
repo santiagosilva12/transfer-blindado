@@ -3,7 +3,7 @@ Transfer Blindado - Aplicação Flask
 Site Institucional de Transporte Executivo Blindado e Aviação Executiva
 """
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -575,6 +575,18 @@ def capitais_route():
 @app.route("/faq")
 def faq():
     return redirect(url_for("index") + "#faq")
+
+
+@app.route("/manifest.json")
+def manifest():
+    return send_from_directory(app.static_folder, "manifest.json", mimetype="application/manifest+json")
+
+
+@app.route("/sw.js")
+def service_worker():
+    response = send_from_directory(app.static_folder, "sw.js", mimetype="application/javascript")
+    response.headers["Service-Worker-Allowed"] = "/"
+    return response
 
 
 if __name__ == "__main__":
