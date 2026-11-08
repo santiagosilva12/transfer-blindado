@@ -178,7 +178,7 @@ CATEGORIAS_TERRESTRES = [
                 "id": "sedan-convencional",
                 "nome": "Sedan Convencional",
                 "subtitulo": "Eficiência e Discrição para Deslocamentos Corporativos",
-                "exemplo": "Toyota Corolla / Nissan Sentra / Volkswagen Jetta",
+                "exemplo": "Toyota Corolla",
                 "capacidade": "4 Passageiros + 2 Bagagens",
                 "tag": "Convencional",
                 "tag_icone": "bi-car-front",
@@ -190,7 +190,7 @@ CATEGORIAS_TERRESTRES = [
                 "id": "taxi-sedan-blindado",
                 "nome": "Táxi Blindado",
                 "subtitulo": "Mobilidade Urbana Ágil com Proteção Balística em Corredores",
-                "exemplo": "Sedans Médios Homologados Táxi Blindado Nível III-A",
+                "exemplo": "Táxi Homologado",
                 "capacidade": "3 a 4 Passageiros + Bagagens",
                 "tag": "Táxi Blindado",
                 "tag_icone": "bi-shield-check",
@@ -202,11 +202,11 @@ CATEGORIAS_TERRESTRES = [
                 "id": "taxi-convencional",
                 "nome": "Táxi Convencional",
                 "subtitulo": "Agilidade em Deslocamentos Urbanos Rápidos e Conexões",
-                "exemplo": "Sedans Executivos Categoria Táxi Homologado",
+                "exemplo": "Táxi Homologado",
                 "capacidade": "4 Passageiros + Bagagem",
                 "tag": "Táxi",
                 "tag_icone": "bi-clock-history",
-                "destaques": ["Circulação em Corredores de Ônibus", "Deslocamento Rápido em Capitais", "Disponibilidade Imediata"],
+                "destaques": ["Circulação em Corredores de Ônibus", "Deslocamento Rápido em SP", "Disponibilidade Imediata"],
                 "imagem": "/static/images/fleet-sedan-taxi-sketch.png",
                 "param_reserva": "Táxi Convencional"
             }
@@ -261,7 +261,7 @@ CATEGORIAS_TERRESTRES = [
                 "id": "taxi-suv-blindado",
                 "nome": "Táxi SUV Blindado",
                 "subtitulo": "Deslocamentos Urbanos em SUV com Acesso a Faixas e Blindagem",
-                "exemplo": "SUVs Médios Homologados Táxi com Blindagem III-A",
+                "exemplo": "Táxi Homologado",
                 "capacidade": "4 Passageiros + 3 Bagagens",
                 "tag": "Táxi Blindado",
                 "tag_icone": "bi-shield-check",
@@ -273,7 +273,7 @@ CATEGORIAS_TERRESTRES = [
                 "id": "taxi-suv-convencional",
                 "nome": "Táxi SUV Convencional",
                 "subtitulo": "Agilidade Urbana em SUV com Corredores e Amplo Porta-malas",
-                "exemplo": "Land Rover Discovery / SUVs Executivos Categoria Táxi Homologado",
+                "exemplo": "Táxi Homologado",
                 "capacidade": "4 Passageiros + 3 Bagagens",
                 "tag": "Táxi",
                 "tag_icone": "bi-clock-history",
@@ -590,4 +590,4 @@ def service_worker():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="127.0.0.1", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000)

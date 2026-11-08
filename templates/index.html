@@ -428,7 +428,12 @@
                       <!-- Ação de Reserva Direto em Nova Tela de Cotação da Categoria -->
                       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-2 border-top border-secondary border-opacity-10">
                         <span class="text-secondary small">
-                          <i class="bi bi-geo-alt text-gold me-1"></i> <span data-i18n="fleet_avail_cities">Disponível em Todo o Brasil</span>
+                          <i class="bi bi-geo-alt text-gold me-1"></i>
+                          {% if 'taxi' in m.id %}
+                          <span data-i18n="fleet_avail_sp">Disponível apenas em SP</span>
+                          {% else %}
+                          <span data-i18n="fleet_avail_cities">Disponível em Todo o Brasil</span>
+                          {% endif %}
                         </span>
                         <a href="{{ url_for('cotacao') }}?categoria={{ cat.slug }}&modelo={{ m.id }}" target="_blank" class="link-with-icon fw-bold text-gold text-decoration-none drvn-fleet-quote-trigger">
                           <span data-i18n="fleet_quote_cta">Solicitar Cotação para esta Frota</span>
