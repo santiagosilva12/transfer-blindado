@@ -511,7 +511,7 @@ a {
   min-width: 560px;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.82;
+  opacity: 0.88;
 }
 
 .hero-center-escalade img {
@@ -519,7 +519,7 @@ a {
   height: auto;
   display: block;
   object-fit: contain;
-  filter: blur(4px) contrast(1.04) brightness(0.86);
+  filter: blur(1.2px) contrast(1.05) brightness(0.92);
 }
 
 @media (max-width: 1199.98px) {
@@ -3030,7 +3030,7 @@ body {
     opacity: 0.92;
   }
   .hero-center-escalade img {
-    filter: blur(1.5px) contrast(1.04) brightness(0.92);
+    filter: blur(0.6px) contrast(1.05) brightness(0.95);
   }
   /* Centralizar card de cotação no tablet/celular (em vez de margin-left: auto) */
   .hero-booking-bar.hero-booking-vertical-card {
