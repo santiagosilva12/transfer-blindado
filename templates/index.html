@@ -127,6 +127,7 @@
                   <option value="Ônibus Comitiva">Ônibus Comitiva</option>
                   <option value="Avião a Jato">Avião a Jato</option>
                   <option value="Helicóptero">Helicóptero</option>
+                  <option value="Aluguel de Veículos">Aluguel de Veículos</option>
                   <option value="Logística Grandes Eventos">Logística Grandes Eventos</option>
                 </select>
               </div>
@@ -403,7 +404,7 @@
                   <!-- Imagem do Veículo em Sketch (Apenas o Desenho, sem fundo - Clicável para abrir tela nova de cotação) -->
                   <div class="col-lg-5 text-center">
                     <a href="{{ url_for('cotacao') }}?categoria={{ cat.slug }}&modelo={{ m.id }}" target="_blank" class="drvn-fleet-image-box drvn-cursor-pointer position-relative d-block text-decoration-none" title="Clique para cotar {{ m.nome }}">
-                      <img src="{{ m.imagem }}?v=17" alt="Sketch {{ m.nome }}" class="drvn-fleet-car-img" loading="lazy">
+                      <img src="{{ m.imagem }}?v=18" alt="Sketch {{ m.nome }}" class="drvn-fleet-car-img" loading="lazy">
                       <span class="drvn-click-hint-pill">
                         <i class="bi bi-shield-check text-gold me-1"></i> <span data-i18n="fleet_click_to_quote">Clique para Cotar</span>
                       </span>
@@ -421,9 +422,11 @@
                       </div>
                       <div class="text-gold fw-semibold small mb-2" data-i18n="model_sub_{{ m.id }}">{{ m.subtitulo }}</div>
                       
+                      {% if m.exemplo %}
                       <p class="text-secondary small mb-3">
                         <strong style="color: #0f172a;" data-i18n="fleet_ref_label">Modelos de Referência:</strong> <span data-i18n="model_ex_{{ m.id }}">{{ m.exemplo }}</span>
                       </p>
+                      {% endif %}
 
                       <!-- Ação de Reserva Direto em Nova Tela de Cotação da Categoria -->
                       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-2 border-top border-secondary border-opacity-10">
@@ -469,7 +472,7 @@
                     <i class="bi {{ m.tag_icone }} text-gold"></i>
                   </span>
                   <div class="drvn-thumb-img-wrapper">
-                    <img src="{{ m.imagem }}?v=17" alt="{{ m.nome }}" class="drvn-thumb-img" loading="lazy">
+                    <img src="{{ m.imagem }}?v=18" alt="{{ m.nome }}" class="drvn-thumb-img" loading="lazy">
                   </div>
                   <div class="drvn-thumb-title fw-bold text-uppercase" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">
                     {{ m.nome }}
@@ -557,10 +560,10 @@
       </p>
     </div>
 
-    <div class="row g-4">
+    <div class="row g-4 justify-content-center">
       
       <!-- Card 1: Safe Driver / Motorista Dedicado (Seu Veículo Conduzido) -->
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-4">
         <div class="drvn-service-card">
           <div>
             <div class="drvn-service-icon-box">
@@ -586,7 +589,7 @@
       </div>
 
       <!-- Card 2: Motoristas Executivos Bilíngues -->
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-4">
         <div class="drvn-service-card">
           <div>
             <div class="drvn-service-icon-box">
@@ -594,12 +597,13 @@
             </div>
             <span class="drvn-service-badge" data-i18n="svc_bilingual_badge">COMITIVAS &amp; EXPATRIADOS</span>
             <h3 class="drvn-service-title" data-i18n="svc_bilingual_title">Motoristas Bilíngues</h3>
-            <div class="drvn-service-subtitle" data-i18n="svc_bilingual_sub">Fluência em Inglês e Espanhol</div>
+            <div class="drvn-service-subtitle" data-i18n="svc_bilingual_sub">Atendimento Internacional de Alto Padrão</div>
             <p class="drvn-service-desc" data-i18n="svc_bilingual_desc">
               Recepção de alta classe para delegações internacionais, diplomatas e investidores estrangeiros. Condutores treinados em etiqueta corporativa de alto escalão, confidencialidade estrita (NDA) e direção defensiva avançada.
             </p>
             <div class="drvn-service-pills">
-              <span class="drvn-service-pill"><i class="bi bi-globe2 text-gold me-1"></i> <span data-i18n="svc_bilingual_pill1">Inglês &amp; Espanhol</span></span>
+              <span class="drvn-service-pill"><i class="bi bi-shield-lock text-gold me-1"></i> <span data-i18n="svc_bilingual_pill2">Sigilo (NDA)</span></span>
+              <span class="drvn-service-pill"><i class="bi bi-award text-gold me-1"></i> <span data-i18n="svc_bilingual_pill3">Etiqueta VIP</span></span>
             </div>
           </div>
           <a href="{{ url_for('reserva', servico='Motorista Executivo Bilíngue') }}" class="link-with-icon fw-bold mt-auto">
@@ -610,7 +614,7 @@
       </div>
 
       <!-- Card 3: Serviço de Casamentos & Eventos Sociais VIP -->
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <div class="col-md-6 col-lg-4">
         <div class="drvn-service-card">
           <div>
             <div class="drvn-service-icon-box">
@@ -620,10 +624,11 @@
             <h3 class="drvn-service-title" data-i18n="svc_wedding_title">Serviço de Casamentos</h3>
             <div class="drvn-service-subtitle" data-i18n="svc_wedding_sub">Elegância e Requinte no Grande Dia</div>
             <p class="drvn-service-desc" data-i18n="svc_wedding_desc">
-              Translados impecáveis para noivas, noivos e comitivas em sedans e SUVs de luxo blindados. Motoristas em traje a rigor, pontualidade britânica, ambientação personalizada e total serenidade para o dia do seu casamento.
+              Translados impecáveis para noivas, noivos e comitivas em sedans, SUVs de luxo blindados e veículos clássicos. Motoristas em traje a rigor, pontualidade britânica, ambientação personalizada e total serenidade para o dia do seu casamento.
             </p>
-            <div class="drvn-service-pills">
+            <div class="drvn-service-pills d-flex flex-column align-items-start gap-2">
               <span class="drvn-service-pill"><i class="bi bi-heart text-gold me-1"></i> <span data-i18n="svc_wedding_pill1">Carro da Noiva</span></span>
+              <span class="drvn-service-pill"><i class="bi bi-stars text-gold me-1"></i> <span data-i18n="svc_wedding_pill_classic">Carros Antigos</span></span>
               <span class="drvn-service-pill"><i class="bi bi-person-badge text-gold me-1"></i> <span data-i18n="svc_wedding_pill2">Traje a Rigor</span></span>
             </div>
           </div>
@@ -634,8 +639,33 @@
         </div>
       </div>
 
-      <!-- Card 4: Escolta Tática & Gestão de Comitivas -->
-      <div class="col-md-6 col-lg-6 col-xl-3">
+      <!-- Card 4: Aluguel de Veículos -->
+      <div class="col-md-6 col-lg-4">
+        <div class="drvn-service-card">
+          <div>
+            <div class="drvn-service-icon-box">
+              <i class="bi bi-key-fill"></i>
+            </div>
+            <span class="drvn-service-badge" data-i18n="svc_rental_badge">LOCAÇÃO EXECUTIVA &amp; BLINDADA</span>
+            <h3 class="drvn-service-title" data-i18n="svc_rental_title">Aluguel de Veículos</h3>
+            <div class="drvn-service-subtitle" data-i18n="svc_rental_sub">Frotas Blindadas e Convencionais Sob Demanda</div>
+            <p class="drvn-service-desc" data-i18n="svc_rental_desc">
+              Locação de veículos blindados Nível III-A e convencionais de alto padrão para executivos, empresas e viagens particulares. Flexibilidade em diárias, períodos semanais ou contratos corporativos com total suporte operacional.
+            </p>
+            <div class="drvn-service-pills">
+              <span class="drvn-service-pill"><i class="bi bi-shield-check text-gold me-1"></i> <span data-i18n="svc_rental_pill1">Blindados &amp; Convencionais</span></span>
+              <span class="drvn-service-pill"><i class="bi bi-calendar-check text-gold me-1"></i> <span data-i18n="svc_rental_pill2">Diárias &amp; Contratos</span></span>
+            </div>
+          </div>
+          <a href="{{ url_for('reserva', servico='Aluguel de Veículos') }}" class="link-with-icon fw-bold mt-auto">
+            <span data-i18n="svc_rental_cta">Solicitar Aluguel de Veículos</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 5: Escolta Tática & Gestão de Comitivas -->
+      <div class="col-md-6 col-lg-4">
         <div class="drvn-service-card">
           <div>
             <div class="drvn-service-icon-box">
@@ -742,7 +772,7 @@
           </button>
           <div id="drvnFaq2" class="collapse">
             <div class="drvn-faq-body" data-i18n="faq_a2">
-              Todos os nossos motoristas são certificados em Direção Defensiva e Evasiva, Primeiros Socorros e Protocolos VIP de Segurança. Possuem checagem criminal e comportamental periódica, postura discreta e opções de motoristas bilíngues (Inglês e Espanhol).
+              Todos os nossos motoristas são certificados em Direção Defensiva e Evasiva, Primeiros Socorros e Protocolos VIP de Segurança. Possuem checagem criminal e comportamental periódica, postura discreta e opções de motoristas bilíngues.
             </div>
           </div>
         </div>

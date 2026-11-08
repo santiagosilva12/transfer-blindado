@@ -151,6 +151,11 @@
               </label>
 
               <label class="custom-checkbox-label">
+                <input type="checkbox" name="tipo_servico" value="Aluguel de Veículos" class="custom-checkbox-input" {% if 'aluguel' in servico_pre.lower() or 'locação' in servico_pre.lower() %}checked{% endif %}>
+                <span>Aluguel de Veículos</span>
+              </label>
+
+              <label class="custom-checkbox-label">
                 <input type="checkbox" name="tipo_servico" value="Logística para Grandes Eventos" class="custom-checkbox-input">
                 <span>Logística para Grandes Eventos</span>
               </label>
