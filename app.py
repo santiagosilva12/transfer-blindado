@@ -393,29 +393,55 @@ CATEGORIAS_TERRESTRES = [
         "modelos": [
             {
                 "id": "onibus-executivo-blindado",
-                "nome": "Ônibus Executivo Blindado e Convencional",
-                "subtitulo": "Deslocamentos Corporativos e Grandes Comitivas com Máximo Conforto e Segurança",
+                "nome": "Ônibus Executivo Blindado",
+                "subtitulo": "Proteção Balística para Grandes Comitivas, Delegações e Eventos de Alto Risco",
                 "exemplo": "",
-                "capacidade": "26 a 46 Lugares Executivos",
-                "tag": "Blindado & Convencional",
+                "capacidade": "26 a 42 Lugares Executivos Blindados",
+                "tag": "Blindado",
                 "tag_icone": "bi-shield-fill-check",
-                "destaques": ["Opções Blindadas e Convencionais", "Ar-condicionado Central Climatizado", "Wi-Fi a Bordo & Toalete", "Coordenação de Rota 24/7"],
+                "destaques": ["Blindagem Balística Certificada", "Poltronas Semi-Leito em Couro", "Wi-Fi a Bordo & Toalete", "Coordenação de Rota 24/7"],
                 "imagem": "/static/images/fleet-bus-sketch.png",
                 "imagem_real": "/static/images/real/real-bus-paradiso.jpg",
-                "param_reserva": "Ônibus Executivo Blindado e Convencional"
+                "param_reserva": "Ônibus Executivo Blindado"
             },
             {
-                "id": "micro-onibus-executivo",
-                "nome": "Micro-ônibus Executivo Blindado e Convencional",
-                "subtitulo": "Agilidade em Acessos Urbanos, Segurança e Conforto para Grupos Médios",
+                "id": "onibus-executivo-convencional",
+                "nome": "Ônibus Executivo Convencional",
+                "subtitulo": "Deslocamentos Corporativos, Congressos e Grandes Grupos com Conforto Absoluto",
+                "exemplo": "",
+                "capacidade": "40 a 46 Lugares Executivos",
+                "tag": "Convencional",
+                "tag_icone": "bi-bus-front",
+                "destaques": ["Ar-condicionado Central Climatizado", "Amplo Bagageiro Subterrâneo", "Sistema de Áudio e Vídeo", "Logística para Grandes Eventos"],
+                "imagem": "/static/images/fleet-bus-sketch.png",
+                "imagem_real": "/static/images/real/real-bus-paradiso.jpg",
+                "param_reserva": "Ônibus Executivo Convencional"
+            },
+            {
+                "id": "micro-onibus-executivo-blindado",
+                "nome": "Micro-ônibus Executivo Blindado",
+                "subtitulo": "Agilidade em Acessos Urbanos com Segurança Balística para Grupos Médios",
                 "exemplo": "",
                 "capacidade": "20 a 26 Passageiros",
-                "tag": "Blindado & Convencional",
-                "tag_icone": "bi-bus-front",
-                "destaques": ["Opções Blindadas e Convencionais", "Acesso Fácil a Centros Urbanos e Hotéis", "Bancos Reclináveis em Couro"],
+                "tag": "Blindado",
+                "tag_icone": "bi-shield-fill-check",
+                "destaques": ["Blindagem Certificada", "Acesso Fácil a Centros Urbanos e Hotéis", "Bancos Reclináveis em Couro"],
                 "imagem": "/static/images/fleet-microbus-sketch.png",
                 "imagem_real": "/static/images/real/real-microbus-senior.jpg",
-                "param_reserva": "Micro-ônibus Executivo Blindado e Convencional"
+                "param_reserva": "Micro-ônibus Executivo Blindado"
+            },
+            {
+                "id": "micro-onibus-executivo-convencional",
+                "nome": "Micro-ônibus Executivo Convencional",
+                "subtitulo": "Mobilidade Prática e Confortável para Equipes, Eventos e Traslados",
+                "exemplo": "",
+                "capacidade": "22 a 28 Passageiros",
+                "tag": "Convencional",
+                "tag_icone": "bi-bus-front",
+                "destaques": ["Acesso Fácil a Centros Urbanos e Hotéis", "Ar-condicionado Climatizado", "Bancos Executivos Reclináveis"],
+                "imagem": "/static/images/fleet-microbus-sketch.png",
+                "imagem_real": "/static/images/real/real-microbus-senior.jpg",
+                "param_reserva": "Micro-ônibus Executivo Convencional"
             }
         ]
     }
