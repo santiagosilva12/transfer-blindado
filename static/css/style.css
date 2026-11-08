@@ -1115,9 +1115,13 @@ a {
 .drvn-ticker-wrapper {
   display: flex;
   width: max-content;
-  animation: drvnTicker 35s linear infinite;
+  animation: drvnTicker 85s linear infinite;
   gap: 3.5rem;
   align-items: center;
+}
+
+.drvn-ticker-wrapper:hover {
+  animation-play-state: paused;
 }
 
 @keyframes drvnTicker {

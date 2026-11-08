@@ -87,9 +87,9 @@ function initSwiperCapitais() {
       centeredSlides: false,
       loop: true,
       grabCursor: true,
-      speed: 600,
+      speed: 1500,
       autoplay: {
-        delay: 2400,
+        delay: 7500,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
@@ -155,14 +155,27 @@ function initFleetCarousel() {
     const mainSwiper = new Swiper(`.fleet-main-swiper-${cat}`, {
       slidesPerView: 1,
       spaceBetween: 28,
-      speed: 500,
+      speed: 1400,
       autoHeight: true,
-      autoplay: false,
+      autoplay: {
+        delay: 10000,
+        disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+      },
       thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
       navigation: {
         nextEl: nextBtn,
         prevEl: prevBtn,
       },
+    });
+
+    // Ao atingir o último modelo, retorna suavemente ao primeiro em ritmo bem lento
+    mainSwiper.on("reachEnd", () => {
+      setTimeout(() => {
+        if (mainSwiper && !mainSwiper.destroyed && mainSwiper.isEnd && mainSwiper.autoplay && mainSwiper.autoplay.running) {
+          mainSwiper.slideTo(0, 1400);
+        }
+      }, 10000);
     });
 
     // Sincroniza o seletor de miniaturas com o modelo ativo
