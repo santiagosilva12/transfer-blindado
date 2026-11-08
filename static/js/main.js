@@ -155,27 +155,14 @@ function initFleetCarousel() {
     const mainSwiper = new Swiper(`.fleet-main-swiper-${cat}`, {
       slidesPerView: 1,
       spaceBetween: 28,
-      speed: 750,
+      speed: 500,
       autoHeight: true,
-      autoplay: {
-        delay: 5500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
+      autoplay: false,
       thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
       navigation: {
         nextEl: nextBtn,
         prevEl: prevBtn,
       },
-    });
-
-    // Ao atingir o último modelo, retorna suavemente ao primeiro para manter o carrossel andando continuamente
-    mainSwiper.on("reachEnd", () => {
-      setTimeout(() => {
-        if (mainSwiper && !mainSwiper.destroyed && mainSwiper.isEnd) {
-          mainSwiper.slideTo(0, 750);
-        }
-      }, 5500);
     });
 
     // Sincroniza o seletor de miniaturas com o modelo ativo

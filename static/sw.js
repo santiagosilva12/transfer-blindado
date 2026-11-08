@@ -4,7 +4,7 @@
  * em celulares, tablets, notebooks e desktops sem reter versões antigas.
  */
 
-const CACHE_NAME = "transfer-blindado-pwa-v1";
+const CACHE_NAME = "transfer-blindado-pwa-v2";
 const PRECACHE_ASSETS = [
   "/",
   "/cotacao",

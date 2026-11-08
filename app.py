@@ -166,7 +166,7 @@ CATEGORIAS_TERRESTRES = [
                 "id": "sedan-executivo-blindado",
                 "nome": "Sedan Executivo Blindado",
                 "subtitulo": "Conforto Superior com Blindagem Nível III-A",
-                "exemplo": "Toyota Corolla Altis / Honda Civic Touring Blindado",
+                "exemplo": "Toyota Corolla / Ford Fusion / BYD Song",
                 "capacidade": "3 a 4 Passageiros + 2 Bagagens",
                 "tag": "Blindado III-A",
                 "tag_icone": "bi-shield-lock-fill",
