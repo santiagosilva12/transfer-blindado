@@ -80,7 +80,7 @@ body {
   background-color: #ffffff;
   color: var(--text-dark-primary);
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -142,22 +142,36 @@ a {
   color: #ffffff;
 }
 
-/* Navbar Minimalista de Alto Padrão (Estilo Mockup - Integrada ao Fundo Escuro) */
+/* Navbar Minimalista de Alto Padrão (Fixa / Congelada no Topo) */
 .drvn-navbar {
-  background: linear-gradient(180deg, rgba(16, 15, 13, 0.96) 0%, rgba(15, 14, 13, 0.85) 100%);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(16, 15, 13, 0.98) 0%, rgba(15, 14, 13, 0.94) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: none;
-  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.05rem 0;
   transition: var(--transition-drvn);
-  z-index: 1050;
+  z-index: 1080;
+}
+
+main {
+  padding-top: 76px;
+}
+
+section[id],
+div[id^="frota-cat-"] {
+  scroll-margin-top: 86px;
 }
 
 .drvn-navbar.scrolled {
   background: rgba(12, 12, 13, 0.98);
-  padding: 0.85rem 0;
+  padding: 0.8rem 0;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
-  border-bottom: none;
+  border-bottom: 1px solid rgba(200, 171, 115, 0.16);
 }
 
 /* Marca Tipográfica Empilhada / Logotipo Oficial */
@@ -2893,7 +2907,7 @@ body {
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
 }
 
