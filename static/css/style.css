@@ -152,14 +152,14 @@ a {
   background: linear-gradient(180deg, rgba(16, 15, 13, 0.98) 0%, rgba(15, 14, 13, 0.94) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: none;
   padding: 1.05rem 0;
   transition: var(--transition-drvn);
   z-index: 1080;
 }
 
-main {
-  padding-top: 76px;
+main > section:first-child:not(.drvn-hero) {
+  margin-top: 74px;
 }
 
 section[id],
@@ -171,7 +171,7 @@ div[id^="frota-cat-"] {
   background: rgba(12, 12, 13, 0.98);
   padding: 0.8rem 0;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65);
-  border-bottom: 1px solid rgba(200, 171, 115, 0.16);
+  border-bottom: none;
 }
 
 /* Marca Tipográfica Empilhada / Logotipo Oficial */
@@ -468,11 +468,11 @@ div[id^="frota-cat-"] {
    ========================================================================== */
 .drvn-hero {
   position: relative;
-  min-height: calc(100vh - 72px);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.35rem 0 0;
+  padding: 6rem 0 0;
   background-color: #0e0e0f;
   background-image:
     radial-gradient(ellipse 42% 38% at 6% 4%, rgba(188, 152, 85, 0.16) 0%, transparent 70%),
@@ -3016,7 +3016,7 @@ body {
     padding: 0.75rem 0;
   }
   .drvn-hero {
-    padding-top: 0.75rem;
+    padding-top: 5.15rem;
   }
   .hero-main-title {
     font-size: clamp(2.35rem, 3vw, 2.85rem);
@@ -3075,7 +3075,7 @@ body {
   /* Hero centralizado e equilibrado em Tablets e Celulares */
   .drvn-hero {
     min-height: auto;
-    padding-top: 1.5rem;
+    padding-top: 5.5rem;
   }
   .golden-hero-grid {
     grid-template-columns: 1fr;
