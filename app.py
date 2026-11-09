@@ -330,22 +330,22 @@ CATEGORIAS_TERRESTRES = [
         "modelos": [
             {
                 "id": "van-executiva-blindada",
-                "nome": "Van Executiva",
+                "nome": "Van Executiva Blindada",
                 "subtitulo": "Segurança Balística e Conforto em Grupo para Delegações e Autoridades",
                 "exemplo": "Mercedes-Benz Sprinter Blindada Nível III-A",
                 "capacidade": "12 a 15 Passageiros + Compartimento Bagageiro",
-                "tag": "Executiva",
+                "tag": "Blindada III-A",
                 "tag_icone": "bi-shield-lock-fill",
                 "destaques": ["Blindagem Balística Nível III-A", "Vidros Blindados Curvos", "Comunicação Criptografada", "Espaço Amplo para Equipes"],
                 "imagem": "/static/images/fleet-van-sketch.png",
                 "imagem_real": "/static/images/real/real-van-sprinter.jpg",
-                "param_reserva": "Van Executiva"
+                "param_reserva": "Van Executiva Blindada"
             },
             {
                 "id": "van-corporativa",
                 "nome": "Van Convencional",
                 "subtitulo": "Transporte Eficiente e Pontual para Eventos e Congressos",
-                "exemplo": "Mercedes-Benz Sprinter Executiva / Renault Master",
+                "exemplo": "Mercedes-Benz Sprinter Executiva",
                 "capacidade": "15 a 18 Passageiros + Bagagens",
                 "tag": "Convencional",
                 "tag_icone": "bi-car-front",
