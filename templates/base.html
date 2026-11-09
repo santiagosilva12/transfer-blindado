@@ -54,12 +54,22 @@
         <i class="bi bi-list text-white fs-2"></i>
       </button>
 
-      <!-- Ao centro: Links de navegação (Home, Soluções com chevron, demais limpos) -->
+      <!-- Ao centro: Links de navegação na sequência exata de rolagem da página (Home, Sobre, Frota, Soluções, Capitais, FAQ) -->
       <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center gap-1 gap-xl-3">
           <li class="nav-item">
             <a class="drvn-nav-link" href="{{ url_for('index') }}">
               <span data-i18n="nav_home" class="notranslate" translate="no">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="drvn-nav-link" href="{{ url_for('index') }}#quem-somos">
+              <span data-i18n="nav_about">Sobre</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="drvn-nav-link" href="{{ url_for('index') }}#frota">
+              <span data-i18n="nav_fleet">Frota</span>
             </a>
           </li>
           <li class="nav-item">
@@ -69,18 +79,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="drvn-nav-link" href="{{ url_for('index') }}#frota">
-              <span data-i18n="nav_fleet">Frota</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="drvn-nav-link" href="{{ url_for('index') }}#capitais">
               <span data-i18n="nav_cities">Capitais</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="drvn-nav-link" href="{{ url_for('index') }}#quem-somos">
-              <span data-i18n="nav_about">Sobre</span>
             </a>
           </li>
           <li class="nav-item">
@@ -165,9 +165,9 @@
         <div class="col-lg-3 col-md-6">
           <h4 class="drvn-footer-heading" data-i18n="footer_nav_heading">Navegação</h4>
           <a href="{{ url_for('index') }}" class="drvn-footer-link" data-i18n="nav_home">Home</a>
-          <a href="{{ url_for('index') }}#quem-somos" class="drvn-footer-link" data-i18n="nav_about">Quem Somos</a>
-          <a href="{{ url_for('index') }}#servicos" class="drvn-footer-link" data-i18n="nav_solutions">Serviços</a>
+          <a href="{{ url_for('index') }}#quem-somos" class="drvn-footer-link" data-i18n="nav_about">Sobre</a>
           <a href="{{ url_for('frota') }}" class="drvn-footer-link" data-i18n="nav_fleet">Nossas Frotas</a>
+          <a href="{{ url_for('index') }}#servicos" class="drvn-footer-link" data-i18n="nav_solutions">Soluções</a>
           <a href="{{ url_for('index') }}#capitais" class="drvn-footer-link" data-i18n="nav_cities">Mercados Atendidos</a>
           <a href="{{ url_for('index') }}#faq" class="drvn-footer-link" data-i18n="nav_faq">Perguntas Frequentes</a>
           <a href="{{ url_for('reserva') }}" class="drvn-footer-link" data-i18n="nav_book">Solicitar Reserva</a>
@@ -220,7 +220,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}?v=34"></script>
-  <script src="{{ url_for('static', filename='js/translations.js') }}?v=78"></script>
+  <script src="{{ url_for('static', filename='js/translations.js') }}?v=79"></script>
 
   <!-- Headless Google Translate Bridge (tradução profunda de parágrafos e termos) -->
   <div id="google_translate_element" style="display:none; position:absolute; left:-9999px;"></div>

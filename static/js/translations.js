@@ -55,7 +55,7 @@ const TRANSLATIONS = {
     clients_strip: "PRINCIPAIS CLIENTES ATENDIDOS",
 
     // Quem Somos - Missão, Visão e Valores
-    about_tag: "ESTRUTURA INSTITUCIONAL DE ALTO PADRÃO • QUEM SOMOS",
+    about_tag: "SOBRE A TRANSFER BLINDADO • QUEM SOMOS",
     about_title: "Excelência e Rigor Operacional em Cada Trajeto",
     about_lead: "Conheça os alicerces éticos, a visão de futuro e os compromissos inegociáveis que norteiam cada operação da Transfer Blindado.",
     mission_badge: "NOSSA MISSÃO",
@@ -416,7 +416,7 @@ const TRANSLATIONS = {
     clients_strip: "KEY CLIENTS SERVED",
 
     // About Us - Mission, Vision and Values
-    about_tag: "HIGH-STANDARD INSTITUTIONAL FRAMEWORK • ABOUT US",
+    about_tag: "ABOUT TRANSFER BLINDADO • WHO WE ARE",
     about_title: "Excellence and Operational Rigor on Every Journey",
     about_lead: "Discover the ethical foundations, future vision, and non-negotiable commitments that drive every operation at Transfer Blindado.",
     mission_badge: "OUR MISSION",
@@ -777,7 +777,7 @@ const TRANSLATIONS = {
     clients_strip: "PRINCIPALES CLIENTES ATENDIDOS",
 
     // Sobre Nosotros - Misión, Visión y Valores
-    about_tag: "ESTRUCTURA INSTITUCIONAL DE ALTO NIVEL • SOBRE NOSOTROS",
+    about_tag: "SOBRE TRANSFER BLINDADO • QUIÉNES SOMOS",
     about_title: "Excelencia y Rigor Operacional en Cada Trayecto",
     about_lead: "Conozca los pilares éticos, la visión de futuro y los compromisos innegociables que guían cada operación de Transfer Blindado.",
     mission_badge: "NUESTRA MISIÓN",
