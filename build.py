@@ -30,8 +30,8 @@ def build_static_site():
             shutil.copy2(src_pwa, os.path.join(DIST_DIR, pwa_file))
     print("[OK] Arquivos PWA (manifest.json e sw.js) copiados para a raiz de dist/.")
 
-    # Renderizar index.html e reserva.html dentro do contexto do app Flask
-    with app.test_request_context():
+    # Renderizar index.html, reserva.html e cotacao.html dentro do contexto de suas rotas
+    with app.test_request_context("/"):
         # 1. index.html
         rendered_index = render_template(
             "index.html",
@@ -43,6 +43,7 @@ def build_static_site():
             f.write(rendered_index)
         print("[OK] index.html renderizado em dist/index.html")
 
+    with app.test_request_context("/reserva"):
         # 2. reserva.html
         rendered_reserva = render_template(
             "reserva.html",
@@ -54,6 +55,7 @@ def build_static_site():
             f.write(rendered_reserva)
         print("[OK] reserva.html renderizado em dist/reserva.html")
 
+    with app.test_request_context("/cotacao"):
         # 3. cotacao.html (Tela Dedicada com 4 Categorias e Seleção Completa)
         rendered_cotacao = render_template(
             "cotacao.html",

@@ -36,25 +36,79 @@ function initNavbarScroll() {
 }
 
 /**
- * 1.1 Fechar automaticamente o menu mobile/tablet ao clicar em um link de navegação
+ * 1.1 Rolagem Suave na Mesma Aba para Links do Menu / Rodapé e Fechamento Automático no Mobile
  */
 function initMobileMenuAutoClose() {
   const navbarCollapse = document.getElementById("navbarContent");
-  if (!navbarCollapse) return;
 
-  const navLinks = navbarCollapse.querySelectorAll(".drvn-nav-link, .drvn-btn-gold");
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
-        if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
-          const instance = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
-          instance.hide();
+  const closeMobileMenu = () => {
+    if (navbarCollapse && window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
+      if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
+        const instance = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
+        instance.hide();
+      } else {
+        navbarCollapse.classList.remove("show");
+      }
+    }
+  };
+
+  // Garante que nenhum link de seção interna abra nova aba e faz rolagem suave na mesma página
+  document.addEventListener(
+    "click",
+    (e) => {
+      const link = e.target.closest("a");
+      if (!link) return;
+
+      const rawHref = link.getAttribute("href") || "";
+      // Ignora links externos (WhatsApp, etc.)
+      if (rawHref.startsWith("http://") || rawHref.startsWith("https://") || rawHref.startsWith("mailto:") || rawHref.startsWith("tel:")) {
+        return;
+      }
+
+      // Garante que links internos nunca abram em nova aba
+      if (link.getAttribute("target") === "_blank") {
+        link.setAttribute("target", "_self");
+      }
+
+      // Extrai o hash (#quem-somos, #frota, #servicos, #capitais, #faq, #top, etc.)
+      const hashIndex = rawHref.indexOf("#");
+      if (hashIndex !== -1) {
+        const hash = rawHref.slice(hashIndex);
+        if (hash === "#" || hash === "#top") {
+          const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
+          if (isHomePage) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMobileMenu();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            if (history.replaceState) {
+              history.replaceState(null, "", window.location.pathname);
+            }
+            return;
+          }
         } else {
-          navbarCollapse.classList.remove("show");
+          const targetElem = document.querySelector(hash);
+          if (targetElem) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMobileMenu();
+            const navHeight = (document.getElementById("mainNavbar") || {}).offsetHeight || 82;
+            const targetTop = targetElem.getBoundingClientRect().top + window.scrollY - navHeight;
+            window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+            if (history.replaceState) {
+              history.replaceState(null, "", hash);
+            }
+            return;
+          }
         }
       }
-    });
-  });
+
+      if (navbarCollapse && navbarCollapse.contains(link)) {
+        closeMobileMenu();
+      }
+    },
+    true
+  );
 }
 
 /**

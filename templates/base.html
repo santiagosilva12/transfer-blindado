@@ -39,13 +39,14 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=88">
   {% block extra_head %}{% endblock %}
 </head>
-<body>
+<body id="top">
+  {% set nav_prefix = '' if request.path == '/' else url_for('index') %}
 
   <!-- Navbar Fixa / Congelada no Topo (drvn style) -->
   <nav class="navbar navbar-expand-lg fixed-top drvn-navbar" id="mainNavbar">
     <div class="container-xl">
       <!-- À esquerda: Logotipo Oficial da Empresa -->
-      <a class="navbar-brand drvn-navbar-brand-logo py-0" href="{{ url_for('index') }}" aria-label="Transfer Blindado - Home">
+      <a class="navbar-brand drvn-navbar-brand-logo py-0" href="{{ '#top' if request.path == '/' else url_for('index') }}" target="_self" aria-label="Transfer Blindado - Home">
         <img src="{{ url_for('static', filename='images/logo-oficial.png') }}?v=3" alt="Transfer Blindado" class="drvn-nav-logo-img">
       </a>
 
@@ -58,33 +59,33 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-lg-center gap-1 gap-xl-3">
           <li class="nav-item">
-            <a class="drvn-nav-link" href="{{ url_for('index') }}">
+            <a class="drvn-nav-link" href="{{ '#top' if request.path == '/' else url_for('index') }}" target="_self">
               <span data-i18n="nav_home" class="notranslate" translate="no">Home</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="drvn-nav-link" href="{{ url_for('index') }}#quem-somos">
+            <a class="drvn-nav-link" href="{{ nav_prefix }}#quem-somos" target="_self">
               <span data-i18n="nav_about">Sobre</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="drvn-nav-link" href="{{ url_for('index') }}#frota">
+            <a class="drvn-nav-link" href="{{ nav_prefix }}#frota" target="_self">
               <span data-i18n="nav_fleet">Frota</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="drvn-nav-link" href="{{ url_for('index') }}#servicos">
+            <a class="drvn-nav-link" href="{{ nav_prefix }}#servicos" target="_self">
               <span data-i18n="nav_solutions">Soluções</span>
               <i class="bi bi-chevron-down nav-chevron"></i>
             </a>
           </li>
           <li class="nav-item">
-            <a class="drvn-nav-link" href="{{ url_for('index') }}#capitais">
+            <a class="drvn-nav-link" href="{{ nav_prefix }}#capitais" target="_self">
               <span data-i18n="nav_cities">Capitais</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="drvn-nav-link" href="{{ url_for('index') }}#faq">
+            <a class="drvn-nav-link" href="{{ nav_prefix }}#faq" target="_self">
               <span data-i18n="nav_faq">FAQ</span>
             </a>
           </li>
@@ -164,13 +165,13 @@
         <!-- Links Rápidos -->
         <div class="col-lg-3 col-md-6">
           <h4 class="drvn-footer-heading" data-i18n="footer_nav_heading">Navegação</h4>
-          <a href="{{ url_for('index') }}" class="drvn-footer-link" data-i18n="nav_home">Home</a>
-          <a href="{{ url_for('index') }}#quem-somos" class="drvn-footer-link" data-i18n="nav_about">Sobre</a>
-          <a href="{{ url_for('frota') }}" class="drvn-footer-link" data-i18n="nav_fleet">Nossas Frotas</a>
-          <a href="{{ url_for('index') }}#servicos" class="drvn-footer-link" data-i18n="nav_solutions">Soluções</a>
-          <a href="{{ url_for('index') }}#capitais" class="drvn-footer-link" data-i18n="nav_cities">Mercados Atendidos</a>
-          <a href="{{ url_for('index') }}#faq" class="drvn-footer-link" data-i18n="nav_faq">Perguntas Frequentes</a>
-          <a href="{{ url_for('reserva') }}" class="drvn-footer-link" data-i18n="nav_book">Solicitar Reserva</a>
+          <a href="{{ '#top' if request.path == '/' else url_for('index') }}" target="_self" class="drvn-footer-link" data-i18n="nav_home">Home</a>
+          <a href="{{ nav_prefix }}#quem-somos" target="_self" class="drvn-footer-link" data-i18n="nav_about">Sobre</a>
+          <a href="{{ nav_prefix }}#frota" target="_self" class="drvn-footer-link" data-i18n="nav_fleet">Nossas Frotas</a>
+          <a href="{{ nav_prefix }}#servicos" target="_self" class="drvn-footer-link" data-i18n="nav_solutions">Soluções</a>
+          <a href="{{ nav_prefix }}#capitais" target="_self" class="drvn-footer-link" data-i18n="nav_cities">Mercados Atendidos</a>
+          <a href="{{ nav_prefix }}#faq" target="_self" class="drvn-footer-link" data-i18n="nav_faq">Perguntas Frequentes</a>
+          <a href="{{ url_for('reserva') }}" target="_self" class="drvn-footer-link" data-i18n="nav_book">Solicitar Reserva</a>
         </div>
 
         <!-- Dados de Contato e Faturamento Solicitados -->
@@ -219,7 +220,7 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="{{ url_for('static', filename='js/main.js') }}?v=34"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}?v=35"></script>
   <script src="{{ url_for('static', filename='js/translations.js') }}?v=79"></script>
 
   <!-- Headless Google Translate Bridge (tradução profunda de parágrafos e termos) -->
