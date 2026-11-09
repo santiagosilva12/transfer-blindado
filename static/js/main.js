@@ -87,9 +87,9 @@ function initSwiperCapitais() {
       centeredSlides: false,
       loop: true,
       grabCursor: true,
-      speed: 1500,
+      speed: 2400,
       autoplay: {
-        delay: 7500,
+        delay: 11000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
@@ -140,8 +140,9 @@ function initFleetCarousel() {
       thumbsSwiper = new Swiper(`.fleet-thumbs-swiper-${cat}`, {
         slidesPerView: 1.8,
         spaceBetween: 10,
+        speed: 2200,
         watchSlidesProgress: true,
-        freeMode: true,
+        freeMode: false,
         breakpoints: {
           400: { slidesPerView: 2.2, spaceBetween: 12 },
           576: { slidesPerView: 3, spaceBetween: 14 },
@@ -155,11 +156,11 @@ function initFleetCarousel() {
     const mainSwiper = new Swiper(`.fleet-main-swiper-${cat}`, {
       slidesPerView: 1,
       spaceBetween: 28,
-      speed: 1400,
+      speed: 2800,
       autoHeight: true,
       autoplay: {
-        delay: 10000,
-        disableOnInteraction: true,
+        delay: 14000,
+        disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
       thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
@@ -173,27 +174,27 @@ function initFleetCarousel() {
     mainSwiper.on("reachEnd", () => {
       setTimeout(() => {
         if (mainSwiper && !mainSwiper.destroyed && mainSwiper.isEnd && mainSwiper.autoplay && mainSwiper.autoplay.running) {
-          mainSwiper.slideTo(0, 1400);
+          mainSwiper.slideTo(0, 2800);
         }
-      }, 10000);
+      }, 14000);
     });
 
-    // Sincroniza o seletor de miniaturas com o modelo ativo
+    // Sincroniza o seletor de miniaturas com o modelo ativo de forma bem lenta e suave
     mainSwiper.on("slideChange", () => {
       if (thumbsSwiper && !thumbsSwiper.destroyed) {
-        thumbsSwiper.slideTo(mainSwiper.activeIndex);
+        thumbsSwiper.slideTo(mainSwiper.activeIndex, 2200);
       }
     });
 
     categorySwipers[cat] = { main: mainSwiper, thumbs: thumbsSwiper };
 
-    // Clique direto nas miniaturas para selecionar o modelo
+    // Clique direto nas miniaturas para selecionar o modelo com deslize suave
     const thumbCards = document.querySelectorAll(`.drvn-fleet-thumb-card[data-category="${cat}"]`);
     thumbCards.forEach((card) => {
       card.addEventListener("click", () => {
         const idx = parseInt(card.getAttribute("data-index"), 10);
         if (!isNaN(idx)) {
-          mainSwiper.slideTo(idx);
+          mainSwiper.slideTo(idx, 1800);
         }
       });
     });
