@@ -290,19 +290,6 @@ CATEGORIAS_TERRESTRES = [
                 "param_reserva": "Táxi Sedan Blindado"
             },
             {
-                "id": "taxi-suv-blindado",
-                "nome": "Táxi SUV Blindado",
-                "subtitulo": "Deslocamentos Urbanos em SUV com Acesso a Faixas e Blindagem",
-                "exemplo": "Toyota Corolla Cross / SUVs Homologados SP",
-                "capacidade": "4 Passageiros + 3 Bagagens",
-                "tag": "Táxi Blindado",
-                "tag_icone": "bi-shield-check",
-                "destaques": ["Acesso a Corredores Expressos", "Blindagem Balística Nível III-A", "Conforto Elevado no Asfalto", "Tarifa Padronizada"],
-                "imagem": "/static/images/fleet-suv-taxi-sketch.png",
-                "imagem_real": "/static/images/real/real-suv-taxi.jpg",
-                "param_reserva": "Táxi SUV Blindado"
-            },
-            {
                 "id": "taxi-convencional",
                 "nome": "Táxi Sedan Convencional",
                 "subtitulo": "Agilidade em Deslocamentos Urbanos Rápidos e Conexões",
@@ -314,6 +301,19 @@ CATEGORIAS_TERRESTRES = [
                 "imagem": "/static/images/fleet-sedan-taxi-sketch.png",
                 "imagem_real": "/static/images/real/real-sedan-taxi.jpg",
                 "param_reserva": "Táxi Sedan Convencional"
+            },
+            {
+                "id": "taxi-suv-blindado",
+                "nome": "Táxi SUV Blindado",
+                "subtitulo": "Deslocamentos Urbanos em SUV com Acesso a Faixas e Blindagem",
+                "exemplo": "Toyota Corolla Cross / SUVs Homologados SP",
+                "capacidade": "4 Passageiros + 3 Bagagens",
+                "tag": "Táxi Blindado",
+                "tag_icone": "bi-shield-check",
+                "destaques": ["Acesso a Corredores Expressos", "Blindagem Balística Nível III-A", "Conforto Elevado no Asfalto", "Tarifa Padronizada"],
+                "imagem": "/static/images/fleet-suv-taxi-sketch.png",
+                "imagem_real": "/static/images/real/real-suv-taxi.jpg",
+                "param_reserva": "Táxi SUV Blindado"
             },
             {
                 "id": "taxi-suv-convencional",
