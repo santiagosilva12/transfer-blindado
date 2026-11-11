@@ -11,7 +11,7 @@
   
   <!-- Land Rover Discovery Preta Realista no Centro-Direita (Estilo Mockup) -->
   <div class="hero-center-escalade" aria-hidden="true">
-    <img src="{{ url_for('static', filename='images/hero-landrover-studio.png') }}?v=2" alt="Land Rover Discovery Blindada">
+    <img src="{{ url_for('static', filename='images/hero-landrover-studio.png') }}?v=4" alt="Land Rover Discovery Blindada">
   </div>
 
   <div class="container-xl position-relative" style="z-index: 3;">
@@ -121,14 +121,18 @@
                   <option value="" selected data-i18n="lbl_fleet">Frota Desejada</option>
                   <option value="Sedan Luxo Blindado">Sedan Luxo Blindado</option>
                   <option value="Sedan Executivo Blindado">Sedan Executivo Blindado</option>
+                  <option value="Sedan Convencional">Sedan Convencional</option>
+                  <option value="SUV Grande Porte Blindada">SUV Grande Porte Blindada</option>
+                  <option value="SUV Premium Blindada">SUV Premium Blindada</option>
+                  <option value="SUV Luxo Blindada">SUV Luxo Blindada</option>
                   <option value="SUV Executivo Blindado">SUV Executivo Blindado</option>
+                  <option value="SUV Executiva Convencional">SUV Executiva Convencional</option>
+                  <option value="Táxi Executivo">Táxi Executivo</option>
                   <option value="Van Executiva VIP">Van Executiva VIP</option>
                   <option value="Mini Van VIP">Mini Van VIP</option>
                   <option value="Ônibus Comitiva">Ônibus Comitiva</option>
                   <option value="Avião a Jato">Avião a Jato</option>
                   <option value="Helicóptero">Helicóptero</option>
-                  <option value="Aluguel de Veículos">Aluguel de Veículos</option>
-                  <option value="Logística Grandes Eventos">Logística Grandes Eventos</option>
                 </select>
               </div>
 
@@ -526,7 +530,7 @@
             <!-- Ação de Reserva Direto no WhatsApp -->
             <div class="d-flex justify-content-end align-items-center pt-3 border-top border-secondary border-opacity-10 mt-2">
               <span class="link-with-icon fw-bold text-gold">
-                <span data-i18n="fleet_quote_cta">Solicitar Cotação para esta Frota</span>
+                <span data-i18n="fleet_air_quote_cta">Solicitar Cotação para este Serviço</span>
                 <i class="bi bi-whatsapp ms-1"></i>
               </span>
             </div>
@@ -579,6 +583,7 @@
               <span class="drvn-service-pill"><i class="bi bi-shield-check text-gold me-1"></i> <span data-i18n="svc_safedriver_pill1">Direção Executiva</span></span>
               <span class="drvn-service-pill"><i class="bi bi-check2 text-gold me-1"></i> <span data-i18n="svc_safedriver_pill2">No Seu Veículo</span></span>
               <span class="drvn-service-pill"><i class="bi bi-clock-history text-gold me-1"></i> <span data-i18n="svc_safedriver_pill3">Prontidão 24/7</span></span>
+              <span class="drvn-service-pill"><i class="bi bi-calendar-check text-gold me-1"></i> <span data-i18n="svc_safedriver_pill4">Contrato Mensal</span></span>
             </div>
           </div>
           <a href="{{ url_for('reserva', servico='Safe Driver (Condução do Próprio Veículo)') }}" class="link-with-icon fw-bold mt-auto">
