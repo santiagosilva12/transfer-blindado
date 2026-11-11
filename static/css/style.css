@@ -2665,34 +2665,50 @@ body {
   transform: translateY(-2px);
 }
 
-/* Container da Imagem do Modelo no Card de Cotação - Imagem Limpa sem Moldura */
+/* Container da Imagem do Modelo no Card de Cotação - Ocupando todo o espaço do quadrado */
 .drvn-model-radio-img-box {
   background: transparent !important;
   border: none !important;
   border-radius: 0;
-  height: 82px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2px 0 4px;
+  margin: 4px 0 6px;
   padding: 0;
   box-shadow: none !important;
 }
 
+.drvn-grid-3 .drvn-model-radio-img-box {
+  height: 140px;
+}
+
+.drvn-grid-4 .drvn-model-radio-img-box {
+  height: 110px;
+}
+
+.drvn-grid-5 .drvn-model-radio-img-box {
+  height: 96px;
+}
+
+.drvn-grid-2 .drvn-model-radio-img-box {
+  height: 150px;
+}
+
 .drvn-model-radio-img-box img {
-  max-height: 76px;
-  max-width: 96%;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
   display: block;
   filter: none !important;
-  transition: transform 0.25s ease;
+  transform: scale(1.05);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .drvn-model-radio-card:hover .drvn-model-radio-img-box img {
-  transform: scale(1.06);
+  transform: scale(1.12);
 }
 
 .drvn-model-badge {
@@ -3267,21 +3283,27 @@ body {
   }
 
   /* 2 colunas de veículos lado a lado em celulares padrão (380px-767px) para facilitar comparação */
+  .drvn-model-picker-grid.drvn-grid-3,
   .drvn-model-picker-grid.drvn-grid-4,
   .drvn-model-picker-grid.drvn-grid-5 {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 0.65rem !important;
   }
-  .drvn-model-radio-img-box {
-    height: 64px;
+  .drvn-model-radio-img-box,
+  .drvn-grid-3 .drvn-model-radio-img-box,
+  .drvn-grid-4 .drvn-model-radio-img-box,
+  .drvn-grid-5 .drvn-model-radio-img-box,
+  .drvn-grid-2 .drvn-model-radio-img-box {
+    height: 84px !important;
     border-radius: 0;
   }
   .drvn-model-radio-img-box img {
-    max-height: 58px;
-    max-width: 96%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    max-height: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    transform: scale(1.08) !important;
   }
   .drvn-model-card-title {
     font-size: 0.82rem;
@@ -3344,6 +3366,7 @@ body {
 
 /* Telas ultra-compactas (<= 370px, ex: iPhone SE / Galaxy Mini) */
 @media (max-width: 370px) {
+  .drvn-model-picker-grid.drvn-grid-3,
   .drvn-model-picker-grid.drvn-grid-4,
   .drvn-model-picker-grid.drvn-grid-5 {
     grid-template-columns: 1fr !important;
