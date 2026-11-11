@@ -2535,6 +2535,26 @@ body {
   }
 }
 
+/* 3 Carros um do lado do outro (Sedan) */
+.drvn-model-picker-grid.drvn-grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+  max-width: 960px;
+  gap: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .drvn-model-picker-grid.drvn-grid-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.65rem !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .drvn-model-picker-grid.drvn-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* 4 Carros um do lado do outro (Van & Mini Van) */
 .drvn-model-picker-grid.drvn-grid-4 {
   grid-template-columns: repeat(4, 1fr) !important;
@@ -2623,7 +2643,7 @@ body {
   background: #ffffff !important;
   border: 1.5px solid #cbd5e1 !important;
   border-radius: 14px;
-  padding: 10px 12px;
+  padding: 8px 10px;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   height: 100%;
   display: flex;
@@ -2650,18 +2670,18 @@ body {
   background: transparent !important;
   border: none !important;
   border-radius: 0;
-  height: 86px;
+  height: 82px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px 0 8px;
+  margin: 2px 0 4px;
   padding: 0;
   box-shadow: none !important;
 }
 
 .drvn-model-radio-img-box img {
-  max-height: 80px;
+  max-height: 76px;
   max-width: 96%;
   width: auto;
   height: auto;
@@ -2697,10 +2717,11 @@ body {
 
 .drvn-model-card-title {
   color: #0f172a !important;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 800;
   line-height: 1.25;
   margin-top: 2px;
+  text-align: center;
 }
 
 .drvn-model-card-sub {
