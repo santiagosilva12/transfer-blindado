@@ -179,7 +179,7 @@ function initSwiperCapitais() {
 function initFleetCarousel() {
   if (typeof Swiper === "undefined") return;
 
-  const categories = ["sedan", "suv", "van", "onibus"];
+  const categories = ["sedan", "suv", "taxi", "van", "onibus"];
   const categorySwipers = {};
 
   categories.forEach((cat) => {
