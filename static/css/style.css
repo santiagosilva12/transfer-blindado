@@ -2645,33 +2645,34 @@ body {
   transform: translateY(-2px);
 }
 
-/* Container da Imagem do Modelo no Card de Cotação */
+/* Container da Imagem do Modelo no Card de Cotação - Estilo Fotografia Real Executiva */
 .drvn-model-radio-img-box {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0;
-  height: 86px;
+  background: #0f172a;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 96px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px 0 8px;
+  margin: 6px 0 10px;
   padding: 0;
-  box-shadow: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .drvn-model-radio-img-box img {
-  max-height: 78px;
-  max-width: 96%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
   filter: none !important;
-  transition: transform 0.25s ease;
+  transition: transform 0.35s ease;
 }
 
 .drvn-model-radio-card:hover .drvn-model-radio-img-box img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .drvn-model-badge {
@@ -3251,10 +3252,13 @@ body {
     gap: 0.65rem !important;
   }
   .drvn-model-radio-img-box {
-    height: 60px;
+    height: 72px;
+    border-radius: 8px;
   }
   .drvn-model-radio-img-box img {
-    max-height: 52px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .drvn-model-card-title {
     font-size: 0.82rem;
