@@ -582,27 +582,55 @@ function initQuotationPage() {
     }
   }
 
-  // Ler parâmetros da URL (?categoria=...&modelo=...)
-  const urlParams = new URLSearchParams(window.location.search);
-  const catParam = (urlParams.get("categoria") || "sedan").toLowerCase();
-  const modelParam = urlParams.get("modelo") || "";
-
-  if (catParam) {
-    switchQuotationCategory(catParam, modelParam);
+  // Detectar categoria ativa pela URL (/frota/<slug> ou ?categoria=<slug>)
+  let activeCat = "";
+  const pathMatch = window.location.pathname.match(/\/frota\/([a-z0-9-]+)/i);
+  if (pathMatch && pathMatch[1]) {
+    activeCat = pathMatch[1].toLowerCase();
+    if (activeCat === "taxi") activeCat = "taxi-executivo";
   }
+
+  const urlParams = new URLSearchParams(window.location.search);
+  if (!activeCat && urlParams.get("categoria")) {
+    activeCat = urlParams.get("categoria").toLowerCase();
+    if (activeCat === "taxi") activeCat = "taxi-executivo";
+  }
+
+  // Se não veio na URL, respeita a categoria que veio ativa do HTML renderizado
+  if (!activeCat) {
+    const activeBtn = document.querySelector(".drvn-quote-cat-btn.active");
+    if (activeBtn) {
+      activeCat = activeBtn.getAttribute("data-cat-slug");
+    }
+  }
+
+  if (!activeCat) {
+    activeCat = "sedan";
+  }
+
+  const modelParam = urlParams.get("modelo") || "";
+  switchQuotationCategory(activeCat, modelParam);
 
   // Cliques nos botões de alternância de categoria
   document.querySelectorAll(".drvn-quote-cat-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
       const slug = btn.getAttribute("data-cat-slug");
       switchQuotationCategory(slug);
 
-      // Atualizar URL sem recarregar a página
-      const newUrl = new URL(window.location);
-      newUrl.searchParams.set("categoria", slug);
-      newUrl.searchParams.delete("modelo");
-      window.history.replaceState({}, "", newUrl);
+      // Atualizar URL amigável de SEO sem recarregar a página
+      if (window.history && window.history.pushState) {
+        window.history.pushState({}, "", `/frota/${slug}`);
+      }
     });
+  });
+
+  // Suporte a navegação pelo histórico (botões Voltar/Avançar do navegador)
+  window.addEventListener("popstate", () => {
+    const pMatch = window.location.pathname.match(/\/frota\/([a-z0-9-]+)/i);
+    if (pMatch && pMatch[1]) {
+      switchQuotationCategory(pMatch[1].toLowerCase());
+    }
   });
 
   // Envio dos formulários da tela de cotação para o WhatsApp
