@@ -209,14 +209,16 @@ function initFleetCarousel() {
       });
     }
 
+    const isMobileScreen = window.innerWidth <= 768;
     const mainSwiper = new Swiper(`.fleet-main-swiper-${cat}`, {
       slidesPerView: 1,
       spaceBetween: 28,
-      speed: 2800,
+      speed: isMobileScreen ? 800 : 2800,
       autoHeight: true,
       observer: true,
       observeParents: true,
-      autoplay: {
+      initialSlide: 0,
+      autoplay: isMobileScreen ? false : {
         delay: 14000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
@@ -227,6 +229,12 @@ function initFleetCarousel() {
         prevEl: prevBtn,
       },
     });
+
+    // Garante que o primeiro modelo da categoria venha sempre pré-selecionado no mobile e desktop
+    mainSwiper.slideTo(0, 0);
+    if (thumbsSwiper) {
+      thumbsSwiper.slideTo(0, 0);
+    }
 
     // Ao atingir o último modelo, retorna suavemente ao primeiro em ritmo bem lento
     mainSwiper.on("reachEnd", () => {
@@ -272,6 +280,20 @@ function initFleetCarousel() {
       }
     });
   });
+}
+
+/**
+ * Utilitário universal para envio de mensagem WhatsApp
+ * No celular, redireciona diretamente via location.href evitando bloqueio de popup do Safari/Chrome.
+ * No desktop, abre em nova aba via window.open.
+ */
+function openWhatsAppUrl(url) {
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  if (isMobile) {
+    window.location.href = url;
+  } else {
+    window.open(url, "_blank");
+  }
 }
 
 /**
@@ -340,8 +362,7 @@ function initReservationForm() {
     const mensagemFinal = linhas.join("\n");
     const whatsappUrl = `https://wa.me/5511986829141?text=${encodeURIComponent(mensagemFinal)}`;
 
-    // Redireciona via window.open conforme especificado
-    window.open(whatsappUrl, "_blank");
+    openWhatsAppUrl(whatsappUrl);
   });
 }
 
@@ -431,7 +452,7 @@ function initHeroQuickForm() {
     const mensagemFinal = linhas.join("\n");
     const whatsappUrl = `https://wa.me/5511986829141?text=${encodeURIComponent(mensagemFinal)}`;
 
-    window.open(whatsappUrl, "_blank");
+    openWhatsAppUrl(whatsappUrl);
   });
 }
 
@@ -538,8 +559,8 @@ function initCategoryFleetModals() {
         }
       }
 
-      // Abre WhatsApp
-      window.open(whatsappUrl, "_blank");
+      // Abre WhatsApp de forma compatível com celular e desktop
+      openWhatsAppUrl(whatsappUrl);
     });
   });
 }
@@ -699,9 +720,29 @@ function initQuotationPage() {
 
       const mensagemFinal = linhas.join("\n");
       const whatsappUrl = `https://wa.me/5511986829141?text=${encodeURIComponent(mensagemFinal)}`;
-      window.open(whatsappUrl, "_blank");
+      openWhatsAppUrl(whatsappUrl);
     });
   });
+
+  // Suporte a clique no balão flutuante do WhatsApp caso o usuário toque no balão
+  const waBubble = document.querySelector(".floating-whatsapp-bubble");
+  if (waBubble) {
+    waBubble.addEventListener("click", () => {
+      const waBtn = document.querySelector(".floating-whatsapp");
+      if (waBtn) waBtn.click();
+    });
+  }
+
+  // Oculta botão flutuante quando o menu mobile estiver aberto
+  const navCollapse = document.querySelector(".navbar-collapse");
+  if (navCollapse && typeof bootstrap !== "undefined") {
+    navCollapse.addEventListener("show.bs.collapse", () => {
+      document.body.classList.add("menu-open");
+    });
+    navCollapse.addEventListener("hidden.bs.collapse", () => {
+      document.body.classList.remove("menu-open");
+    });
+  }
 }
 
 

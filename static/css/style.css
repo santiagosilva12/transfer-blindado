@@ -3234,21 +3234,52 @@ body {
     padding-left: 1rem;
   }
 
-  /* Hero no celular: Carro sutil no fundo como no desktop e badges inferiores ocultados */
+  /* Espaçamento do Hero no celular: Editorial ocupa a 1ª tela com respiração, formulário na próxima rolagem */
+  .drvn-hero {
+    min-height: auto;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+  .golden-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .golden-hero-main {
+    min-height: calc(100vh - 105px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 2.5rem;
+  }
+  .golden-hero-side {
+    margin-top: 3.5rem !important;
+    margin-bottom: 2.5rem !important;
+    scroll-margin-top: 5rem;
+  }
+
+  /* Hero no celular: Carro sutil no fundo com sombra mais profunda */
   .drvn-hero-bottom-badges {
     display: none !important;
   }
   .hero-center-escalade {
     position: absolute !important;
     left: 50% !important;
-    top: 240px !important;
+    top: 260px !important;
     transform: translate(-50%, -50%) !important;
-    width: 95vw !important;
-    max-width: 440px !important;
+    width: 100vw !important;
+    max-width: 480px !important;
     margin: 0 !important;
-    opacity: 0.22 !important;
+    opacity: 0.32 !important;
     pointer-events: none !important;
     z-index: 1 !important;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.98)) !important;
+  }
+  .hero-center-escalade::after {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    background: radial-gradient(ellipse at center, rgba(7, 7, 8, 0.25) 0%, rgba(7, 7, 8, 0.88) 72%, #070708 100%);
+    pointer-events: none;
   }
   .hero-center-escalade img {
     filter: none !important;
@@ -3356,16 +3387,25 @@ body {
     font-size: 0.92rem;
   }
 
-  /* Tela de Cotação (/cotacao) no celular */
+  /* Tela de Cotação (/cotacao e /frota/*) no celular: Oculta o seletor de outras categorias para visual 100% slim */
   .drvn-quote-cat-bar {
-    border-radius: 16px !important;
-    width: 100%;
+    display: none !important;
   }
-  .drvn-quote-cat-btn {
-    flex: 1 1 calc(50% - 0.5rem);
-    font-size: 0.84rem;
-    padding: 0.5rem 0.75rem !important;
-    text-align: center;
+  .drvn-quote-box .btn-whatsapp {
+    width: 100% !important;
+    white-space: normal !important;
+    font-size: 0.96rem !important;
+    padding: 0.85rem 1.15rem !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35) !important;
+  }
+  .drvn-quote-box .btn-whatsapp i {
+    font-size: 1.25rem !important;
+    margin-right: 0.5rem !important;
   }
   .drvn-page-trip-toggle {
     max-width: 100%;
@@ -3402,19 +3442,28 @@ body {
     font-size: 0.7rem;
   }
 
-  /* Rodapé e Botão Flutuante WhatsApp no celular */
+  /* Rodapé e Botão Flutuante WhatsApp no celular: Sem balão e posicionado com elegância */
   .drvn-footer {
     padding: 3.5rem 0 2rem;
   }
-  .floating-whatsapp {
-    width: 52px;
-    height: 52px;
-    min-width: 52px;
-    font-size: 1.65rem;
-  }
   .floating-whatsapp-bubble {
-    font-size: 0.76rem;
-    padding: 0.4rem 0.9rem;
+    display: none !important;
+  }
+  .floating-whatsapp-container {
+    bottom: 20px !important;
+    right: 18px !important;
+    z-index: 990 !important;
+  }
+  .floating-whatsapp {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    font-size: 1.55rem !important;
+  }
+  /* Quando o menu mobile estiver aberto, oculta o botão flutuante para não cobrir o menu */
+  .navbar-collapse.show ~ * .floating-whatsapp-container,
+  body.menu-open .floating-whatsapp-container {
+    display: none !important;
   }
 }
 
