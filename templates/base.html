@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <title>{% block title %}TRANSFER BLINDADO | Ground Travel &amp; Aviation Platform{% endblock %}</title>
-  <meta name="description" content="{% block meta_desc %}Plataforma corporativa de transporte executivo blindado Nível III-A e aviação executiva nas principais capitais do Brasil.{% endblock %}">
+  <title>{% block title %}{{ seo_title | default('TRANSFER BLINDADO | Ground Travel & Aviation Platform') }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_desc %}{{ seo_description | default('Plataforma corporativa de transporte executivo blindado Nível III-A e aviação executiva nas principais capitais do Brasil.') }}{% endblock %}">
 
   <!-- PWA & Mobile Web App Meta Tags -->
   <meta name="theme-color" content="#12151c">

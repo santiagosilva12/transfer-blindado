@@ -4,7 +4,7 @@ Gera os arquivos HTML estáticos renderizados a partir do Flask e copia a pasta 
 """
 import os
 import shutil
-from app import app, CAPITAIS, FROTA, CATEGORIAS_TERRESTRES
+from app import app, CAPITAIS, FROTA, CATEGORIAS_TERRESTRES, SEO_CATEGORIAS
 from flask import render_template
 
 DIST_DIR = os.path.join(os.path.dirname(__file__), "dist")
@@ -69,10 +69,51 @@ def build_static_site():
             f.write(rendered_cotacao)
         print("[OK] cotacao.html renderizado em dist/cotacao.html")
 
-    # 4. Criar arquivo de regras de redirecionamento do Netlify (_redirects)
+    # 4. Renderizar páginas dedicadas para cada categoria de veículo (SEO)
+    for cat in CATEGORIAS_TERRESTRES:
+        slug = cat["slug"]
+        seo = SEO_CATEGORIAS.get(slug, {})
+        with app.test_request_context(f"/{slug}"):
+            rendered_cat = render_template(
+                "cotacao.html",
+                categoria_ativa=slug,
+                cat_atual=cat,
+                modelo_ativo="",
+                categorias_terrestres=CATEGORIAS_TERRESTRES,
+                capitais=CAPITAIS,
+                seo_title=seo.get("title", ""),
+                seo_description=seo.get("description", "")
+            )
+            cat_dir = os.path.join(DIST_DIR, slug)
+            os.makedirs(cat_dir, exist_ok=True)
+            with open(os.path.join(cat_dir, "index.html"), "w", encoding="utf-8") as f:
+                f.write(rendered_cat)
+            with open(os.path.join(DIST_DIR, f"{slug}.html"), "w", encoding="utf-8") as f:
+                f.write(rendered_cat)
+        print(f"[OK] Categoria {slug} renderizada em dist/{slug}/index.html")
+
+    # 5. Criar arquivo de regras de redirecionamento do Netlify (_redirects)
     redirects_content = """/manifest.json /manifest.json 200
 /sw.js      /sw.js           200
-/cotacao    /cotacao.html    200
+/sedan          /sedan/index.html          200
+/suv            /suv/index.html            200
+/taxi           /taxi-executivo/index.html 301
+/taxi-executivo /taxi-executivo/index.html 200
+/van            /van/index.html            200
+/onibus         /onibus/index.html         200
+/frota/sedan          /sedan/index.html          301
+/frota/suv            /suv/index.html            301
+/frota/taxi           /taxi-executivo/index.html 301
+/frota/taxi-executivo /taxi-executivo/index.html 301
+/frota/van            /van/index.html            301
+/frota/onibus         /onibus/index.html         301
+/cotacao/sedan          /sedan/index.html          301
+/cotacao/suv            /suv/index.html            301
+/cotacao/taxi           /taxi-executivo/index.html 301
+/cotacao/taxi-executivo /taxi-executivo/index.html 301
+/cotacao/van            /van/index.html            301
+/cotacao/onibus         /onibus/index.html         301
+/cotacao    /sedan/index.html 301
 /reserva    /reserva.html    200
 /frota      /#frota          301
 /servicos   /#servicos       301

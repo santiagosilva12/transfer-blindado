@@ -3,9 +3,49 @@
   command = "pip install -r requirements.txt && python build.py"
 
 [[redirects]]
-  from = "/cotacao"
-  to = "/cotacao.html"
+  from = "/sedan"
+  to = "/sedan/index.html"
   status = 200
+
+[[redirects]]
+  from = "/suv"
+  to = "/suv/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/taxi"
+  to = "/taxi-executivo/index.html"
+  status = 301
+
+[[redirects]]
+  from = "/taxi-executivo"
+  to = "/taxi-executivo/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/van"
+  to = "/van/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/onibus"
+  to = "/onibus/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/frota/:cat"
+  to = "/:cat"
+  status = 301
+
+[[redirects]]
+  from = "/cotacao/:cat"
+  to = "/:cat"
+  status = 301
+
+[[redirects]]
+  from = "/cotacao"
+  to = "/sedan"
+  status = 301
 
 [[redirects]]
   from = "/reserva"
@@ -36,4 +76,5 @@
   from = "/faq"
   to = "/#faq"
   status = 301
+
 

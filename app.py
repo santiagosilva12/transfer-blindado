@@ -269,7 +269,7 @@ CATEGORIAS_TERRESTRES = [
     },
     {
         "id": "taxi",
-        "slug": "taxi",
+        "slug": "taxi-executivo",
         "nome": "Táxi Executivo",
         "icone": "bi-taxi-front",
         "titulo_galeria": "GALERIA DE TÁXIS EXECUTIVOS & BLINDADOS",
@@ -578,9 +578,50 @@ FROTA = [
 ]
 
 
+# Mapeamento de SEO para as 5 categorias da frota (Title e Description)
+SEO_CATEGORIAS = {
+    "sedan": {
+        "title": "Aluguel e Transfer em Sedan Blindado | Transfer Executivo",
+        "description": "Locação de sedans blindados executivos e de luxo Nível III-A com motorista profissional bilíngue. Segurança, conforto e discrição em aeroportos e transfers corporativos."
+    },
+    "suv": {
+        "title": "Aluguel e Transfer em SUV Blindado | Segurança e Alto Padrão",
+        "description": "Frota executiva de SUVs blindados Nível III-A para transfer, viagens corporativas e comitivas. Máxima segurança, espaço superior e discrição absoluta."
+    },
+    "taxi-executivo": {
+        "title": "Táxi Executivo Blindado | Agilidade e Proteção Balística",
+        "description": "Serviço de táxi executivo blindado homologado com acesso a faixas exclusivas e corredores rápidos em São Paulo. Deslocamento ágil com segurança Nível III-A."
+    },
+    "van": {
+        "title": "Aluguel de Van e Mini Van Blindada | Transfer Executivo para Grupos",
+        "description": "Transporte de comitivas, diretorias e delegações em vans e mini vans blindadas Nível III-A. Conforto de primeira classe com logística pontual e integrada 24h."
+    },
+    "onibus": {
+        "title": "Locação de Ônibus e Micro-ônibus Blindado | Comitivas e Grandes Eventos",
+        "description": "Fretamento de ônibus e micro-ônibus blindados e executivos para delegações, grandes eventos e convenções com segurança balística certificada."
+    }
+}
+
+
 @app.route("/")
 def index():
-    return render_template("index.html", capitais=CAPITAIS, frotas=FROTA, categorias_terrestres=CATEGORIAS_TERRESTRES)
+    return render_template(
+        "index.html",
+        capitais=CAPITAIS,
+        frotas=FROTA,
+        categorias_terrestres=CATEGORIAS_TERRESTRES,
+        categoria_ativa="sedan"
+    )
+
+
+@app.route("/frota/<categoria>")
+def frota_categoria(categoria):
+    categoria = categoria.lower()
+    if categoria == "taxi":
+        return redirect(url_for("categoria_direta", categoria="taxi-executivo"))
+    if categoria in SEO_CATEGORIAS:
+        return redirect(f"/{categoria}")
+    return redirect(url_for("index"))
 
 
 @app.route("/frota")
@@ -590,16 +631,48 @@ def frota():
 
 @app.route("/cotacao")
 def cotacao():
-    categoria_ativa = request.args.get("categoria", "sedan").lower()
+    cat = request.args.get("categoria", "sedan").lower()
+    if cat == "taxi":
+        cat = "taxi-executivo"
+    modelo = request.args.get("modelo", "")
+    if modelo:
+        return redirect(f"/{cat}?modelo={modelo}")
+    return redirect(f"/{cat}")
+
+
+@app.route("/cotacao/<categoria>")
+def cotacao_categoria_redirect(categoria):
+    return redirect(f"/{categoria}")
+
+
+# Rotas dedicadas e individuais para cada categoria de veículo (SEO)
+@app.route("/sedan")
+@app.route("/suv")
+@app.route("/taxi-executivo")
+@app.route("/taxi")
+@app.route("/van")
+@app.route("/onibus")
+def categoria_direta():
+    # Obtém o slug da rota acessada (ex: '/sedan' -> 'sedan')
+    categoria = request.path.strip("/").lower()
+    if categoria == "taxi":
+        categoria = "taxi-executivo"
+
+    if categoria not in SEO_CATEGORIAS:
+        return redirect(url_for("index"))
+
     modelo_ativo = request.args.get("modelo", "")
-    cat_atual = next((c for c in CATEGORIAS_TERRESTRES if c["slug"] == categoria_ativa), CATEGORIAS_TERRESTRES[0])
+    cat_atual = next((c for c in CATEGORIAS_TERRESTRES if c["slug"] == categoria), CATEGORIAS_TERRESTRES[0])
+    seo = SEO_CATEGORIAS[categoria]
     return render_template(
         "cotacao.html",
-        categoria_ativa=cat_atual["slug"],
+        categoria_ativa=categoria,
         cat_atual=cat_atual,
         modelo_ativo=modelo_ativo,
         categorias_terrestres=CATEGORIAS_TERRESTRES,
-        capitais=CAPITAIS
+        capitais=CAPITAIS,
+        seo_title=seo["title"],
+        seo_description=seo["description"]
     )
 
 

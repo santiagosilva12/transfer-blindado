@@ -1354,8 +1354,13 @@ div[id^="frota-cat-"] {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Pílulas de Navegação de Categoria (Botões / Links de Âncora) */
-.drvn-category-nav-pill {
+.nav-tabs.drvn-category-nav-wrapper {
+  border-bottom: none !important;
+}
+
+/* Pílulas de Navegação de Categoria (Botões / Links de Âncora / Nav-tabs) */
+.drvn-category-nav-pill,
+.nav-tabs .nav-link.drvn-category-nav-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -1374,17 +1379,21 @@ div[id^="frota-cat-"] {
 }
 
 .drvn-category-nav-pill:hover,
-.drvn-category-nav-pill.active {
-  background: #0f172a;
-  color: #ffffff;
-  border-color: #0f172a;
+.drvn-category-nav-pill.active,
+.nav-tabs .nav-link.drvn-category-nav-pill:hover,
+.nav-tabs .nav-link.drvn-category-nav-pill.active {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.15);
 }
 
 .drvn-category-nav-pill:hover i,
-.drvn-category-nav-pill.active i {
-  color: #d4af37;
+.drvn-category-nav-pill.active i,
+.nav-tabs .nav-link.drvn-category-nav-pill:hover i,
+.nav-tabs .nav-link.drvn-category-nav-pill.active i {
+  color: #d4af37 !important;
 }
 
 /* Blocos de Cada Categoria (Uma debaixo da outra) - Slim & Elegante */

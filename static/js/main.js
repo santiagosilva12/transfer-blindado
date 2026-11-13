@@ -179,7 +179,7 @@ function initSwiperCapitais() {
 function initFleetCarousel() {
   if (typeof Swiper === "undefined") return;
 
-  const categories = ["sedan", "suv", "taxi", "van", "onibus"];
+  const categories = ["sedan", "suv", "taxi", "taxi-executivo", "van", "onibus"];
   const categorySwipers = {};
 
   categories.forEach((cat) => {
@@ -197,6 +197,8 @@ function initFleetCarousel() {
         speed: 2200,
         watchSlidesProgress: true,
         freeMode: false,
+        observer: true,
+        observeParents: true,
         breakpoints: {
           400: { slidesPerView: 2.2, spaceBetween: 12 },
           576: { slidesPerView: 3, spaceBetween: 14 },
@@ -212,6 +214,8 @@ function initFleetCarousel() {
       spaceBetween: 28,
       speed: 2800,
       autoHeight: true,
+      observer: true,
+      observeParents: true,
       autoplay: {
         delay: 14000,
         disableOnInteraction: false,
