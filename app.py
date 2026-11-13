@@ -143,7 +143,7 @@ CAPITAIS = [
 CATEGORIAS_TERRESTRES = [
     {
         "id": "sedan",
-        "slug": "sedan",
+        "slug": "sedan-luxo-blindado",
         "nome": "Sedan",
         "icone": "bi-car-front",
         "titulo_galeria": "GALERIA DE VEÍCULOS SEDAN",
@@ -193,7 +193,7 @@ CATEGORIAS_TERRESTRES = [
     },
     {
         "id": "suv",
-        "slug": "suv",
+        "slug": "suv-blindada",
         "nome": "SUV",
         "icone": "bi-shield-shaded",
         "titulo_galeria": "GALERIA DE VEÍCULOS SUV",
@@ -269,7 +269,7 @@ CATEGORIAS_TERRESTRES = [
     },
     {
         "id": "taxi",
-        "slug": "taxi-executivo",
+        "slug": "taxi-executivo-blindado",
         "nome": "Táxi Executivo",
         "icone": "bi-taxi-front",
         "titulo_galeria": "GALERIA DE TÁXIS EXECUTIVOS & BLINDADOS",
@@ -332,7 +332,7 @@ CATEGORIAS_TERRESTRES = [
     },
     {
         "id": "van",
-        "slug": "van",
+        "slug": "van-blindada",
         "nome": "Van & Mini Van",
         "icone": "bi-truck",
         "titulo_galeria": "GALERIA DE VEÍCULOS VANS & MINI VANS",
@@ -395,7 +395,7 @@ CATEGORIAS_TERRESTRES = [
     },
     {
         "id": "onibus",
-        "slug": "onibus",
+        "slug": "onibus-blindado",
         "nome": "Ônibus",
         "icone": "bi-bus-front",
         "titulo_galeria": "GALERIA DE VEÍCULOS ÔNIBUS",
@@ -578,28 +578,38 @@ FROTA = [
 ]
 
 
-# Mapeamento de SEO para as 5 categorias da frota (Title e Description)
+# Mapeamento de SEO para as 5 categorias da frota (Title e Description) com termos exatos
 SEO_CATEGORIAS = {
-    "sedan": {
-        "title": "Aluguel e Transfer em Sedan Blindado | Transfer Executivo",
-        "description": "Locação de sedans blindados executivos e de luxo Nível III-A com motorista profissional bilíngue. Segurança, conforto e discrição em aeroportos e transfers corporativos."
+    "sedan-luxo-blindado": {
+        "title": "Sedan de Luxo Blindado | Aluguel e Transfer Executivo | TRANSFER BLINDADO",
+        "description": "Locação e transfer em Sedan de Luxo Blindado Nível III-A com motorista profissional bilíngue. Conforto VIP, discrição e segurança absoluta em São Paulo e capitais."
     },
-    "suv": {
-        "title": "Aluguel e Transfer em SUV Blindado | Segurança e Alto Padrão",
-        "description": "Frota executiva de SUVs blindados Nível III-A para transfer, viagens corporativas e comitivas. Máxima segurança, espaço superior e discrição absoluta."
+    "suv-blindada": {
+        "title": "SUV Blindada | Locação e Transfer Executivo de Alto Padrão | TRANSFER BLINDADO",
+        "description": "Frota executiva de SUV Blindada Nível III-A para transfer, viagens corporativas e comitivas. Máxima segurança, espaço superior e discrição absoluta em todo o Brasil."
     },
-    "taxi-executivo": {
-        "title": "Táxi Executivo Blindado | Agilidade e Proteção Balística",
-        "description": "Serviço de táxi executivo blindado homologado com acesso a faixas exclusivas e corredores rápidos em São Paulo. Deslocamento ágil com segurança Nível III-A."
+    "taxi-executivo-blindado": {
+        "title": "Táxi Executivo Blindado | Agilidade e Proteção Balística | TRANSFER BLINDADO",
+        "description": "Serviço exclusivo de Táxi Executivo Blindado com acesso a faixas exclusivas e corredores em São Paulo. Deslocamento rápido e seguro com proteção balística Nível III-A."
     },
-    "van": {
-        "title": "Aluguel de Van e Mini Van Blindada | Transfer Executivo para Grupos",
-        "description": "Transporte de comitivas, diretorias e delegações em vans e mini vans blindadas Nível III-A. Conforto de primeira classe com logística pontual e integrada 24h."
+    "van-blindada": {
+        "title": "Van Blindada | Aluguel para Comitivas e Grupos Executivos | TRANSFER BLINDADO",
+        "description": "Transporte de comitivas e delegações em Van Blindada Nível III-A. Conforto executivo, espaço amplo e segurança certificada com atendimento 24 horas em todo o Brasil."
     },
-    "onibus": {
-        "title": "Locação de Ônibus e Micro-ônibus Blindado | Comitivas e Grandes Eventos",
-        "description": "Fretamento de ônibus e micro-ônibus blindados e executivos para delegações, grandes eventos e convenções com segurança balística certificada."
+    "onibus-blindado": {
+        "title": "Ônibus Blindado | Locação e Fretamento para Grandes Comitivas | TRANSFER BLINDADO",
+        "description": "Fretamento e locação de Ônibus Blindado para grandes comitivas, eventos corporativos e delegações com segurança balística certificada pelo Exército."
     }
+}
+
+# Aliases de compatibilidade para redirecionamentos 301 das URLs antigas/curtas
+SLUG_ALIASES = {
+    "sedan": "sedan-luxo-blindado",
+    "suv": "suv-blindada",
+    "taxi": "taxi-executivo-blindado",
+    "taxi-executivo": "taxi-executivo-blindado",
+    "van": "van-blindada",
+    "onibus": "onibus-blindado"
 }
 
 
@@ -610,20 +620,20 @@ def index():
         capitais=CAPITAIS,
         frotas=FROTA,
         categorias_terrestres=CATEGORIAS_TERRESTRES,
-        categoria_ativa="sedan"
+        categoria_ativa="sedan-luxo-blindado"
     )
 
 
 @app.route("/frota/<categoria>")
 def frota_categoria(categoria):
     categoria = categoria.lower()
-    # Alias de compatibilidade caso o usuário acesse /frota/taxi
-    if categoria == "taxi":
-        return redirect(url_for("frota_categoria", categoria="taxi-executivo"))
+    # Redirecionamento permanente 301 para URLs amigáveis com palavras-chave completas
+    if categoria in SLUG_ALIASES:
+        return redirect(url_for("frota_categoria", categoria=SLUG_ALIASES[categoria]), code=301)
 
     # Fallback: redirecionar para a frota sedan caso a categoria informada não exista
     if categoria not in SEO_CATEGORIAS:
-        return redirect(url_for("frota_categoria", categoria="sedan"))
+        return redirect(url_for("frota_categoria", categoria="sedan-luxo-blindado"), code=301)
 
     modelo_ativo = request.args.get("modelo", "")
     cat_atual = next((c for c in CATEGORIAS_TERRESTRES if c["slug"] == categoria), CATEGORIAS_TERRESTRES[0])
@@ -642,7 +652,7 @@ def frota_categoria(categoria):
 
 @app.route("/frota")
 def frota():
-    return redirect(url_for("frota_categoria", categoria="sedan"))
+    return redirect(url_for("frota_categoria", categoria="sedan-luxo-blindado"), code=301)
 
 
 # Redirecionamentos amigáveis caso o usuário acesse diretamente /sedan, /suv, etc.
@@ -654,20 +664,18 @@ def frota():
 @app.route("/onibus")
 def categoria_direta():
     categoria = request.path.strip("/").lower()
-    if categoria == "taxi":
-        categoria = "taxi-executivo"
-    return redirect(url_for("frota_categoria", categoria=categoria))
+    target = SLUG_ALIASES.get(categoria, "sedan-luxo-blindado")
+    return redirect(url_for("frota_categoria", categoria=target), code=301)
 
 
 @app.route("/cotacao")
 @app.route("/cotacao/<categoria>")
-def cotacao(categoria="sedan"):
+def cotacao(categoria="sedan-luxo-blindado"):
     cat = request.args.get("categoria", categoria).lower()
-    if cat == "taxi":
-        cat = "taxi-executivo"
-    if cat not in SEO_CATEGORIAS:
-        cat = "sedan"
-    return redirect(url_for("frota_categoria", categoria=cat))
+    target = SLUG_ALIASES.get(cat, cat)
+    if target not in SEO_CATEGORIAS:
+        target = "sedan-luxo-blindado"
+    return redirect(url_for("frota_categoria", categoria=target), code=301)
 
 
 @app.route("/reserva")

@@ -2,74 +2,101 @@
   publish = "dist"
   command = "pip install -r requirements.txt && python build.py"
 
+# Novas Rotas com Slugs Otimizados para SEO (200 Rewrite)
+[[redirects]]
+  from = "/frota/sedan-luxo-blindado"
+  to = "/frota/sedan-luxo-blindado/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/frota/suv-blindada"
+  to = "/frota/suv-blindada/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/frota/taxi-executivo-blindado"
+  to = "/frota/taxi-executivo-blindado/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/frota/van-blindada"
+  to = "/frota/van-blindada/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/frota/onibus-blindado"
+  to = "/frota/onibus-blindado/index.html"
+  status = 200
+
+# Redirecionamentos 301 Permanentes de URLs legadas para preservação e ganho de SEO
 [[redirects]]
   from = "/frota/sedan"
-  to = "/frota/sedan/index.html"
-  status = 200
+  to = "/frota/sedan-luxo-blindado"
+  status = 301
 
 [[redirects]]
   from = "/frota/suv"
-  to = "/frota/suv/index.html"
-  status = 200
+  to = "/frota/suv-blindada"
+  status = 301
 
 [[redirects]]
   from = "/frota/taxi"
-  to = "/frota/taxi-executivo/index.html"
+  to = "/frota/taxi-executivo-blindado"
   status = 301
 
 [[redirects]]
   from = "/frota/taxi-executivo"
-  to = "/frota/taxi-executivo/index.html"
-  status = 200
+  to = "/frota/taxi-executivo-blindado"
+  status = 301
 
 [[redirects]]
   from = "/frota/van"
-  to = "/frota/van/index.html"
-  status = 200
+  to = "/frota/van-blindada"
+  status = 301
 
 [[redirects]]
   from = "/frota/onibus"
-  to = "/frota/onibus/index.html"
-  status = 200
+  to = "/frota/onibus-blindado"
+  status = 301
 
 [[redirects]]
   from = "/sedan"
-  to = "/frota/sedan"
+  to = "/frota/sedan-luxo-blindado"
   status = 301
 
 [[redirects]]
   from = "/suv"
-  to = "/frota/suv"
+  to = "/frota/suv-blindada"
   status = 301
 
 [[redirects]]
   from = "/taxi"
-  to = "/frota/taxi-executivo"
+  to = "/frota/taxi-executivo-blindado"
   status = 301
 
 [[redirects]]
   from = "/taxi-executivo"
-  to = "/frota/taxi-executivo"
+  to = "/frota/taxi-executivo-blindado"
   status = 301
 
 [[redirects]]
   from = "/van"
-  to = "/frota/van"
+  to = "/frota/van-blindada"
   status = 301
 
 [[redirects]]
   from = "/onibus"
-  to = "/frota/onibus"
+  to = "/frota/onibus-blindado"
   status = 301
 
 [[redirects]]
   from = "/frota"
-  to = "/frota/sedan"
+  to = "/frota/sedan-luxo-blindado"
   status = 301
 
 [[redirects]]
   from = "/cotacao"
-  to = "/frota/sedan"
+  to = "/frota/sedan-luxo-blindado"
   status = 301
 
 [[redirects]]

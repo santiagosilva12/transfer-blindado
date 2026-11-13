@@ -56,10 +56,10 @@ def build_static_site():
         print("[OK] reserva.html renderizado em dist/reserva.html")
 
     with app.test_request_context("/cotacao"):
-        # 3. cotacao.html (Tela Dedicada com 4 Categorias e Seleção Completa)
+        # 3. cotacao.html (Tela Dedicada com 5 Categorias e Seleção Completa)
         rendered_cotacao = render_template(
             "cotacao.html",
-            categoria_ativa="sedan",
+            categoria_ativa="sedan-luxo-blindado",
             cat_atual=CATEGORIAS_TERRESTRES[0],
             modelo_ativo="",
             categorias_terrestres=CATEGORIAS_TERRESTRES,
@@ -93,21 +93,30 @@ def build_static_site():
     # 5. Criar arquivo de regras de redirecionamento do Netlify (_redirects)
     redirects_content = """/manifest.json /manifest.json 200
 /sw.js      /sw.js           200
-/frota/sedan          /frota/sedan/index.html          200
-/frota/suv            /frota/suv/index.html            200
-/frota/taxi           /frota/taxi-executivo/index.html 301
-/frota/taxi-executivo /frota/taxi-executivo/index.html 200
-/frota/van            /frota/van/index.html            200
-/frota/onibus         /frota/onibus/index.html         200
-/frota                /frota/sedan/index.html          301
-/sedan                /frota/sedan/index.html          301
-/suv                  /frota/suv/index.html            301
-/taxi                 /frota/taxi-executivo/index.html 301
-/taxi-executivo       /frota/taxi-executivo/index.html 301
-/van                  /frota/van/index.html            301
-/onibus               /frota/onibus/index.html         301
-/cotacao              /frota/sedan/index.html          301
-/cotacao/*            /frota/sedan/index.html          301
+/frota/sedan-luxo-blindado     /frota/sedan-luxo-blindado/index.html     200
+/frota/suv-blindada            /frota/suv-blindada/index.html            200
+/frota/taxi-executivo-blindado /frota/taxi-executivo-blindado/index.html 200
+/frota/van-blindada            /frota/van-blindada/index.html            200
+/frota/onibus-blindado         /frota/onibus-blindado/index.html         200
+
+# Redirecionamentos 301 das URLs antigas da frota para as novas URLs com SEO amigavel
+/frota/sedan          /frota/sedan-luxo-blindado     301
+/frota/suv            /frota/suv-blindada            301
+/frota/taxi           /frota/taxi-executivo-blindado 301
+/frota/taxi-executivo /frota/taxi-executivo-blindado 301
+/frota/van            /frota/van-blindada            301
+/frota/onibus         /frota/onibus-blindado         301
+/frota                /frota/sedan-luxo-blindado     301
+
+# Redirecionamentos 301 de rotas diretas na raiz
+/sedan                /frota/sedan-luxo-blindado     301
+/suv                  /frota/suv-blindada            301
+/taxi                 /frota/taxi-executivo-blindado 301
+/taxi-executivo       /frota/taxi-executivo-blindado 301
+/van                  /frota/van-blindada            301
+/onibus               /frota/onibus-blindado         301
+/cotacao              /frota/sedan-luxo-blindado     301
+/cotacao/*            /frota/sedan-luxo-blindado     301
 /reserva    /reserva.html    200
 /servicos   /#servicos       301
 /capitais   /#capitais       301

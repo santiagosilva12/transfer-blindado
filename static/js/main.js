@@ -195,7 +195,20 @@ function initSwiperCapitais() {
 function initFleetCarousel() {
   if (typeof Swiper === "undefined") return;
 
-  const categories = ["sedan", "suv", "taxi", "taxi-executivo", "van", "onibus"];
+  // 5 Categorias Terrestres (IDs amigáveis de SEO completos e aliases legados)
+  const categories = [
+    "sedan-luxo-blindado",
+    "suv-blindada",
+    "taxi-executivo-blindado",
+    "van-blindada",
+    "onibus-blindado",
+    "sedan",
+    "suv",
+    "taxi",
+    "taxi-executivo",
+    "van",
+    "onibus"
+  ];
   const categorySwipers = {};
 
   categories.forEach((cat) => {
@@ -619,18 +632,30 @@ function initQuotationPage() {
     }
   }
 
+  const SLUG_ALIASES = {
+    "sedan": "sedan-luxo-blindado",
+    "suv": "suv-blindada",
+    "taxi": "taxi-executivo-blindado",
+    "taxi-executivo": "taxi-executivo-blindado",
+    "van": "van-blindada",
+    "onibus": "onibus-blindado"
+  };
+
   // Detectar categoria ativa pela URL (/frota/<slug> ou ?categoria=<slug>)
   let activeCat = "";
   const pathMatch = window.location.pathname.match(/\/frota\/([a-z0-9-]+)/i);
   if (pathMatch && pathMatch[1]) {
     activeCat = pathMatch[1].toLowerCase();
-    if (activeCat === "taxi") activeCat = "taxi-executivo";
   }
 
   const urlParams = new URLSearchParams(window.location.search);
   if (!activeCat && urlParams.get("categoria")) {
     activeCat = urlParams.get("categoria").toLowerCase();
-    if (activeCat === "taxi") activeCat = "taxi-executivo";
+  }
+
+  // Normalizar slugs curtos para os slugs amigáveis completos de SEO
+  if (SLUG_ALIASES[activeCat]) {
+    activeCat = SLUG_ALIASES[activeCat];
   }
 
   // Se não veio na URL, respeita a categoria que veio ativa do HTML renderizado
@@ -642,7 +667,7 @@ function initQuotationPage() {
   }
 
   if (!activeCat) {
-    activeCat = "sedan";
+    activeCat = "sedan-luxo-blindado";
   }
 
   const modelParam = urlParams.get("modelo") || "";
@@ -666,7 +691,9 @@ function initQuotationPage() {
   window.addEventListener("popstate", () => {
     const pMatch = window.location.pathname.match(/\/frota\/([a-z0-9-]+)/i);
     if (pMatch && pMatch[1]) {
-      switchQuotationCategory(pMatch[1].toLowerCase());
+      let slug = pMatch[1].toLowerCase();
+      if (SLUG_ALIASES[slug]) slug = SLUG_ALIASES[slug];
+      switchQuotationCategory(slug);
     }
   });
 
