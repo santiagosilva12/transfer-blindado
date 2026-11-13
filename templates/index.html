@@ -365,27 +365,30 @@
       <div class="drvn-divisao-line flex-grow-1"></div>
     </div>
 
-    <!-- Navegação Rápida entre as Categorias (Sedan, SUV, Mini Van, Van, Ônibus) -->
-    <div class="drvn-category-nav-wrapper d-flex flex-wrap justify-content-center gap-2 mb-5">
+    <!-- Navegação de Categorias da Frota (Nav-tabs com rotas dinâmicas) -->
+    <ul class="nav nav-tabs drvn-category-nav-wrapper d-flex flex-wrap justify-content-center gap-2 mb-5 border-0" id="frotaTabs" role="tablist">
       {% for cat in categorias_terrestres %}
-      <a href="#cat-{{ cat.slug }}" class="drvn-category-nav-pill">
-        <i class="bi {{ cat.icone }}"></i>
-        <span data-i18n="cat_nav_{{ cat.id }}">{{ cat.nome }}</span>
-      </a>
+      <li class="nav-item" role="presentation">
+        <a href="/frota/{{ cat.slug }}" class="nav-link drvn-category-nav-pill {% if categoria_ativa == cat.slug %}active{% endif %}" role="tab" aria-selected="{{ 'true' if categoria_ativa == cat.slug else 'false' }}">
+          <i class="bi {{ cat.icone }}"></i>
+          <span data-i18n="cat_nav_{{ cat.id }}">{{ cat.nome }}</span>
+        </a>
+      </li>
       {% endfor %}
-    </div>
+    </ul>
 
-    <!-- Categorias da Frota Terrestre (Uma debaixo da outra) -->
-    {% for cat in categorias_terrestres %}
-    <div class="drvn-category-block" id="cat-{{ cat.slug }}">
-      
-      <!-- Cabeçalho da Categoria / Galeria -->
-      <div class="text-center mb-4">
-        <div class="drvn-gallery-badge-title">
-          <i class="bi {{ cat.icone }} text-gold me-2"></i><span data-i18n="cat_gallery_{{ cat.id }}">{{ cat.titulo_galeria }}</span>
+    <!-- Conteúdo da Frota Terrestre (Tab-content) -->
+    <div class="tab-content" id="frotaTabContent">
+      {% for cat in categorias_terrestres %}
+      <div class="tab-pane fade {% if categoria_ativa == cat.slug %}show active{% endif %} drvn-category-block" id="cat-{{ cat.slug }}" role="tabpanel" aria-labelledby="tab-{{ cat.slug }}">
+        
+        <!-- Cabeçalho da Categoria / Galeria -->
+        <div class="text-center mb-4">
+          <div class="drvn-gallery-badge-title">
+            <i class="bi {{ cat.icone }} text-gold me-2"></i><span data-i18n="cat_gallery_{{ cat.id }}">{{ cat.titulo_galeria }}</span>
+          </div>
+          <p class="text-secondary small mt-2 mb-0" data-i18n="cat_sub_{{ cat.id }}">{{ cat.subtitulo_galeria }}</p>
         </div>
-        <p class="text-secondary small mt-2 mb-0" data-i18n="cat_sub_{{ cat.id }}">{{ cat.subtitulo_galeria }}</p>
-      </div>
 
       <!-- Carrossel da Frota Terrestre da Categoria -->
       <div class="drvn-fleet-carousel-wrapper position-relative mb-4" data-category="{{ cat.slug }}">
@@ -406,9 +409,9 @@
               <div class="drvn-fleet-card p-3 p-lg-3 px-lg-4" id="{{ m.id }}">
                 <div class="row g-3 g-lg-4 align-items-center">
                   
-                  <!-- Imagem do Veículo em Sketch (Clicável para abrir o formulário em nova aba) -->
+                  <!-- Imagem do Veículo em Sketch (Link limpo para a rota da categoria) -->
                   <div class="col-lg-5 text-center">
-                    <a href="/{{ cat.slug }}?modelo={{ m.id }}" target="_blank" class="drvn-fleet-image-box drvn-cursor-pointer position-relative d-block text-decoration-none" title="Clique para cotar {{ m.nome }}">
+                    <a href="/frota/{{ cat.slug }}" class="drvn-fleet-image-box drvn-cursor-pointer position-relative d-block text-decoration-none" title="Solicitar cotação para {{ m.nome }}">
                       <img src="{{ m.imagem }}?v=18" alt="Sketch {{ m.nome }}" class="drvn-fleet-car-img" loading="lazy">
                       <span class="drvn-click-hint-pill">
                         <i class="bi bi-shield-check text-gold me-1"></i> <span data-i18n="fleet_click_to_quote">Solicitar Cotação</span>
@@ -420,7 +423,7 @@
                   <div class="col-lg-7">
                     <div class="ps-lg-2">
                       <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-1">
-                        <a href="/{{ cat.slug }}?modelo={{ m.id }}" target="_blank" class="h4 fw-bold mb-0 text-decoration-none d-block drvn-car-title-link" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">{{ m.nome }}</a>
+                        <a href="/frota/{{ cat.slug }}" class="h4 fw-bold mb-0 text-decoration-none d-block drvn-car-title-link" style="color: #0f172a;" data-i18n="model_name_{{ m.id }}">{{ m.nome }}</a>
                         <span class="badge bg-light text-dark border px-2 py-1 small font-monospace">
                           <i class="bi {{ m.tag_icone }} text-gold me-1"></i><span data-i18n="model_tag_{{ m.id }}">{{ m.tag }}</span>
                         </span>
@@ -433,7 +436,7 @@
                       </p>
                       {% endif %}
 
-                      <!-- Ação de Reserva Direto em Nova Tela de Cotação da Categoria -->
+                      <!-- Ação de Reserva Direto com Link Limpo de SEO -->
                       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 pt-2 border-top border-secondary border-opacity-10">
                         <span class="text-secondary small">
                           <i class="bi bi-geo-alt text-gold me-1"></i>
@@ -443,7 +446,7 @@
                           <span data-i18n="fleet_avail_cities">Disponível em Todo o Brasil</span>
                           {% endif %}
                         </span>
-                        <a href="/{{ cat.slug }}?modelo={{ m.id }}" target="_blank" class="link-with-icon fw-bold text-gold text-decoration-none drvn-fleet-quote-trigger">
+                        <a href="/frota/{{ cat.slug }}" class="link-with-icon fw-bold text-gold text-decoration-none drvn-fleet-quote-trigger">
                           <span data-i18n="fleet_quote_cta">Solicitar Cotação para esta Frota</span>
                           <i class="bi bi-arrow-right-circle-fill ms-1 text-gold"></i>
                         </a>
@@ -492,6 +495,7 @@
       </div>
     </div>
     {% endfor %}
+    </div>
 
     <!-- Frota Aérea (Um do lado do outro) -->
     <div class="d-flex align-items-center gap-3 my-5 pt-3">

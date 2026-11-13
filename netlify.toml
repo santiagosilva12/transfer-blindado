@@ -3,59 +3,84 @@
   command = "pip install -r requirements.txt && python build.py"
 
 [[redirects]]
-  from = "/sedan"
-  to = "/sedan/index.html"
+  from = "/frota/sedan"
+  to = "/frota/sedan/index.html"
   status = 200
+
+[[redirects]]
+  from = "/frota/suv"
+  to = "/frota/suv/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/frota/taxi"
+  to = "/frota/taxi-executivo/index.html"
+  status = 301
+
+[[redirects]]
+  from = "/frota/taxi-executivo"
+  to = "/frota/taxi-executivo/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/frota/van"
+  to = "/frota/van/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/frota/onibus"
+  to = "/frota/onibus/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/sedan"
+  to = "/frota/sedan"
+  status = 301
 
 [[redirects]]
   from = "/suv"
-  to = "/suv/index.html"
-  status = 200
+  to = "/frota/suv"
+  status = 301
 
 [[redirects]]
   from = "/taxi"
-  to = "/taxi-executivo/index.html"
+  to = "/frota/taxi-executivo"
   status = 301
 
 [[redirects]]
   from = "/taxi-executivo"
-  to = "/taxi-executivo/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/van"
-  to = "/van/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/onibus"
-  to = "/onibus/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/frota/:cat"
-  to = "/:cat"
+  to = "/frota/taxi-executivo"
   status = 301
 
 [[redirects]]
-  from = "/cotacao/:cat"
-  to = "/:cat"
+  from = "/van"
+  to = "/frota/van"
+  status = 301
+
+[[redirects]]
+  from = "/onibus"
+  to = "/frota/onibus"
+  status = 301
+
+[[redirects]]
+  from = "/frota"
+  to = "/frota/sedan"
   status = 301
 
 [[redirects]]
   from = "/cotacao"
-  to = "/sedan"
+  to = "/frota/sedan"
+  status = 301
+
+[[redirects]]
+  from = "/cotacao/:cat"
+  to = "/frota/:cat"
   status = 301
 
 [[redirects]]
   from = "/reserva"
   to = "/reserva.html"
   status = 200
-
-[[redirects]]
-  from = "/frota"
-  to = "/#frota"
-  status = 301
 
 [[redirects]]
   from = "/servicos"
@@ -76,5 +101,3 @@
   from = "/faq"
   to = "/#faq"
   status = 301
-
-

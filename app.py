@@ -617,35 +617,32 @@ def index():
 @app.route("/frota/<categoria>")
 def frota_categoria(categoria):
     categoria = categoria.lower()
+    # Alias de compatibilidade caso o usuário acesse /frota/taxi
     if categoria == "taxi":
-        return redirect(url_for("categoria_direta", categoria="taxi-executivo"))
-    if categoria in SEO_CATEGORIAS:
-        return redirect(f"/{categoria}")
-    return redirect(url_for("index"))
+        return redirect(url_for("frota_categoria", categoria="taxi-executivo"))
+
+    # Fallback: redirecionar para a home caso a categoria informada não exista
+    if categoria not in SEO_CATEGORIAS:
+        return redirect(url_for("index"))
+
+    seo = SEO_CATEGORIAS[categoria]
+    return render_template(
+        "index.html",
+        capitais=CAPITAIS,
+        frotas=FROTA,
+        categorias_terrestres=CATEGORIAS_TERRESTRES,
+        categoria_ativa=categoria,
+        seo_title=seo["title"],
+        seo_description=seo["description"]
+    )
 
 
 @app.route("/frota")
 def frota():
-    return redirect(url_for("index") + "#frota")
+    return redirect(url_for("frota_categoria", categoria="sedan"))
 
 
-@app.route("/cotacao")
-def cotacao():
-    cat = request.args.get("categoria", "sedan").lower()
-    if cat == "taxi":
-        cat = "taxi-executivo"
-    modelo = request.args.get("modelo", "")
-    if modelo:
-        return redirect(f"/{cat}?modelo={modelo}")
-    return redirect(f"/{cat}")
-
-
-@app.route("/cotacao/<categoria>")
-def cotacao_categoria_redirect(categoria):
-    return redirect(f"/{categoria}")
-
-
-# Rotas dedicadas e individuais para cada categoria de veículo (SEO)
+# Redirecionamentos amigáveis caso o usuário acesse diretamente /sedan, /suv, etc.
 @app.route("/sedan")
 @app.route("/suv")
 @app.route("/taxi-executivo")
@@ -653,27 +650,21 @@ def cotacao_categoria_redirect(categoria):
 @app.route("/van")
 @app.route("/onibus")
 def categoria_direta():
-    # Obtém o slug da rota acessada (ex: '/sedan' -> 'sedan')
     categoria = request.path.strip("/").lower()
     if categoria == "taxi":
         categoria = "taxi-executivo"
+    return redirect(url_for("frota_categoria", categoria=categoria))
 
-    if categoria not in SEO_CATEGORIAS:
-        return redirect(url_for("index"))
 
-    modelo_ativo = request.args.get("modelo", "")
-    cat_atual = next((c for c in CATEGORIAS_TERRESTRES if c["slug"] == categoria), CATEGORIAS_TERRESTRES[0])
-    seo = SEO_CATEGORIAS[categoria]
-    return render_template(
-        "cotacao.html",
-        categoria_ativa=categoria,
-        cat_atual=cat_atual,
-        modelo_ativo=modelo_ativo,
-        categorias_terrestres=CATEGORIAS_TERRESTRES,
-        capitais=CAPITAIS,
-        seo_title=seo["title"],
-        seo_description=seo["description"]
-    )
+@app.route("/cotacao")
+@app.route("/cotacao/<categoria>")
+def cotacao(categoria="sedan"):
+    cat = request.args.get("categoria", categoria).lower()
+    if cat == "taxi":
+        cat = "taxi-executivo"
+    if cat not in SEO_CATEGORIAS:
+        cat = "sedan"
+    return redirect(url_for("frota_categoria", categoria=cat))
 
 
 @app.route("/reserva")
