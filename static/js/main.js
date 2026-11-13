@@ -42,17 +42,18 @@ function initMobileMenuAutoClose() {
   const navbarCollapse = document.getElementById("navbarContent");
 
   const closeMobileMenu = () => {
-    if (navbarCollapse && window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
+    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
       if (typeof bootstrap !== "undefined" && bootstrap.Collapse) {
         const instance = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
         instance.hide();
       } else {
         navbarCollapse.classList.remove("show");
       }
+      document.body.classList.remove("menu-open");
     }
   };
 
-  // Garante que nenhum link de seção interna abra nova aba e faz rolagem suave na mesma página
+  // Garante que links de seção interna rolem suavemente na mesma página e fechem o menu no mobile
   document.addEventListener(
     "click",
     (e) => {
@@ -65,8 +66,8 @@ function initMobileMenuAutoClose() {
         return;
       }
 
-      // Garante que links internos nunca abram em nova aba
-      if (link.getAttribute("target") === "_blank") {
+      // Se for link de âncora interno, nunca abre em nova aba
+      if (rawHref.startsWith("#") && link.getAttribute("target") === "_blank") {
         link.setAttribute("target", "_self");
       }
 
@@ -74,32 +75,47 @@ function initMobileMenuAutoClose() {
       const hashIndex = rawHref.indexOf("#");
       if (hashIndex !== -1) {
         const hash = rawHref.slice(hashIndex);
-        if (hash === "#" || hash === "#top") {
-          const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
-          if (isHomePage) {
-            e.preventDefault();
-            e.stopPropagation();
-            closeMobileMenu();
+        const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html") || window.location.pathname === "";
+        const targetElem = document.querySelector(hash);
+
+        // Se o elemento existe na página atual (Home ou mesma rota)
+        if (targetElem && (isHomePage || rawHref.startsWith("#"))) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          // Fecha o menu mobile imediatamente
+          closeMobileMenu();
+
+          if (hash === "#" || hash === "#top") {
             window.scrollTo({ top: 0, behavior: "smooth" });
             if (history.replaceState) {
               history.replaceState(null, "", window.location.pathname);
             }
             return;
           }
-        } else {
-          const targetElem = document.querySelector(hash);
-          if (targetElem) {
-            e.preventDefault();
-            e.stopPropagation();
-            closeMobileMenu();
-            const navHeight = (document.getElementById("mainNavbar") || {}).offsetHeight || 82;
-            const targetTop = targetElem.getBoundingClientRect().top + window.scrollY - navHeight;
-            window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+
+          // Altura real da navbar fechada (mobile vs desktop)
+          const isMobile = window.innerWidth < 992;
+          const navOffset = isMobile ? 68 : 82;
+
+          // Executa a rolagem precisa após o fechamento do menu
+          setTimeout(() => {
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = targetElem.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - navOffset;
+
+            window.scrollTo({
+              top: Math.max(0, offsetPosition),
+              behavior: "smooth"
+            });
+
             if (history.replaceState) {
               history.replaceState(null, "", hash);
             }
-            return;
-          }
+          }, 80);
+
+          return;
         }
       }
 
