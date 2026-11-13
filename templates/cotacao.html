@@ -11,7 +11,7 @@
     
     <!-- Barra Superior de Navegação / Voltar -->
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4 pb-3 border-bottom border-light-theme">
-      <a href="{{ url_for('frota_categoria', categoria=categoria_ativa) }}#frota" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 d-inline-flex align-items-center gap-2 fw-bold" style="background: #ffffff; border: 1.5px solid #cbd5e1; color: #0f172a;">
+      <a href="/#frota" class="btn btn-outline-dark btn-sm rounded-pill px-3 py-2 d-inline-flex align-items-center gap-2 fw-bold" style="background: #ffffff; border: 1.5px solid #cbd5e1; color: #0f172a;">
         <i class="bi bi-arrow-left text-gold"></i>
         <span data-i18n="quote_back_fleet">Voltar para a Frota</span>
       </a>
@@ -40,7 +40,7 @@
       <!-- Seletor de Categoria (Sedan, SUV, Van, Ônibus) com URLs Dinâmicas de SEO -->
       <div class="drvn-quote-cat-bar d-inline-flex flex-wrap justify-content-center gap-2 p-2 rounded-pill shadow-sm" style="background: #ffffff; border: 1.5px solid #cbd5e1;">
         {% for cat in categorias_terrestres %}
-        <a href="/{{ cat.slug }}" class="drvn-quote-cat-btn btn rounded-pill px-3 px-md-4 py-2 fw-bold {% if cat.slug == categoria_ativa %}active{% endif %} text-decoration-none" data-cat-slug="{{ cat.slug }}" data-cat-name="{{ cat.nome }}" data-cat-sub="{{ cat.subtitulo_galeria }}">
+        <a href="/frota/{{ cat.slug }}" class="drvn-quote-cat-btn btn rounded-pill px-3 px-md-4 py-2 fw-bold {% if cat.slug == categoria_ativa %}active{% endif %} text-decoration-none" data-cat-slug="{{ cat.slug }}" data-cat-name="{{ cat.nome }}" data-cat-sub="{{ cat.subtitulo_galeria }}">
           <i class="bi {{ cat.icone }} me-1"></i> <span data-i18n="cat_nav_{{ cat.id }}">{{ cat.nome }}</span>
         </a>
         {% endfor %}

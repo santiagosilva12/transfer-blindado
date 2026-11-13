@@ -69,17 +69,18 @@ def build_static_site():
             f.write(rendered_cotacao)
         print("[OK] cotacao.html renderizado em dist/cotacao.html")
 
-    # 4. Renderizar páginas dedicadas para cada categoria de veículo da frota (SEO com index.html)
+    # 4. Renderizar páginas dedicadas de cotação/formulário para cada categoria da frota (/frota/<slug>)
     for cat in CATEGORIAS_TERRESTRES:
         slug = cat["slug"]
         seo = SEO_CATEGORIAS.get(slug, {})
         with app.test_request_context(f"/frota/{slug}"):
             rendered_frota = render_template(
-                "index.html",
-                capitais=CAPITAIS,
-                frotas=FROTA,
-                categorias_terrestres=CATEGORIAS_TERRESTRES,
+                "cotacao.html",
                 categoria_ativa=slug,
+                cat_atual=cat,
+                modelo_ativo="",
+                categorias_terrestres=CATEGORIAS_TERRESTRES,
+                capitais=CAPITAIS,
                 seo_title=seo.get("title", ""),
                 seo_description=seo.get("description", "")
             )
@@ -87,7 +88,7 @@ def build_static_site():
             os.makedirs(cat_dir, exist_ok=True)
             with open(os.path.join(cat_dir, "index.html"), "w", encoding="utf-8") as f:
                 f.write(rendered_frota)
-        print(f"[OK] Categoria {slug} renderizada em dist/frota/{slug}/index.html")
+        print(f"[OK] Categoria {slug} (Formulário de Cotação) renderizada em dist/frota/{slug}/index.html")
 
     # 5. Criar arquivo de regras de redirecionamento do Netlify (_redirects)
     redirects_content = """/manifest.json /manifest.json 200

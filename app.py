@@ -621,17 +621,20 @@ def frota_categoria(categoria):
     if categoria == "taxi":
         return redirect(url_for("frota_categoria", categoria="taxi-executivo"))
 
-    # Fallback: redirecionar para a home caso a categoria informada não exista
+    # Fallback: redirecionar para a frota sedan caso a categoria informada não exista
     if categoria not in SEO_CATEGORIAS:
-        return redirect(url_for("index"))
+        return redirect(url_for("frota_categoria", categoria="sedan"))
 
+    modelo_ativo = request.args.get("modelo", "")
+    cat_atual = next((c for c in CATEGORIAS_TERRESTRES if c["slug"] == categoria), CATEGORIAS_TERRESTRES[0])
     seo = SEO_CATEGORIAS[categoria]
     return render_template(
-        "index.html",
-        capitais=CAPITAIS,
-        frotas=FROTA,
-        categorias_terrestres=CATEGORIAS_TERRESTRES,
+        "cotacao.html",
         categoria_ativa=categoria,
+        cat_atual=cat_atual,
+        modelo_ativo=modelo_ativo,
+        categorias_terrestres=CATEGORIAS_TERRESTRES,
+        capitais=CAPITAIS,
         seo_title=seo["title"],
         seo_description=seo["description"]
     )
